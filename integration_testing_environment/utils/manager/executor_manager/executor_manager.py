@@ -18,6 +18,14 @@ class ExecutorManager(object):
                         package: package_manager.installed_package_dict.get(package).execute_action
                     }
                 )
+        """
+        self.executor_dict = dict()
+        for executor in self.executor_manager_dict.keys():
+            if executor is not None and self.executor_manager_dict.get(
+                executor
+            ) is not None:
+                pass
+        """
 
 
 executor_manager = ExecutorManager()

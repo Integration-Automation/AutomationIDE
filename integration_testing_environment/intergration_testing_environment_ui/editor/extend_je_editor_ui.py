@@ -10,6 +10,3 @@ class ITEUI(EditorMain):
         # Testing tool menu
         self.testing_tool_menu = Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="Testing Tool", menu=self.testing_tool_menu)
-
-
-

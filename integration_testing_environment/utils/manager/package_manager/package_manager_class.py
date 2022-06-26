@@ -1,8 +1,8 @@
-import os
-
-from importlib.util import find_spec
-import sys
 from importlib import import_module
+
+import os
+import sys
+from importlib.util import find_spec
 
 
 def check_package(installed_package_dict: dict):

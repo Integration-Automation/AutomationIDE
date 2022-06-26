@@ -1,5 +1,6 @@
-import sys
 from importlib import import_module
+
+import sys
 
 try:
     import_module("dwadawdawdaw")
