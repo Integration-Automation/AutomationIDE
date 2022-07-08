@@ -6,12 +6,5 @@
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7 (Integration-testing-environment)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="APITestka" />
-    <orderEntry type="module" module-name="AutoControl" />
-    <orderEntry type="module" module-name="je_editor" />
-    <orderEntry type="module" module-name="LoadDensity" />
-    <orderEntry type="module" module-name="MailThunder_JE" />
-    <orderEntry type="module" module-name="TkPlot" />
-    <orderEntry type="module" module-name="WebRunner" />
   </component>
 </module>

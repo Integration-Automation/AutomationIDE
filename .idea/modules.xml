@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../APITestka/.idea/APITestka.iml" filepath="$PROJECT_DIR$/../APITestka/.idea/APITestka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../AutoControl/.idea/AutoControl.iml" filepath="$PROJECT_DIR$/../AutoControl/.idea/AutoControl.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Integration-testing-environment.iml" filepath="$PROJECT_DIR$/.idea/Integration-testing-environment.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../LoadDensity/.idea/LoadDensity.iml" filepath="$PROJECT_DIR$/../LoadDensity/.idea/LoadDensity.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../MailThunder_JE/.idea/MailThunder_JE.iml" filepath="$PROJECT_DIR$/../MailThunder_JE/.idea/MailThunder_JE.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../TkPLot/.idea/TkPlot.iml" filepath="$PROJECT_DIR$/../TkPLot/.idea/TkPlot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../WebRunner/.idea/WebRunner.iml" filepath="$PROJECT_DIR$/../WebRunner/.idea/WebRunner.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../je_editor/.idea/je_editor.iml" filepath="$PROJECT_DIR$/../je_editor/.idea/je_editor.iml" />
     </modules>
   </component>
 </project>
