@@ -15,10 +15,6 @@ jobs:
       - run:
           command: pip install --upgrade --user pip setuptools wheel
           name: pip install --upgrade --user pip setuptools wheel
-      # pip require package
-      - run:
-          command: pip install --user -r dev_requirements.txt
-          name: pip dev_requirements.txt
 
 
   build-and-test-windows-stable:
@@ -31,11 +27,6 @@ jobs:
       # upgrade
       - run:
           command: pip install --upgrade --user pip setuptools wheel
-          name: pip install --upgrade --user pip setuptools wheel
-      # pip require package
-      - run:
-          command: pip install --user -r requirements.txt
-          name: pip dev_requirements.txt
 
 workflows:
   main:

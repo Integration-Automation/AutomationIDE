@@ -23,10 +23,9 @@ def auto_control_executor(execute_action_json_list: list):
             )
             return test_future.result()
         else:
-            raise ITETestExecutorException
+            raise ITETestExecutorException(auto_control_test_executor_exception_tag)
     except ITETestExecutorException as error:
         print(repr(error), file=sys.stderr)
-        print(auto_control_test_executor_exception_tag, file=sys.stderr)
 
 
 def auto_control_executor_with_send(execute_action_json_list: list):
@@ -43,10 +42,9 @@ def api_testka_executor(execute_action_json_list: list):
             )
             return test_future.result()
         else:
-            raise ITETestExecutorException
+            raise ITETestExecutorException(api_testka_test_executor_exception_tag)
     except ITETestExecutorException as error:
         print(repr(error), file=sys.stderr)
-        print(api_testka_test_executor_exception_tag, file=sys.stderr)
 
 
 def api_testka_executor_with_send(execute_action_json_list: list):
@@ -58,15 +56,15 @@ def web_runner_executor(execute_action_json_list: list):
     web_runner_package = package_manager.installed_package_dict.get("je_web_runner", None)
     try:
         if web_runner_package is not None:
+            web_runner_package.test_record_instance.set_record_enable(True)
             test_future = test_executor.submit(
                 executor_manager.executor_manager_dict.get("je_web_runner"), execute_action_json_list
             )
             return test_future.result()
         else:
-            raise ITETestExecutorException
+            raise ITETestExecutorException(web_runner_test_executor_exception_tag)
     except ITETestExecutorException as error:
         print(repr(error), file=sys.stderr)
-        print(web_runner_test_executor_exception_tag, file=sys.stderr)
 
 
 def web_runner_executor_with_send(execute_action_json_list: list):
@@ -83,10 +81,9 @@ def load_density_executor(execute_action_json_list: list):
             )
             return test_future.result()
         else:
-            raise ITETestExecutorException
+            raise ITETestExecutorException(load_density_test_executor_exception_tag)
     except ITETestExecutorException as error:
         print(repr(error), file=sys.stderr)
-        print(load_density_test_executor_exception_tag, file=sys.stderr)
 
 
 def load_density_executor_with_send(execute_action_json_list: list):
