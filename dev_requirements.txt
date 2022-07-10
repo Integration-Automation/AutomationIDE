@@ -8,4 +8,4 @@ je-auto-control
 je-web-runner
 je-mail-thunder
 je-tk-plot
-je-editor
+integration_testing_environment_dev

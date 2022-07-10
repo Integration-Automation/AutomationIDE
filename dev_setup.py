@@ -5,7 +5,7 @@ with open("README.md", "r") as README:
 
 setuptools.setup(
     name="integration_testing_environment_dev",
-    version="0.0.1",
+    version="0.0.2",
     author="JE-Chen",
     author_email="zenmailman@gmail.com",
     description="Integration testing environment for web gui api load testing",
@@ -14,10 +14,6 @@ setuptools.setup(
     url="https://github.com/JE-Chen/WebRunner",
     packages=setuptools.find_packages(),
     install_requires=[
-        "je-api-testka",
-        "je-load-density",
-        "je-auto-control",
-        "je-web-runner",
         "je-editor",
     ],
     extras_require={

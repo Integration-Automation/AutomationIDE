@@ -14,10 +14,6 @@ setuptools.setup(
     url="https://github.com/JE-Chen/WebRunner",
     packages=setuptools.find_packages(),
     install_requires=[
-        "je-api-testka",
-        "je-load-density",
-        "je-auto-control",
-        "je-web-runner",
         "je-editor",
     ],
     extras_require={
