@@ -1,4 +1,3 @@
-import sys
 from concurrent.futures.thread import ThreadPoolExecutor
 
 from integration_testing_environment.utils.exception.exception_tag import auto_control_test_executor_exception_tag
@@ -9,6 +8,7 @@ from integration_testing_environment.utils.exception.exceptions import ITETestEx
 from integration_testing_environment.utils.manager.executor_manager.executor_manager import executor_manager
 from integration_testing_environment.utils.manager.package_manager.package_manager_class import package_manager
 from integration_testing_environment.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
+from integration_testing_environment.utils.manager.redirect_manager.redirect_manager_class import redirect_manager_instance
 
 test_executor = ThreadPoolExecutor()
 
@@ -25,7 +25,7 @@ def auto_control_executor(execute_action_json_list: list):
         else:
             raise ITETestExecutorException(auto_control_test_executor_exception_tag)
     except ITETestExecutorException as error:
-        print(repr(error), file=sys.stderr)
+        redirect_manager_instance.redirect_std_err_to_ui(repr(error))
 
 
 def auto_control_executor_with_send(execute_action_json_list: list):
@@ -44,7 +44,7 @@ def api_testka_executor(execute_action_json_list: list):
         else:
             raise ITETestExecutorException(api_testka_test_executor_exception_tag)
     except ITETestExecutorException as error:
-        print(repr(error), file=sys.stderr)
+        redirect_manager_instance.redirect_std_err_to_ui(repr(error))
 
 
 def api_testka_executor_with_send(execute_action_json_list: list):
@@ -64,7 +64,7 @@ def web_runner_executor(execute_action_json_list: list):
         else:
             raise ITETestExecutorException(web_runner_test_executor_exception_tag)
     except ITETestExecutorException as error:
-        print(repr(error), file=sys.stderr)
+        redirect_manager_instance.redirect_std_err_to_ui(repr(error))
 
 
 def web_runner_executor_with_send(execute_action_json_list: list):
@@ -83,7 +83,7 @@ def load_density_executor(execute_action_json_list: list):
         else:
             raise ITETestExecutorException(load_density_test_executor_exception_tag)
     except ITETestExecutorException as error:
-        print(repr(error), file=sys.stderr)
+        redirect_manager_instance.redirect_std_err_to_ui(repr(error))
 
 
 def load_density_executor_with_send(execute_action_json_list: list):
