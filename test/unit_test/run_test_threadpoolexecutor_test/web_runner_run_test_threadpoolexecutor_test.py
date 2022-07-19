@@ -1,5 +1,9 @@
-from integration_testing_environment.utils.run_test_executor.run_test_threadpoolexecutor import web_runner_executor
-test_execute_list = [
+from integration_testing_environment.integration_testing_environment_ui.editor_event.test_executor \
+    .web_runner.web_runner_executor import call_web_runner_test
+
+test_str = \
+    """
+    [
     ["get_webdriver_manager", {"webdriver_name": "firefox"}],
     ["to_url", {"url": "https://www.google.com"}],
     ["SaveTestObject", {"test_object_name": "q", "object_type": "name"}],
@@ -33,4 +37,10 @@ test_execute_list = [
     ["quit"],
     ["generate_html"]
 ]
-web_runner_executor(test_execute_list)
+    """
+test_result_dict = call_web_runner_test(test_str)
+if test_result_dict is not None:
+    for execute_detail, execute_return_value in test_result_dict.items():
+        print(execute_detail)
+        print(execute_return_value)
+

@@ -56,7 +56,7 @@ load_density_test_list = [
 test_execute_list = [
     ["get_webdriver_manager", {"webdriver_name": "firefox"}],
     ["to_url", {"url": "https://www.google.com"}],
-    ["SaveTestObject", {"test_object_name": "q", "object_type": "name"}],
+    ["SaveTestObject", {"test_object_name": "q", "object_type": "execute_detail"}],
     ["implicitly_wait", {"time_to_wait": 3}],
     ["find_element", {"element_name": "q"}],
     ["click_element"],

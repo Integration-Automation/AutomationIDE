@@ -12,3 +12,11 @@ class ITESendHtmlReportException(ITEException):
 
 class ITETestExecutorException(ITEException):
     pass
+
+
+class ITEUIException(ITEException):
+    pass
+
+
+class ITEExecException(ITEException):
+    pass

@@ -30,9 +30,11 @@ def send_after_test(html_report_path: str = None):
                     html_report_path, use_html=True)
                 mail_thunder_smtp.send_message(message)
                 mail_thunder_smtp.quit()
+            else:
+                raise ITESendHtmlReportException
         else:
             raise ITESendHtmlReportException
     except ITESendHtmlReportException as error:
         print(repr(error), file=sys.stderr)
-        print(send_html_exception_tag)
+        print(send_html_exception_tag, file=sys.stderr)
 

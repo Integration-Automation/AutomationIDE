@@ -1,7 +1,30 @@
+import logging
+import queue
 import sys
-from contextlib import redirect_stderr
-from io import StringIO
-from tkinter import END
+
+
+class RedirectStdOut(logging.Handler):
+
+    def __init__(self):
+        super().__init__()
+
+    def write(self, content_to_write):
+        redirect_manager_instance.std_out_queue.put(content_to_write)
+
+    def emit(self, record: logging.LogRecord) -> None:
+        redirect_manager_instance.std_out_queue.put(self.format(record))
+
+
+class RedirectStdErr(logging.Handler):
+
+    def __init__(self):
+        super().__init__()
+
+    def write(self, content_to_write):
+        redirect_manager_instance.std_err_queue.put(content_to_write)
+
+    def emit(self, record: logging.LogRecord) -> None:
+        redirect_manager_instance.std_err_queue.put(self.format(record))
 
 
 class RedirectManager(object):
@@ -9,20 +32,26 @@ class RedirectManager(object):
     def __init__(self):
         self.is_use_ite_ui: bool = False
         self.ite_ui = None
-        self.redirect_stringio: StringIO = StringIO()
+        self.std_err_queue = queue.Queue()
+        self.std_out_queue = queue.Queue()
 
     def set_ui_setting(self, ite_ui, is_use_ui: bool = False):
         self.ite_ui = ite_ui
         self.is_use_ite_ui = is_use_ui
+        if self.is_use_ite_ui is True and self.ite_ui is not None:
+            redirect_out = RedirectStdOut()
+            redirect_err = RedirectStdErr()
+            sys.stdout = redirect_out
+            sys.stderr = redirect_err
+            default_logger = logging.getLogger()
+            default_logger.addHandler(redirect_err)
+            for name in logging.root.manager.loggerDict.keys():
+                logging.getLogger(name).addHandler(redirect_err)
 
-    def redirect_std_err_to_ui(self, print_message):
-        if self.is_use_ite_ui and self.ite_ui is not None:
-            with redirect_stderr(self.redirect_stringio):
-                print(print_message, file=sys.stderr)
-            redirect_stderr_message = self.redirect_stringio.getvalue()
-            self.ite_ui.program_run_result_textarea.insert(END, redirect_stderr_message)
-        else:
-            print(print_message, file=sys.stderr)
+    @staticmethod
+    def restore_std():
+        sys.stdout = sys.__stdout__
+        sys.stderr = sys.__stderr__
 
 
 redirect_manager_instance = RedirectManager()
