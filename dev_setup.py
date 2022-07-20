@@ -10,7 +10,7 @@ setuptools.setup(
     author_email="zenmailman@gmail.com",
     description="Integration testing environment for web gui api load testing",
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type="tkinter_text/markdown",
     url="https://github.com/JE-Chen/WebRunner",
     packages=setuptools.find_packages(),
     install_requires=[

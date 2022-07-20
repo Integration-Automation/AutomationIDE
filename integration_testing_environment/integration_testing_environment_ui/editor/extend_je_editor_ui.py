@@ -1,19 +1,18 @@
 import datetime
-import logging
 from tkinter import Menu, END, NORMAL, DISABLED
 
 from je_editor import EditorMain
 
-from integration_testing_environment.integration_testing_environment_ui.editor_event.test_executor.api_testka.api_testka_executor import \
-    call_api_testka_test_with_send, call_api_testka_test
-from integration_testing_environment.integration_testing_environment_ui.editor_event.test_executor.auto_control.auto_control_executor import \
-    call_auto_control_test, call_auto_control_test_with_send
-from integration_testing_environment.integration_testing_environment_ui.editor_event.test_executor.load_density.load_density_executor import \
-    call_load_density_test, call_load_density_test_with_send
-from integration_testing_environment.integration_testing_environment_ui.editor_event.test_executor.web_runner.web_runner_executor import \
-    call_web_runner_test, call_web_runner_test_with_send
 from integration_testing_environment.utils.manager.redirect_manager.redirect_manager_class import \
     redirect_manager_instance
+from integration_testing_environment.utils.test_executor.api_testka.api_testka_process import call_api_testka_test, \
+    call_api_testka_test_with_send
+from integration_testing_environment.utils.test_executor.auto_control.auto_control_process import \
+    call_auto_control_test, call_auto_control_test_with_send
+from integration_testing_environment.utils.test_executor.load_density.load_density_process import \
+    call_load_density_test, call_load_density_test_with_send
+from integration_testing_environment.utils.test_executor.web_runner.web_runner_process import call_web_runner_test, \
+    call_web_runner_test_with_send
 
 
 class ITEUI(EditorMain):
@@ -46,13 +45,17 @@ class ITEUI(EditorMain):
         self.api_testka_menu.add_command(
             label="Execute APITestka Script",
             command=lambda: call_api_testka_test(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         self.api_testka_menu.add_command(
             label="Execute And Send Mail",
             command=lambda: call_api_testka_test_with_send(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         # auto control menu
@@ -60,13 +63,17 @@ class ITEUI(EditorMain):
         self.auto_control_menu.add_command(
             label="Execute AutoControl Script",
             command=lambda: call_auto_control_test(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         self.auto_control_menu.add_command(
             label="Execute And Send Mail",
             command=lambda: call_auto_control_test_with_send(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         # web runner menu
@@ -74,13 +81,17 @@ class ITEUI(EditorMain):
         self.web_runner_menu.add_command(
             label="Execute WebRunner Script",
             command=lambda: call_web_runner_test(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         self.web_runner_menu.add_command(
             label="Execute And Send Mail",
             command=lambda: call_web_runner_test_with_send(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         # load density menu
@@ -88,13 +99,17 @@ class ITEUI(EditorMain):
         self.load_density_menu.add_command(
             label="Execute LoadDensity Script",
             command=lambda: call_load_density_test(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         self.load_density_menu.add_command(
             label="Execute And Send Mail",
             command=lambda: call_load_density_test_with_send(
-                self.code_editor_textarea.get("1.0", "end-1c"),
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
             )
         )
         # add all menu to Testing Tool menu
@@ -109,8 +124,6 @@ def start_ite(use_theme=None, debug: bool = False, **kwargs):
     ite_ui: ITEUI = ITEUI(use_theme, debug, **kwargs)
     # set use ui is true then we will redirect output to ui
     redirect_manager_instance.set_ui_setting(ite_ui, True)
-    # print current time
-    print(datetime.datetime.now())
     # set some editor setting start main loop
     ite_ui.start_editor()
     return ite_ui
