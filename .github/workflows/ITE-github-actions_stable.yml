@@ -29,26 +29,6 @@ jobs:
       run: python ./test/unit_test/check_installed_and_import/check_and_import.py
     - name: open_extend_ui_test
       run: python ./test/unit_test/open_extend_test/open_extend_ui_test.py
-    - name: api_testka_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/api_testka_run_test_threadpoolexecutor_test.py
-    - name: autocontrol_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/autocontrol_run_test_threadpoolexecutor_test.py
-    - name: load_density_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/load_density_run_test_threadpoolexecutor_test.py
-    - name: web_runner_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/web_runner_run_test_threadpoolexecutor_test.py
-    - name: run all thread pool test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/run_all_test.py
     - name: pip dev_requirements.txt
       run: python -m pip install --user -r dev_requirements.txt
-    - name: api_testka_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/api_testka_run_test_threadpoolexecutor_test.py
-    - name: autocontrol_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/autocontrol_run_test_threadpoolexecutor_test.py
-    - name: load_density_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/load_density_run_test_threadpoolexecutor_test.py
-    - name: web_runner_run_test_threadpoolexecutor_test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/web_runner_run_test_threadpoolexecutor_test.py
-    - name: run all thread pool test
-      run: python ./test/unit_test/run_test_threadpoolexecutor_test/run_all_test.py
-
+      
