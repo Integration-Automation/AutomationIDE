@@ -75,15 +75,13 @@ class TaskProcessManager(object):
             self.tkinter_text.after(10, self.check_return_code)
         elif process_return_code == 0:
             self.still_run_program = False
-            self.run_output_queue = Queue()
-            self.run_error_queue = Queue()
+            self.print_and_clear_queue()
             self.process = None
             if self.task_done_trigger_function is not None:
                 self.task_done_trigger_function()
         else:
             self.still_run_program = False
-            self.run_output_queue = Queue()
-            self.run_error_queue = Queue()
+            self.print_and_clear_queue()
             self.process = None
             if self.error_trigger_function is not None:
                 self.error_trigger_function()
@@ -119,10 +117,15 @@ class TaskProcessManager(object):
         self.check_return_code()
 
     def print_and_clear_queue(self):
-        for std_output in iter(self.run_output_queue.get, None):
-            self.tkinter_text.insert(END, std_output + "\n")
-        for std_err in iter(self.run_error_queue.get, None):
-            self.tkinter_text.insert(END, std_err, "warning", "\n")
+        try:
+            self.tkinter_text.configure(state=NORMAL)
+            for std_output in iter(self.run_output_queue.get_nowait, None):
+                self.tkinter_text.insert(END, std_output + "\n")
+            for std_err in iter(self.run_error_queue.get_nowait, None):
+                self.tkinter_text.insert(END, std_err, "warning", "\n")
+            self.tkinter_text.configure(state=DISABLED)
+        except Empty:
+            pass
         self.run_output_queue = Queue()
         self.run_error_queue = Queue()
 
