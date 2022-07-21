@@ -31,4 +31,3 @@ jobs:
       run: python ./test/unit_test/open_extend_test/open_extend_ui_test.py
     - name: pip dev_requirements.txt
       run: python -m pip install --user -r dev_requirements.txt
-      
