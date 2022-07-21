@@ -10,8 +10,8 @@ from integration_testing_environment.utils.test_executor.task_process_manager im
 def call_auto_control_test(test_format_code):
     try:
         TaskProcessManager("je_auto_control").start_test_process(
-            package="je_auto_control",
-            exec_str=json.loads(test_format_code)
+            "je_auto_control",
+            exec_str=test_format_code,
         )
     except json.decoder.JSONDecodeError as error:
         print(
@@ -31,7 +31,7 @@ def call_auto_control_test_with_send(test_format_code):
             task_done_trigger_function=send_after_test
         ).start_test_process(
             "je_auto_control",
-            json.loads(test_format_code),
+            exec_str=test_format_code,
         )
     except json.decoder.JSONDecodeError as error:
         print(

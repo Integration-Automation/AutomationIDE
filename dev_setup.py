@@ -5,12 +5,12 @@ with open("README.md", "r") as README:
 
 setuptools.setup(
     name="integration_testing_environment_dev",
-    version="0.0.3",
+    version="0.0.5",
     author="JE-Chen",
     author_email="zenmailman@gmail.com",
     description="Integration testing environment for web gui api load testing",
     long_description=long_description,
-    long_description_content_type="tkinter_text/markdown",
+    long_description_content_type="text/markdown",
     url="https://github.com/JE-Chen/WebRunner",
     packages=setuptools.find_packages(),
     install_requires=[
