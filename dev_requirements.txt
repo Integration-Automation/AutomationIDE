@@ -1,0 +1,11 @@
+wheel
+twine
+sphinx
+sphinx-rtd-theme
+je-api-testka
+je-load-density
+je-auto-control
+je-web-runner
+je-mail-thunder
+je-tk-plot
+integration_testing_environment_dev
