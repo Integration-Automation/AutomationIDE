@@ -88,9 +88,9 @@ class TaskProcessManager(object):
 
     def start_test_process(self, package: str, exec_str: str):
         # try to find file and compiler
-        compiler_path = shutil.which("python3")
+        compiler_path = shutil.which("python")
         if compiler_path is None:
-            compiler_path = shutil.which("python")
+            compiler_path = shutil.which("python3")
         self.set_ui()
         self.process = subprocess.Popen(
             [
