@@ -115,6 +115,72 @@ class ITEUI(EditorMain):
         self.testing_tool_menu.add_cascade(label="AutoControl", menu=self.auto_control_menu)
         self.testing_tool_menu.add_cascade(label="WebRunner", menu=self.web_runner_menu)
         self.testing_tool_menu.add_cascade(label="LoadDensity", menu=self.load_density_menu)
+        # popup menu
+        self.popup_menu.add_separator()
+        self.popup_menu.add_command(
+            label="Execute APITestka Script",
+            command=lambda: call_api_testka_test(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute And Send Mail",
+            command=lambda: call_api_testka_test_with_send(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute AutoControl Script",
+            command=lambda: call_auto_control_test(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute And Send Mail",
+            command=lambda: call_auto_control_test_with_send(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute WebRunner Script",
+            command=lambda: call_web_runner_test(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute And Send Mail",
+            command=lambda: call_web_runner_test_with_send(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute LoadDensity Script",
+            command=lambda: call_load_density_test(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
+        self.popup_menu.add_command(
+            label="Execute And Send Mail",
+            command=lambda: call_load_density_test_with_send(
+                self.code_editor_textarea.get(
+                    "1.0", END
+                )
+            )
+        )
         self.program_run_result_textarea.after(10, self.redirect_output)
 
 
