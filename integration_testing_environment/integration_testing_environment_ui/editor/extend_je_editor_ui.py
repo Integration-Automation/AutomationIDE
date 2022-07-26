@@ -36,10 +36,8 @@ class ITEUI(EditorMain):
     def __init__(self, use_theme=None, debug=False, **kwargs):
         super().__init__(use_theme, debug, **kwargs)
         # Testing tool menu
-        self.testing_tool_menu: Menu = Menu(self.menu, tearoff=0)
-        self.menu.add_cascade(label="Testing Tool", menu=self.testing_tool_menu)
         # api testka menu
-        self.api_testka_menu: Menu = Menu(self.testing_tool_menu, tearoff=0)
+        self.api_testka_menu: Menu = Menu(self.menu, tearoff=0)
         self.api_testka_menu.add_command(
             label="Execute APITestka Script",
             command=lambda: call_api_testka_test(
@@ -57,7 +55,7 @@ class ITEUI(EditorMain):
             )
         )
         # auto control menu
-        self.auto_control_menu: Menu = Menu(self.testing_tool_menu, tearoff=0)
+        self.auto_control_menu: Menu = Menu(self.menu, tearoff=0)
         self.auto_control_menu.add_command(
             label="Execute AutoControl Script",
             command=lambda: call_auto_control_test(
@@ -75,7 +73,7 @@ class ITEUI(EditorMain):
             )
         )
         # web runner menu
-        self.web_runner_menu: Menu = Menu(self.testing_tool_menu, tearoff=0)
+        self.web_runner_menu: Menu = Menu(self.menu, tearoff=0)
         self.web_runner_menu.add_command(
             label="Execute WebRunner Script",
             command=lambda: call_web_runner_test(
@@ -93,7 +91,7 @@ class ITEUI(EditorMain):
             )
         )
         # load density menu
-        self.load_density_menu: Menu = Menu(self.testing_tool_menu, tearoff=0)
+        self.load_density_menu: Menu = Menu(self.menu, tearoff=0)
         self.load_density_menu.add_command(
             label="Execute LoadDensity Script",
             command=lambda: call_load_density_test(
@@ -111,76 +109,16 @@ class ITEUI(EditorMain):
             )
         )
         # add all menu to Testing Tool menu
-        self.testing_tool_menu.add_cascade(label="APITestka", menu=self.api_testka_menu)
-        self.testing_tool_menu.add_cascade(label="AutoControl", menu=self.auto_control_menu)
-        self.testing_tool_menu.add_cascade(label="WebRunner", menu=self.web_runner_menu)
-        self.testing_tool_menu.add_cascade(label="LoadDensity", menu=self.load_density_menu)
+        self.menu.add_cascade(label="APITestka", menu=self.api_testka_menu)
+        self.menu.add_cascade(label="AutoControl", menu=self.auto_control_menu)
+        self.menu.add_cascade(label="WebRunner", menu=self.web_runner_menu)
+        self.menu.add_cascade(label="LoadDensity", menu=self.load_density_menu)
         # popup menu
         self.popup_menu.add_separator()
-        self.popup_menu.add_command(
-            label="Execute APITestka Script",
-            command=lambda: call_api_testka_test(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute And Send Mail",
-            command=lambda: call_api_testka_test_with_send(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute AutoControl Script",
-            command=lambda: call_auto_control_test(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute And Send Mail",
-            command=lambda: call_auto_control_test_with_send(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute WebRunner Script",
-            command=lambda: call_web_runner_test(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute And Send Mail",
-            command=lambda: call_web_runner_test_with_send(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute LoadDensity Script",
-            command=lambda: call_load_density_test(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
-        self.popup_menu.add_command(
-            label="Execute And Send Mail",
-            command=lambda: call_load_density_test_with_send(
-                self.code_editor_textarea.get(
-                    "1.0", END
-                )
-            )
-        )
+        self.popup_menu.add_cascade(label="APITestka", menu=self.api_testka_menu)
+        self.popup_menu.add_cascade(label="AutoControl", menu=self.auto_control_menu)
+        self.popup_menu.add_cascade(label="WebRunner", menu=self.web_runner_menu)
+        self.popup_menu.add_cascade(label="LoadDensity", menu=self.load_density_menu)
         self.program_run_result_textarea.after(10, self.redirect_output)
 
 
