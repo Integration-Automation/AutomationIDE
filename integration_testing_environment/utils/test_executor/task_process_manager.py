@@ -15,7 +15,7 @@ class TaskProcessManager(object):
             use_theme=None
     ):
         super().__init__()
-        # self param
+        # ite_instance param
         self.read_program_error_output_from_thread = None
         self.read_program_output_from_thread = None
         self.still_run_program = True
@@ -37,7 +37,7 @@ class TaskProcessManager(object):
             self.style.theme_use(use_theme)
 
     def set_ui(self):
-        # self tkinter ui
+        # ite_instance tkinter ui
         self.tkinter_top_level = Toplevel()
         self.tkinter_text_frame = ttk.Frame(self.tkinter_top_level, padding="3 3 12 12")
         self.tkinter_text = Text(self.tkinter_text_frame, wrap="none")

@@ -20,3 +20,6 @@ exec_error = "ITE exec error"
 file_not_fond_error = "File not found"
 compiler_not_found_error = "Compiler not found"
 not_install_package_error = "not install required package"
+# json exception
+cant_reformat_json_error = "Can't reformat json is type right?"
+wrong_json_data_error = "Can't parser json"
