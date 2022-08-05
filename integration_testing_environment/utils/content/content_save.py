@@ -19,9 +19,9 @@ def read_output_content():
         lock.acquire()
         cwd = os.getcwd()
         if check_project_is_exist() and check_project_content_is_exist():
-            file_path = Path(cwd + "/.je_editor/je_editor_content.json")
+            file_path = Path(cwd + "/.ite/ite_content.json")
             if file_path.exists() and file_path.is_file():
-                with open(cwd + "/.je_editor/je_editor_content.json", "r+") as read_file:
+                with open(cwd + "/.ite/ite_content.json", "r+") as read_file:
                     return read_file.read()
     except ITEContentFileException:
         raise ITEContentFileException

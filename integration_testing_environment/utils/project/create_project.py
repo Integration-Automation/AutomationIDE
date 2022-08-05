@@ -3,12 +3,12 @@ from pathlib import Path
 
 
 def create_project():
-    Path(getcwd() + "/.je_editor").mkdir(parents=True, exist_ok=True)
+    Path(getcwd() + "/.ite").mkdir(parents=True, exist_ok=True)
 
 
 def check_project_is_exist() -> bool:
-    return Path(getcwd() + "/.je_editor").is_dir()
+    return Path(getcwd() + "/.ite").is_dir()
 
 
 def check_project_content_is_exist() -> bool:
-    return Path(getcwd() + "/.je_editor/je_editor_content.json").is_file()
+    return Path(getcwd() + "/.ite/ite_content.json").is_file()

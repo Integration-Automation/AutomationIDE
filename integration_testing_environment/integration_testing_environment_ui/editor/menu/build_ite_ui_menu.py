@@ -19,7 +19,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_api_testka_test(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     ite_instance.api_testka_menu.add_command(
@@ -27,7 +28,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_api_testka_test_with_send(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     # auto control menu
@@ -37,7 +39,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_auto_control_test(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     ite_instance.auto_control_menu.add_command(
@@ -45,7 +48,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_auto_control_test_with_send(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     # web runner menu
@@ -55,7 +59,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_web_runner_test(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     ite_instance.web_runner_menu.add_command(
@@ -63,7 +68,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_web_runner_test_with_send(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     # load density menu
@@ -73,7 +79,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_load_density_test(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     ite_instance.load_density_menu.add_command(
@@ -81,7 +88,8 @@ def build_ite_menu(ite_instance):
         command=lambda: call_load_density_test_with_send(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
-            )
+            ),
+            ite_instance.program_buffer
         )
     )
     # add all menu to Testing Tool menu
