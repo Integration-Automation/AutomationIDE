@@ -2,8 +2,6 @@ from je_editor import EditorMain
 
 from integration_testing_environment.integration_testing_environment_ui.editor.ite_content_init.ite_content_init import \
     content_init
-from integration_testing_environment.integration_testing_environment_ui.editor.ite_protocal.ite_protocol_bind import \
-    ite_set_protocol
 from integration_testing_environment.integration_testing_environment_ui.editor.menu.build_ite_ui_menu import \
     build_ite_menu
 from integration_testing_environment.integration_testing_environment_ui.editor.redirect_output. \
@@ -20,8 +18,10 @@ class ITEUI(EditorMain):
         self.program_buffer = 1024000
         content_init(self)
         build_ite_menu(self)
-        ite_set_protocol(self)
         self.program_run_result_textarea.after(10, lambda: redirect_output(self))
+
+    def before_close_event(self):
+        save_content_and_quit()
 
 
 def start_ite(use_theme=None, debug: bool = False, **kwargs):
