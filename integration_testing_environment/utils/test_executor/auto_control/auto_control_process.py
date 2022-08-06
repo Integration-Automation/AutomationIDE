@@ -7,9 +7,12 @@ from integration_testing_environment.utils.exception.exceptions import ITETestEx
 from integration_testing_environment.utils.test_executor.task_process_manager import TaskProcessManager
 
 
-def call_auto_control_test(test_format_code):
+def call_auto_control_test(test_format_code: str, program_buffer: int = 1024000):
     try:
-        TaskProcessManager("je_auto_control").start_test_process(
+        TaskProcessManager(
+            "je_auto_control",
+            program_buffer_size=program_buffer
+        ).start_test_process(
             "je_auto_control",
             exec_str=test_format_code,
         )
@@ -24,11 +27,12 @@ def call_auto_control_test(test_format_code):
         print(repr(error), file=sys.stderr)
 
 
-def call_auto_control_test_with_send(test_format_code):
+def call_auto_control_test_with_send(test_format_code: str, program_buffer: int = 1024000):
     try:
         TaskProcessManager(
             title_name="je_auto_control",
-            task_done_trigger_function=send_after_test
+            task_done_trigger_function=send_after_test,
+            program_buffer_size=program_buffer
         ).start_test_process(
             "je_auto_control",
             exec_str=test_format_code,

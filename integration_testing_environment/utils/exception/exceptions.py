@@ -20,3 +20,11 @@ class ITEUIException(ITEException):
 
 class ITEExecException(ITEException):
     pass
+
+
+class ITEContentFileException(ITEException):
+    pass
+
+
+class ITEJsonException(ITEException):
+    pass

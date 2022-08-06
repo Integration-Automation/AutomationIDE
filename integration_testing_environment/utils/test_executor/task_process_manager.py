@@ -12,10 +12,11 @@ class TaskProcessManager(object):
             self, title_name: str,
             task_done_trigger_function: typing.Callable = None,
             error_trigger_function: typing.Callable = None,
-            use_theme=None
+            use_theme=None,
+            program_buffer_size: int = 1024000
     ):
         super().__init__()
-        # self param
+        # ite_instance param
         self.read_program_error_output_from_thread = None
         self.read_program_output_from_thread = None
         self.still_run_program = True
@@ -35,9 +36,10 @@ class TaskProcessManager(object):
         self.style = ttk.Style()
         if use_theme is not None:
             self.style.theme_use(use_theme)
+        self.program_buffer_size = program_buffer_size
 
     def set_ui(self):
-        # self tkinter ui
+        # ite_instance tkinter ui
         self.tkinter_top_level = Toplevel()
         self.tkinter_text_frame = ttk.Frame(self.tkinter_top_level, padding="3 3 12 12")
         self.tkinter_text = Text(self.tkinter_text_frame, wrap="none")
@@ -131,12 +133,12 @@ class TaskProcessManager(object):
 
     def read_program_output_from_process(self):
         while self.still_run_program:
-            program_output_data = self.process.stdout.raw.read(1024000).decode(self.program_encoding)
+            program_output_data = self.process.stdout.raw.read(self.program_buffer_size).decode(self.program_encoding)
             if program_output_data.strip() != "":
                 self.run_output_queue.put(program_output_data)
 
     def read_program_error_output_from_process(self):
         while self.still_run_program:
-            program_error_output_data = self.process.stderr.raw.read(1024000).decode(self.program_encoding)
+            program_error_output_data = self.process.stderr.raw.read(self.program_buffer_size).decode(self.program_encoding)
             if program_error_output_data.strip() != "":
                 self.run_error_queue.put(program_error_output_data)
