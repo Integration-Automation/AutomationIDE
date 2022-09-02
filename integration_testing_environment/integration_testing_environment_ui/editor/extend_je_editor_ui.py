@@ -16,6 +16,7 @@ class ITEUI(EditorMain):
     def __init__(self, use_theme=None, debug=False, **kwargs):
         super().__init__(use_theme, debug, **kwargs)
         self.program_buffer = 1024000
+        self.main_window.title("ITE")
         content_init(self)
         build_ite_menu(self)
         self.program_run_result_textarea.after(10, lambda: redirect_output(self))
