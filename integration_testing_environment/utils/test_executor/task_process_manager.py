@@ -1,5 +1,7 @@
 import shutil
 import subprocess
+import threading
+import tkinter
 import typing
 from queue import Queue, Empty
 from threading import Thread
@@ -17,23 +19,23 @@ class TaskProcessManager(object):
     ):
         super().__init__()
         # ite_instance param
-        self.read_program_error_output_from_thread = None
-        self.read_program_output_from_thread = None
-        self.still_run_program = True
-        self.program_encoding = "utf-8"
-        self.run_output_queue = Queue()
-        self.run_error_queue = Queue()
-        self.process = None
-        self.task_done_trigger_function = task_done_trigger_function
-        self.error_trigger_function = error_trigger_function
+        self.read_program_error_output_from_thread: [threading.Thread, None] = None
+        self.read_program_output_from_thread: [threading.Thread, None] = None
+        self.still_run_program: bool = True
+        self.program_encoding: str = "utf-8"
+        self.run_output_queue: Queue = Queue()
+        self.run_error_queue: Queue = Queue()
+        self.process: [subprocess.Popen, None] = None
+        self.task_done_trigger_function: typing.Callable = task_done_trigger_function
+        self.error_trigger_function: typing.Callable = error_trigger_function
         # ui
-        self.title_name = title_name
-        self.tkinter_top_level = None
-        self.tkinter_text_frame = None
-        self.tkinter_text = None
-        self.tkinter_text_scrollbar_y = None
-        self.tkinter_text_scrollbar_x = None
-        self.style = ttk.Style()
+        self.title_name: str = title_name
+        self.tkinter_top_level: [tkinter.Toplevel, None] = None
+        self.tkinter_text_frame: [tkinter.Frame, None] = None
+        self.tkinter_text: [tkinter.Text, None] = None
+        self.tkinter_text_scrollbar_y: [tkinter.Scrollbar, None] = None
+        self.tkinter_text_scrollbar_x: [tkinter.Scrollbar, None] = None
+        self.style: ttk.Style = ttk.Style()
         if use_theme is not None:
             self.style.theme_use(use_theme)
         self.program_buffer_size = program_buffer_size
@@ -61,6 +63,7 @@ class TaskProcessManager(object):
         self.tkinter_text_frame.rowconfigure(0, weight=1)
         self.tkinter_top_level.columnconfigure(0, weight=1)
         self.tkinter_top_level.rowconfigure(0, weight=1)
+        self.tkinter_top_level.protocol("WM_DELETE_WINDOW", self.close_task_ui_event)
 
     def check_return_code(self):
         try:
@@ -130,6 +133,13 @@ class TaskProcessManager(object):
             pass
         self.run_output_queue = Queue()
         self.run_error_queue = Queue()
+
+    def close_task_ui_event(self):
+        if self.tkinter_top_level is not None:
+            self.tkinter_top_level.destroy()
+        self.still_run_program = False
+        if self.process is not None:
+            self.process.terminate()
 
     def read_program_output_from_process(self):
         while self.still_run_program:
