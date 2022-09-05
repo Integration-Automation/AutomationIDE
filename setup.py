@@ -5,13 +5,13 @@ with open("README.md", "r") as README:
 
 setuptools.setup(
     name="integration_testing_environment",
-    version="0.0.5",
+    version="0.0.6",
     author="JE-Chen",
     author_email="zenmailman@gmail.com",
     description="Integration testing environment for web gui api load testing",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/JE-Chen/WebRunner",
+    url="https://github.com/JE-Chen/Integration-testing-environment",
     packages=setuptools.find_packages(),
     install_requires=[
         "je-editor",
@@ -20,7 +20,7 @@ setuptools.setup(
         "another_extension": ["je-mail-thunder", "je-tk-plot"]
     },
     classifiers=[
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.7",
         "Development Status :: 2 - Pre-Alpha",
         "Environment :: Win32 (MS Windows)",
         "Environment :: MacOS X",

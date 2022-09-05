@@ -1,0 +1,17 @@
+{
+    "encoding": "utf-8",
+    "font": "TkDefaultFont",
+    "font_size": 12,
+    "language": [
+        "python3",
+        "python"
+    ],
+    "language_compiler_param": null,
+    "language_precompiler": null,
+    "last_file": null,
+    "program_buffer": 10240000,
+    "tab_size": "1c",
+    "theme": {
+        "tag_keyword_color": "dark orange"
+    }
+}
