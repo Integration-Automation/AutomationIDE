@@ -1,7 +1,7 @@
 from je_editor import EditorMain
 
-from integration_testing_environment.integration_testing_environment_ui.editor.ite_content_init.ite_content_init import \
-    content_init
+from integration_testing_environment.integration_testing_environment_ui.editor\
+    .ite_content_init.ite_content_init import content_init
 from integration_testing_environment.integration_testing_environment_ui.editor.menu.build_ite_ui_menu import \
     build_ite_menu
 from integration_testing_environment.utils.content.content_save import save_content_and_quit

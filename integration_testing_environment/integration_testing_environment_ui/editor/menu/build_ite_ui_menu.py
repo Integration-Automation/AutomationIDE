@@ -1,13 +1,15 @@
 from tkinter import Menu, END
 
 from integration_testing_environment.utils.test_executor.api_testka.api_testka_process import call_api_testka_test, \
-    call_api_testka_test_with_send
+    call_api_testka_test_with_send, call_api_testka_test_multi_file, call_api_testka_test_multi_file_and_send
 from integration_testing_environment.utils.test_executor.auto_control.auto_control_process import \
-    call_auto_control_test, call_auto_control_test_with_send
+    call_auto_control_test, call_auto_control_test_with_send, call_auto_control_test_multi_file, \
+    call_auto_control_test_multi_file_and_send
 from integration_testing_environment.utils.test_executor.load_density.load_density_process import \
-    call_load_density_test, call_load_density_test_with_send
+    call_load_density_test, call_load_density_test_with_send, call_load_density_test_multi_file, \
+    call_load_density_test_multi_file_and_send
 from integration_testing_environment.utils.test_executor.web_runner.web_runner_process import call_web_runner_test, \
-    call_web_runner_test_with_send
+    call_web_runner_test_with_send, call_web_runner_test_multi_file, call_web_runner_test_multi_file_and_send
 
 
 def build_ite_menu(ite_instance):
@@ -15,7 +17,7 @@ def build_ite_menu(ite_instance):
     # api testka menu
     ite_instance.api_testka_menu = Menu(ite_instance.menu, tearoff=0)
     ite_instance.api_testka_menu.add_command(
-        label="Execute APITestka Script",
+        label="Execute APITestka script",
         command=lambda: call_api_testka_test(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
@@ -24,7 +26,7 @@ def build_ite_menu(ite_instance):
         )
     )
     ite_instance.api_testka_menu.add_command(
-        label="Execute And Send Mail",
+        label="Execute and send mail",
         command=lambda: call_api_testka_test_with_send(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
@@ -32,10 +34,22 @@ def build_ite_menu(ite_instance):
             ite_instance.program_buffer
         )
     )
+    ite_instance.api_testka_menu.add_command(
+        label="Execute multi script",
+        command=lambda: call_api_testka_test_multi_file(
+            ite_instance.program_buffer
+        )
+    )
+    ite_instance.api_testka_menu.add_command(
+        label="Execute multi script with send",
+        command=lambda: call_api_testka_test_multi_file_and_send(
+            ite_instance.program_buffer
+        )
+    )
     # auto control menu
     ite_instance.auto_control_menu = Menu(ite_instance.menu, tearoff=0)
     ite_instance.auto_control_menu.add_command(
-        label="Execute AutoControl Script",
+        label="Execute AutoControl script",
         command=lambda: call_auto_control_test(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
@@ -44,11 +58,23 @@ def build_ite_menu(ite_instance):
         )
     )
     ite_instance.auto_control_menu.add_command(
-        label="Execute And Send Mail",
+        label="Execute and send mail",
         command=lambda: call_auto_control_test_with_send(
             ite_instance.code_editor_textarea.get(
                 "1.0", END
             ),
+            ite_instance.program_buffer
+        )
+    )
+    ite_instance.auto_control_menu.add_command(
+        label="Execute multi script",
+        command=lambda: call_auto_control_test_multi_file(
+            ite_instance.program_buffer
+        )
+    )
+    ite_instance.auto_control_menu.add_command(
+        label="Execute multi script with send",
+        command=lambda: call_auto_control_test_multi_file_and_send(
             ite_instance.program_buffer
         )
     )
@@ -72,6 +98,18 @@ def build_ite_menu(ite_instance):
             ite_instance.program_buffer
         )
     )
+    ite_instance.web_runner_menu.add_command(
+        label="Execute multi script",
+        command=lambda:  call_web_runner_test_multi_file(
+            ite_instance.program_buffer
+        )
+    )
+    ite_instance.web_runner_menu.add_command(
+        label="Execute multi script with send",
+        command=lambda:  call_web_runner_test_multi_file_and_send(
+            ite_instance.program_buffer
+        )
+    )
     # load density menu
     ite_instance.load_density_menu = Menu(ite_instance.menu, tearoff=0)
     ite_instance.load_density_menu.add_command(
@@ -89,6 +127,18 @@ def build_ite_menu(ite_instance):
             ite_instance.code_editor_textarea.get(
                 "1.0", END
             ),
+            ite_instance.program_buffer
+        )
+    )
+    ite_instance.load_density_menu.add_command(
+        label="Execute multi script",
+        command=lambda:  call_load_density_test_multi_file(
+            ite_instance.program_buffer
+        )
+    )
+    ite_instance.load_density_menu.add_command(
+        label="Execute multi script with send",
+        command=lambda:  call_load_density_test_multi_file_and_send(
             ite_instance.program_buffer
         )
     )
