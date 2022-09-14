@@ -2,5 +2,5 @@
 ITE UI Example
 ====================================
 
-.. image:: /docs/source/ui_doc/ite_ui_doc/ite_ui_screenshot.png
+.. image:: ite_ui_screenshot.png
    :width: 600
