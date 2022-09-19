@@ -1,4 +1,5 @@
 import sys
+from email.mime.multipart import MIMEMultipart
 
 from integration_testing_environment.utils.exception.exception_tag import send_html_exception_tag
 from integration_testing_environment.utils.exception.exceptions import ITESendHtmlReportException
@@ -7,11 +8,11 @@ from integration_testing_environment.utils.exception.exceptions import ITESendHt
 def send_after_test(html_report_path: str = None):
     try:
         from je_mail_thunder import SMTPWrapper
-        mail_thunder_smtp = SMTPWrapper()
+        mail_thunder_smtp: SMTPWrapper = SMTPWrapper()
         if html_report_path is None and mail_thunder_smtp.login_state is True:
-            user = mail_thunder_smtp.user
+            user: str = mail_thunder_smtp.user
             with open("default_name.html", "r+") as file:
-                html_string = file.read()
+                html_string: str = file.read()
             message = mail_thunder_smtp.create_message_with_attach(
                 html_string,
                 {"Subject": "Test Report", "To": user, "From": user},
@@ -19,10 +20,10 @@ def send_after_test(html_report_path: str = None):
             mail_thunder_smtp.send_message(message)
             mail_thunder_smtp.quit()
         elif mail_thunder_smtp.login_state is True:
-            user = mail_thunder_smtp.user
+            user: str = mail_thunder_smtp.user
             with open(html_report_path, "r+") as file:
-                html_string = file.read()
-            message = mail_thunder_smtp.create_message_with_attach(
+                html_string: str = file.read()
+            message: MIMEMultipart = mail_thunder_smtp.create_message_with_attach(
                 html_string,
                 {"Subject": "Test Report", "To": user, "From": user},
                 html_report_path, use_html=True)

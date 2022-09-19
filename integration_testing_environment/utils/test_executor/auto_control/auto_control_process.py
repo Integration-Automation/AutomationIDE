@@ -51,7 +51,7 @@ def call_auto_control_test_with_send(test_format_code: str, program_buffer: int 
 
 def call_auto_control_test_multi_file(program_buffer: int = 1024000):
     try:
-        need_to_execute_list = ask_and_get_dir_files_as_list()
+        need_to_execute_list: list = ask_and_get_dir_files_as_list()
         if need_to_execute_list is not None and type(need_to_execute_list) is list and len(need_to_execute_list) > 0:
             for execute_file in need_to_execute_list:
                 with open(execute_file, "r+") as test_script_json:
@@ -62,7 +62,7 @@ def call_auto_control_test_multi_file(program_buffer: int = 1024000):
 
 def call_auto_control_test_multi_file_and_send(program_buffer: int = 1024000):
     try:
-        need_to_execute_list = ask_and_get_dir_files_as_list()
+        need_to_execute_list: list = ask_and_get_dir_files_as_list()
         if need_to_execute_list is not None and type(need_to_execute_list) is list and len(need_to_execute_list) > 0:
             for execute_file in need_to_execute_list:
                 with open(execute_file, "r+") as test_script_json:

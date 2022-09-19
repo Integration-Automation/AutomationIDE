@@ -4,11 +4,12 @@
     "font_size": 12,
     "language": [
         "python3",
-        "python"
+        "python",
+        "java"
     ],
     "language_compiler_param": null,
     "language_precompiler": null,
-    "last_file": "C:/Users/zenma/OneDrive/\u684c\u9762/test.py",
+    "last_file": null,
     "program_buffer": 10240000,
     "tab_size": "1c",
     "theme": {

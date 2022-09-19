@@ -25,7 +25,7 @@ class ExecutorManager(object):
                 )
 
 
-executor_manager = ExecutorManager()
+executor_manager: ExecutorManager = ExecutorManager()
 
 
 def add_command_to_executor(package: str, command_dict: dict):
