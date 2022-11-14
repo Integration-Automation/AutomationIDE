@@ -13,4 +13,3 @@ def content_init(ite_instance):
                     int(ite_instance.file_from_output_content.get("program_buffer"))
     except ITEContentFileException as error:
         print(repr(error), file=sys.stderr)
-

@@ -34,4 +34,3 @@ def send_after_test(html_report_path: str = None):
     except ITESendHtmlReportException as error:
         print(repr(error), file=sys.stderr)
         print(send_html_exception_tag, file=sys.stderr)
-

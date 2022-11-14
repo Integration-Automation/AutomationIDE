@@ -46,4 +46,3 @@ def get_command_dict(package: str):
         return package_manager.installed_package_dict.get(package).executor.event_dict
     else:
         return False
-

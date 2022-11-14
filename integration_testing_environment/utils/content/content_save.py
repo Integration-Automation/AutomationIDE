@@ -6,7 +6,8 @@ from threading import Lock
 from integration_testing_environment.utils.content.ite_content_data import ite_content_data_dict
 from integration_testing_environment.utils.exception.exceptions import ITEContentFileException
 from integration_testing_environment.utils.json_format.json_process import reformat_json
-from integration_testing_environment.utils.project.create_project import check_project_is_exist, check_project_content_is_exist
+from integration_testing_environment.utils.project.create_project import check_project_is_exist, \
+    check_project_content_is_exist
 from integration_testing_environment.utils.project.create_project import create_project
 
 
