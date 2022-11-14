@@ -149,6 +149,7 @@ class TaskProcessManager(object):
 
     def read_program_error_output_from_process(self):
         while self.still_run_program:
-            program_error_output_data = self.process.stderr.raw.read(self.program_buffer_size).decode(self.program_encoding)
+            program_error_output_data = self.process.stderr.raw.read(self.program_buffer_size).decode(
+                self.program_encoding)
             if program_error_output_data.strip() != "":
                 self.run_error_queue.put(program_error_output_data)

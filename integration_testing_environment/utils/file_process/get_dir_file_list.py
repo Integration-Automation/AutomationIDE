@@ -26,4 +26,3 @@ def ask_and_get_dir_files_as_list(default_search_file_extension: str = ".json") 
         return get_dir_files_as_list(choose_dir, default_search_file_extension)
     else:
         print("no select any dir", file=sys.stderr)
-

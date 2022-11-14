@@ -100,13 +100,13 @@ def build_ite_menu(ite_instance):
     )
     ite_instance.web_runner_menu.add_command(
         label="Execute multi script",
-        command=lambda:  call_web_runner_test_multi_file(
+        command=lambda: call_web_runner_test_multi_file(
             ite_instance.program_buffer
         )
     )
     ite_instance.web_runner_menu.add_command(
         label="Execute multi script with send",
-        command=lambda:  call_web_runner_test_multi_file_and_send(
+        command=lambda: call_web_runner_test_multi_file_and_send(
             ite_instance.program_buffer
         )
     )
@@ -132,13 +132,13 @@ def build_ite_menu(ite_instance):
     )
     ite_instance.load_density_menu.add_command(
         label="Execute multi script",
-        command=lambda:  call_load_density_test_multi_file(
+        command=lambda: call_load_density_test_multi_file(
             ite_instance.program_buffer
         )
     )
     ite_instance.load_density_menu.add_command(
         label="Execute multi script with send",
-        command=lambda:  call_load_density_test_multi_file_and_send(
+        command=lambda: call_load_density_test_multi_file_and_send(
             ite_instance.program_buffer
         )
     )
