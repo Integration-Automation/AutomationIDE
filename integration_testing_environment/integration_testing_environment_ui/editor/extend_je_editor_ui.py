@@ -27,7 +27,3 @@ def start_ite(use_theme=None, debug: bool = False, **kwargs):
         # set some editor setting start main loop
         ite_ui.start_editor()
     return ite_ui
-
-
-if __name__ == "__main__":
-    start_ite()
