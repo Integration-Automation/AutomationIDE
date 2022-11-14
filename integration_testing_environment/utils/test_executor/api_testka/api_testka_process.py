@@ -1,6 +1,5 @@
 import json
 import sys
-import tkinter.filedialog
 
 from integration_testing_environment.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
 from integration_testing_environment.utils.exception.exception_tag import wrong_test_data_format_exception_tag
