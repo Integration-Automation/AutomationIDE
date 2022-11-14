@@ -34,6 +34,7 @@ def add_command_to_executor(package: str, command_dict: dict):
             if package_manager.installed_package_dict.get(package, None) is not None \
                     and package in ["je_auto_control", "je_api_testka", "je_load_density", "je_web_runner"]:
                 package_manager.installed_package_dict.get(package).add_command_to_executor(command_dict)
+                print(f"add command: {command_name}")
             else:
                 raise ITEAddCommandException(add_command_not_allow_package_exception_tag)
         else:
