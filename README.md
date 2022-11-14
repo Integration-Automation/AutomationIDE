@@ -1,21 +1,24 @@
 # Integration-testing-environment as Integration Test Environment(ITE)
 
 ---
+
 ## Now ITE support: GUI, API, Web, Loading. Testing
-### Maybe will add app testing, maybe. 
+
+### Maybe will add app testing maybe
 
 ---
 
 ### Features
-*  ITE GUI for beginner
-*  GUI testing (use AutoControl)
-*  API testing (use APITestka)
-*  Web testing (use WebRunner)
-*  Loading testing (use LoadDensity)
-*  Multi test task runner (multi process)
-  *  you can run multi testing on same time
-  *  open log window to check testing result
-*  Send mail when testing failure (need to setting mail)
+
+* ITE GUI for beginner
+* GUI testing (use AutoControl)
+* API testing (use APITestka)
+* Web testing (use WebRunner)
+* Loading testing (use LoadDensity)
+* Multi test task runner (multi process)
+* you can run multi testing on same time
+* open log window to check testing result
+* Send mail when testing failure (need to setting mail)
 
 ---
 
@@ -26,11 +29,15 @@
 [![ITE GitHub Actions Stable](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml)
 
 ### install
+
 #### stable
+
 ```commandline
 pip install integration_testing_environment
 ```
+
 #### dev
+
 ```commandline
 pip install integration_testing_environment_dev
 ```
