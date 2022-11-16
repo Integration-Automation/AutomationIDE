@@ -5,7 +5,7 @@ with open("README.md", "r") as README:
 
 setuptools.setup(
     name="integration_testing_environment_dev",
-    version="0.0.16",
+    version="0.0.17",
     author="JE-Chen",
     author_email="zenmailman@gmail.com",
     description="Integration testing environment for web gui api load testing",
