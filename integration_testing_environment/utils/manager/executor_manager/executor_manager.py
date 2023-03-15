@@ -1,6 +1,6 @@
 import types
 
-from integration_testing_environment.utils.exception.exception_tag import add_command_type_exception_tag, \
+from integration_testing_environment.utils.exception.exception_tags import add_command_type_exception_tag, \
     add_command_not_allow_package_exception_tag
 from integration_testing_environment.utils.exception.exceptions import ITEAddCommandException
 from integration_testing_environment.utils.manager.package_manager.package_manager_class import package_manager

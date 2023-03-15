@@ -1,7 +1,7 @@
 import sys
 from email.mime.multipart import MIMEMultipart
 
-from integration_testing_environment.utils.exception.exception_tag import send_html_exception_tag
+from integration_testing_environment.utils.exception.exception_tags import send_html_exception_tag
 from integration_testing_environment.utils.exception.exceptions import ITESendHtmlReportException
 
 
