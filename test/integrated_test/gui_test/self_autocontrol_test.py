@@ -27,7 +27,7 @@ def open_file_to_test(file_png: str):
         detect_threshold=0.9
     )
 
-    time.sleep(1)
+    time.sleep(3)
 
     locate_and_click(
         "../../test_source/test_script_source.png",
@@ -57,12 +57,15 @@ def open_file_to_test(file_png: str):
         detect_threshold=0.9
     )
 
+time.sleep(1)
 
 locate_and_click(
     "../../test_source/resize.png",
     mouse_keycode="mouse_left",
     detect_threshold=0.9
 )
+
+time.sleep(1)
 
 open_file_to_test("../../test_source/test_py.png")
 
@@ -102,7 +105,7 @@ locate_and_click(
     detect_threshold=0.9
 )
 
-time.sleep(10)
+time.sleep(5)
 
 open_file_to_test("../../test_source/apitestka_script_json.png")
 
@@ -174,7 +177,7 @@ locate_and_click(
     detect_threshold=0.9
 )
 
-time.sleep(20)
+time.sleep(10)
 
 open_file_to_test("../../test_source/load_density_script_json.png")
 
@@ -194,7 +197,7 @@ locate_and_click(
     detect_threshold=0.9
 )
 
-time.sleep(15)
+time.sleep(10)
 
 locate_and_click(
     "../../test_source/close_white.png",
