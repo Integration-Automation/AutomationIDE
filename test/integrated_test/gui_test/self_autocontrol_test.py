@@ -10,6 +10,8 @@ time.sleep(2)
 把每個選單的選項點開
 程式碼執行元件、API Testing、 GUI Testing、WEB Testing、 Load Testing
 """
+
+
 def open_file_to_test(file_png: str):
     time.sleep(1)
 
@@ -56,6 +58,7 @@ def open_file_to_test(file_png: str):
         mouse_keycode="mouse_left",
         detect_threshold=0.9
     )
+
 
 time.sleep(1)
 
@@ -128,7 +131,7 @@ locate_and_click(
 time.sleep(5)
 
 locate_and_click(
-    "../../test_source/close_white.png",
+    "../../test_source/close.png",
     mouse_keycode="mouse_left",
     detect_threshold=0.9
 )
@@ -154,7 +157,7 @@ locate_and_click(
 time.sleep(5)
 
 locate_and_click(
-    "../../test_source/close_white.png",
+    "../../test_source/close.png",
     mouse_keycode="mouse_left",
     detect_threshold=0.9
 )
@@ -200,7 +203,7 @@ locate_and_click(
 time.sleep(10)
 
 locate_and_click(
-    "../../test_source/close_white.png",
+    "../../test_source/close.png",
     mouse_keycode="mouse_left",
     detect_threshold=0.9
 )
