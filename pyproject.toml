@@ -1,0 +1,42 @@
+# Rename to dev stable version
+# This is dev version
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "integration_testing_environment"
+version = "0.0.18"
+authors = [
+    { name = "JE-Chen", email = "zenmailman@gmail.com" },
+]
+description = "Integration testing environment for WEB Testing、GUI Testing、API Testing、Load & Stress Testing"
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.7"
+license = { text = "MIT" }
+dependencies = [
+    "je-editor"
+]
+classifiers = [
+    "Programming Language :: Python :: 3.7",
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+    "Environment :: X11 Applications",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.optional-dependencies]
+another_extension = ["je-mail-thunder", "je-tk-plot"]
+full_extension = [
+    "je-mail-thunder", "je-tk-plot",
+    "je_auto_control", "je_web_runner", "je_load_density", "je_api_testka"
+]
+only_test_extension = ["je_auto_control", "je_web_runner", "je_load_density", "je_api_testka"]
+
+[project.urls]
+"Homepage" = "https://github.com/JE-Chen/Integration-testing-environment"
+
+[tool.setuptools.packages]
+find = { }
