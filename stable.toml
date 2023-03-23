@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "integration_testing_environment"
-version = "0.0.12"
+version = "0.0.18"
 authors = [
     { name = "JE-Chen", email = "zenmailman@gmail.com" },
 ]
