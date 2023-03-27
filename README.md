@@ -1,4 +1,4 @@
-# Table of contents
+# Table of contents 
 > ITE Intro \
 > Editor components \
 > GUI Testing components \
@@ -7,7 +7,8 @@
 > Load & Stress Testing components
 ---
 ## What is ITE
-
+> Project Kanban \
+> https://github.com/users/JE-Chen/projects/35 \
 > Integrated Testing Environment (ITE) 
 > * ITE mainly provides an integrated automated testing environment. 
 > * ITE is composed of the following components: 
@@ -20,9 +21,9 @@
 ## ITE Testing
 
 > How does ITE perform self-testing?
-> * CircleCI & Github Actions。
->> * What are the benefits of using CircleCI and Github Actions?
->> * They provide Github/Gitlab hooks for automated testing on every commit.
+> * CircleCI & GitHub Actions。
+>> * What are the benefits of using CircleCI and GitHub Actions?
+>> * They provide GitHub/Gitlab hooks for automated testing on every commit.
 >> * They provide detailed test logs.
 >> * They allow for automatic deployment to selected environments.
 >> * They make it easy to specify branches for testing.
