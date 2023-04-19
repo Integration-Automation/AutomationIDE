@@ -8,7 +8,7 @@
 ---
 ## What is ITE
 > Project Kanban \
-> https://github.com/users/JE-Chen/projects/35 \
+> https://github.com/orgs/Integrated-Testing-Environment/projects/4/views/1 \
 > Integrated Testing Environment (ITE) 
 > * ITE mainly provides an integrated automated testing environment. 
 > * ITE is composed of the following components: 
