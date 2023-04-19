@@ -1,11 +1,11 @@
-# Rename to dev version
-# This is dev version
+# Rename to build stable version
+# This is stable version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "integration_testing_environment_dev"
+name = "integration_testing_environment"
 version = "0.0.19"
 authors = [
     { name = "JE-Chen", email = "zenmailman@gmail.com" },
@@ -39,4 +39,4 @@ only_test_extension = ["je_auto_control", "je_web_runner", "je_load_density", "j
 "Homepage" = "https://github.com/JE-Chen/Integration-testing-environment"
 
 [tool.setuptools.packages]
-find = { }
+find = { namespaces = false }
