@@ -25,4 +25,4 @@ def ask_and_get_dir_files_as_list(default_search_file_extension: str = ".json") 
     if choose_dir is not None and choose_dir != "":
         return get_dir_files_as_list(choose_dir, default_search_file_extension)
     else:
-        print("no select any dir", file=sys.stderr)
+        print("Not select any dir", file=sys.stderr)

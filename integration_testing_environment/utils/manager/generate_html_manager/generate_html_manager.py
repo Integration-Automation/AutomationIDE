@@ -15,7 +15,7 @@ class HTMLReportManager(object):
                     package) is not None:
                 self.html_report_manager_dict.update(
                     {
-                        package: package_manager.installed_package_dict.get(package).generate_html
+                        package: package_manager.installed_package_dict.get(package).generate_html_report
                     }
                 )
 
