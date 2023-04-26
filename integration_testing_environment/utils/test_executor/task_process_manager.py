@@ -14,7 +14,6 @@ class TaskProcessManager(object):
             self, title_name: str,
             task_done_trigger_function: typing.Callable = None,
             error_trigger_function: typing.Callable = None,
-            use_theme=None,
             program_buffer_size: int = 1024000
     ):
         super().__init__()
@@ -28,42 +27,7 @@ class TaskProcessManager(object):
         self.process: [subprocess.Popen, None] = None
         self.task_done_trigger_function: typing.Callable = task_done_trigger_function
         self.error_trigger_function: typing.Callable = error_trigger_function
-        # ui
-        self.title_name: str = title_name
-        self.tkinter_top_level: [tkinter.Toplevel, None] = None
-        self.tkinter_text_frame: [tkinter.Frame, None] = None
-        self.tkinter_text: [tkinter.Text, None] = None
-        self.tkinter_text_scrollbar_y: [tkinter.Scrollbar, None] = None
-        self.tkinter_text_scrollbar_x: [tkinter.Scrollbar, None] = None
-        self.style: ttk.Style = ttk.Style()
-        if use_theme is not None:
-            self.style.theme_use(use_theme)
         self.program_buffer_size = program_buffer_size
-
-    def set_ui(self):
-        # ite_instance tkinter ui
-        self.tkinter_top_level = Toplevel()
-        self.tkinter_text_frame = ttk.Frame(self.tkinter_top_level, padding="3 3 12 12")
-        self.tkinter_text = Text(self.tkinter_text_frame, wrap="none")
-        self.tkinter_text_scrollbar_y = ttk.Scrollbar(self.tkinter_text_frame, orient="vertical",
-                                                      command=self.tkinter_text.yview)
-        self.tkinter_text_scrollbar_x = ttk.Scrollbar(self.tkinter_text_frame, orient="horizontal",
-                                                      command=self.tkinter_text.xview)
-        self.tkinter_text["yscrollcommand"] = self.tkinter_text_scrollbar_y.set
-        self.tkinter_text["xscrollcommand"] = self.tkinter_text_scrollbar_x.set
-        self.tkinter_text.configure(state=DISABLED)
-        self.tkinter_top_level.title(self.title_name)
-        self.tkinter_text_frame.grid(column=0, row=0, sticky="nsew")
-        self.tkinter_text.grid(column=0, row=0, sticky="nsew")
-        self.tkinter_text_scrollbar_y.grid(column=1, row=0, sticky="ns")
-        self.tkinter_text_scrollbar_x.grid(column=0, row=1, sticky="nsew")
-        self.tkinter_text.tag_configure("warning", foreground="red")
-        self.tkinter_text.bind("<1>", lambda event: self.tkinter_text.focus_set())
-        self.tkinter_text_frame.columnconfigure(0, weight=1)
-        self.tkinter_text_frame.rowconfigure(0, weight=1)
-        self.tkinter_top_level.columnconfigure(0, weight=1)
-        self.tkinter_top_level.rowconfigure(0, weight=1)
-        self.tkinter_top_level.protocol("WM_DELETE_WINDOW", self.close_task_ui_event)
 
     def check_return_code(self):
         try:

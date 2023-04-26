@@ -11,7 +11,6 @@ def check_package(installed_package_dict: dict):
         "je_api_testka",
         "je_web_runner",
         "je_mail_thunder",
-        "je_tk_plot",
     ]
     for package in check_list:
         found_spec = find_spec(package)
@@ -33,7 +32,6 @@ class PackageManager(object):
             "je_load_density": None,
             "je_web_runner": None,
             "je_mail_thunder": None,
-            "je_tk_plot": None,
         }
         check_package(self.installed_package_dict)
 
