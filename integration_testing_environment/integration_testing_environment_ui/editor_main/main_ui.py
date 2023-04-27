@@ -1,6 +1,6 @@
 import sys
 
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QMenu
 from je_editor import EditorMain
 from qt_material import apply_stylesheet
 
@@ -8,7 +8,6 @@ from integration_testing_environment.integration_testing_environment_ui. \
     menu.api_testka_menu.build_api_testka_menu import set_apitestka_menu
 from integration_testing_environment.integration_testing_environment_ui. \
     menu.auto_control_menu.build_autocontrol_menu import set_autocontrol_menu
-from integration_testing_environment.integration_testing_environment_ui.menu.dev_menu.build_dev_menu import set_dev_menu
 from integration_testing_environment.integration_testing_environment_ui.menu. \
     load_density_menu.build_load_density_menu import set_load_density_menu
 from integration_testing_environment.integration_testing_environment_ui \
@@ -22,11 +21,11 @@ class ITE(EditorMain):
     def __init__(self):
         super().__init__()
         self.current_run_code_window = list()
+        self.help_menu.deleteLater()
         set_autocontrol_menu(self)
         set_apitestka_menu(self)
         set_load_density_menu(self)
         set_web_runner_menu(self)
-        set_dev_menu(self)
         syntax_extend_package(self)
 
 
