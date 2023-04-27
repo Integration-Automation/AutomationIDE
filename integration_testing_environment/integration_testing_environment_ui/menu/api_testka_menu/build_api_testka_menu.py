@@ -7,6 +7,7 @@ from integration_testing_environment.utils.test_executor.api_testka.api_testka_p
 
 def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.apitestka_menu = ui_we_want_to_set.menu.addMenu("APITestka")
+    ui_we_want_to_set.apitestka_run_menu = ui_we_want_to_set.apitestka_menu.addMenu("Run")
     # Run APITestka Script
     ui_we_want_to_set.run_apitestka_action = QAction("Run APITestka Script")
     ui_we_want_to_set.run_apitestka_action.triggered.connect(
@@ -15,7 +16,7 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set.code_edit.toPlainText()
         )
     )
-    ui_we_want_to_set.apitestka_menu.addAction(ui_we_want_to_set.run_apitestka_action)
+    ui_we_want_to_set.apitestka_run_menu.addAction(ui_we_want_to_set.run_apitestka_action)
     # Run APITestka Script With Send
     ui_we_want_to_set.run_apitestka_action_with_send = QAction("Run APITestka With Send")
     ui_we_want_to_set.run_apitestka_action_with_send.triggered.connect(
@@ -24,7 +25,7 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set.code_edit.toPlainText()
         )
     )
-    ui_we_want_to_set.apitestka_menu.addAction(
+    ui_we_want_to_set.apitestka_run_menu.addAction(
         ui_we_want_to_set.run_apitestka_action_with_send
     )
     # Run Multi APITestka Script
@@ -34,7 +35,7 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set,
         )
     )
-    ui_we_want_to_set.apitestka_menu.addAction(
+    ui_we_want_to_set.apitestka_run_menu.addAction(
         ui_we_want_to_set.run_multi_apitestka_action
     )
     # Run Multi APITestka Script With Send
@@ -44,6 +45,6 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set,
         )
     )
-    ui_we_want_to_set.apitestka_menu.addAction(
+    ui_we_want_to_set.apitestka_run_menu.addAction(
         ui_we_want_to_set.run_multi_apitestka_action_with_send
     )

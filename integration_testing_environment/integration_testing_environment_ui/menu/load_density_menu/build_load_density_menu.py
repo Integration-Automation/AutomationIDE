@@ -8,6 +8,7 @@ from integration_testing_environment.utils.test_executor.load_density.load_densi
 
 def set_load_density_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.load_density_menu = ui_we_want_to_set.menu.addMenu("LoadDensity")
+    ui_we_want_to_set.load_density_run_menu = ui_we_want_to_set.load_density_menu.addMenu("Run")
     # Run LoadDensity Script
     ui_we_want_to_set.run_load_density_action = QAction("Run LoadDensity Script")
     ui_we_want_to_set.run_load_density_action.triggered.connect(
@@ -16,7 +17,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set.code_edit.toPlainText()
         )
     )
-    ui_we_want_to_set.load_density_menu.addAction(ui_we_want_to_set.run_load_density_action)
+    ui_we_want_to_set.load_density_run_menu.addAction(ui_we_want_to_set.run_load_density_action)
     # Run LoadDensity Script With Send
     ui_we_want_to_set.run_load_density_action_with_send = QAction("Run LoadDensity With Send")
     ui_we_want_to_set.run_load_density_action_with_send.triggered.connect(
@@ -25,7 +26,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set.code_edit.toPlainText()
         )
     )
-    ui_we_want_to_set.load_density_menu.addAction(
+    ui_we_want_to_set.load_density_run_menu.addAction(
         ui_we_want_to_set.run_load_density_action_with_send
     )
     # Run Multi LoadDensity Script
@@ -35,7 +36,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set,
         )
     )
-    ui_we_want_to_set.load_density_menu.addAction(
+    ui_we_want_to_set.load_density_run_menu.addAction(
         ui_we_want_to_set.run_multi_load_density_action
     )
     # Run Multi LoadDensity Script With Send
@@ -45,6 +46,6 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
             ui_we_want_to_set,
         )
     )
-    ui_we_want_to_set.load_density_menu.addAction(
+    ui_we_want_to_set.load_density_run_menu.addAction(
         ui_we_want_to_set.run_multi_load_density_action_with_send
     )
