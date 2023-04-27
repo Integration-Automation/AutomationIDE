@@ -1,6 +1,6 @@
 import sys
 
-from PySide6.QtWidgets import QApplication, QMenu
+from PySide6.QtWidgets import QApplication
 from je_editor import EditorMain
 from qt_material import apply_stylesheet
 
