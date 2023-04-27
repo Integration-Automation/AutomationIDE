@@ -6,8 +6,7 @@ temp_spec_list = list()
 
 for package in [
     "je_auto_control", "je_web_runner", "je_api_testka",
-    "je_load_density", "je_mail_thunder", "je_tk_plot",
-    "je_editor"
+    "je_load_density", "je_mail_thunder", "je_editor"
 ]:
     temp_test_find_spec = find_spec(package)
     print(temp_test_find_spec)
