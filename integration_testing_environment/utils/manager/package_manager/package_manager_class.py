@@ -2,7 +2,6 @@ import os
 import sys
 from importlib import import_module
 from importlib.util import find_spec
-from inspect import getmembers, ismethod, isbuiltin, isclass, isfunction
 
 
 class PackageManager(object):
@@ -24,9 +23,9 @@ class PackageManager(object):
         ]
 
     def check_package(self):
-        for package in self.installed_package_dict.keys():
+        for package, value in self.installed_package_dict.items():
             found_spec = find_spec(package)
-            if found_spec is not None:
+            if found_spec is not None and value is None:
                 try:
                     installed_package = import_module(found_spec.name)
                     self.installed_package_dict.update({found_spec.name: installed_package})

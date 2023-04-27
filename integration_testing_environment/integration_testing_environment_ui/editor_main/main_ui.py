@@ -4,14 +4,14 @@ from PySide6.QtWidgets import QApplication
 from je_editor import EditorMain
 from qt_material import apply_stylesheet
 
-from integration_testing_environment.integration_testing_environment_ui.\
+from integration_testing_environment.integration_testing_environment_ui. \
     menu.api_testka_menu.build_api_testka_menu import set_apitestka_menu
-from integration_testing_environment.integration_testing_environment_ui.\
+from integration_testing_environment.integration_testing_environment_ui. \
     menu.auto_control_menu.build_autocontrol_menu import set_autocontrol_menu
 from integration_testing_environment.integration_testing_environment_ui.menu.dev_menu.build_dev_menu import set_dev_menu
-from integration_testing_environment.integration_testing_environment_ui.menu.\
+from integration_testing_environment.integration_testing_environment_ui.menu. \
     load_density_menu.build_load_density_menu import set_load_density_menu
-from integration_testing_environment.integration_testing_environment_ui\
+from integration_testing_environment.integration_testing_environment_ui \
     .menu.web_runner_menu.build_webrunner_menu import set_web_runner_menu
 from integration_testing_environment.integration_testing_environment_ui.syntax.syntax_extend import \
     syntax_extend_package

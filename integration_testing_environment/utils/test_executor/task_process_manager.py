@@ -40,10 +40,6 @@ class TaskProcessManager(object):
         self.program_buffer_size = program_buffer_size
 
     def start_test_process(self, package: str, exec_str: str):
-        if package_manager.installed_package_dict.get(package, None) is None:
-            raise ITETestExecutorException(
-                not_install_exception + f" {package}"
-            )
         # try to find file and compiler
         compiler_path = shutil.which("python")
         if compiler_path is None:

@@ -1,11 +1,11 @@
-# Rename to dev version
-# This is dev version
+# Rename to build stable version
+# This is stable version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "integration_testing_environment_dev"
+name = "integration_testing_environment"
 version = "0.0.20"
 authors = [
     { name = "JE-Chen", email = "zenmailman@gmail.com" },
@@ -15,7 +15,8 @@ readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.7"
 license = { text = "MIT" }
 dependencies = [
-    "je-editor"
+    "je-editor", "je_auto_control", "je_web_runner",
+    "je_load_density", "je_api_testka"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.7",
@@ -28,12 +29,9 @@ classifiers = [
 ]
 
 [project.optional-dependencies]
-another_extension = ["je-mail-thunder", "je-tk-plot"]
 full_extension = [
-    "je-mail-thunder", "je-tk-plot",
-    "je_auto_control", "je_web_runner", "je_load_density", "je_api_testka"
+    "je-mail-thunder"
 ]
-only_test_extension = ["je_auto_control", "je_web_runner", "je_load_density", "je_api_testka"]
 
 [project.urls]
 "Homepage" = "https://github.com/JE-Chen/Integration-testing-environment"

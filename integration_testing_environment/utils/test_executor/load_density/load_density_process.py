@@ -18,7 +18,6 @@ def call_load_density_test(
         program_buffer: int = 1024000
 ):
     try:
-        check_mail_thunder_install()
         code_window = CodeWindow()
         main_window.current_run_code_window.append(code_window)
         TaskProcessManager(
@@ -45,6 +44,7 @@ def call_load_density_test_with_send(
         program_buffer: int = 1024000
 ):
     try:
+        check_mail_thunder_install()
         code_window = CodeWindow()
         main_window.current_run_code_window.append(code_window)
         TaskProcessManager(

@@ -1,1 +1,1 @@
-integration_testing_environment_dev
+integration_testing_environment
