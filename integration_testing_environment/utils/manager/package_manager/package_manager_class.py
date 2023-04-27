@@ -2,24 +2,7 @@ import os
 import sys
 from importlib import import_module
 from importlib.util import find_spec
-
-
-def check_package(installed_package_dict: dict):
-    check_list = [
-        "je_auto_control",
-        "je_load_density",  # load density need in top of api_testka
-        "je_api_testka",
-        "je_web_runner",
-        "je_mail_thunder",
-    ]
-    for package in check_list:
-        found_spec = find_spec(package)
-        if found_spec is not None:
-            try:
-                installed_package = import_module(found_spec.name)
-                installed_package_dict.update({found_spec.name: installed_package})
-            except ModuleNotFoundError as error:
-                print(repr(error), file=sys.stderr)
+from inspect import getmembers, ismethod, isbuiltin, isclass, isfunction
 
 
 class PackageManager(object):
@@ -28,12 +11,27 @@ class PackageManager(object):
         os.environ["WDM_LOG"] = "0"
         self.installed_package_dict = {
             "je_auto_control": None,
-            "je_api_testka": None,
             "je_load_density": None,
+            "je_api_testka": None,
             "je_web_runner": None,
             "je_mail_thunder": None,
         }
-        check_package(self.installed_package_dict)
+        self.syntax_check_list = [
+            "je_auto_control",
+            "je_load_density",
+            "je_api_testka",
+            "je_web_runner"
+        ]
+
+    def check_package(self):
+        for package in self.installed_package_dict.keys():
+            found_spec = find_spec(package)
+            if found_spec is not None:
+                try:
+                    installed_package = import_module(found_spec.name)
+                    self.installed_package_dict.update({found_spec.name: installed_package})
+                except ModuleNotFoundError as error:
+                    print(repr(error), file=sys.stderr)
 
 
 package_manager = PackageManager()

@@ -13,6 +13,8 @@ from integration_testing_environment.integration_testing_environment_ui.menu.\
     load_density_menu.build_load_density_menu import set_load_density_menu
 from integration_testing_environment.integration_testing_environment_ui\
     .menu.web_runner_menu.build_webrunner_menu import set_web_runner_menu
+from integration_testing_environment.integration_testing_environment_ui.syntax.syntax_extend import \
+    syntax_extend_package
 
 
 class ITE(EditorMain):
@@ -25,6 +27,7 @@ class ITE(EditorMain):
         set_load_density_menu(self)
         set_web_runner_menu(self)
         set_dev_menu(self)
+        syntax_extend_package(self)
 
 
 def start_editor():
