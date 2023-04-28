@@ -34,12 +34,19 @@
 > * Continuous Integration: The longer the code is away from the last update, the higher the risk, so continuous integration encourages committing and automated testing after completing each part to reduce risk.
 > * Continuous Deployment: Continuously deploying the code to the real environment for testing, usually achieved through automation.
 ---
-### Editor components
-> A simple text editor for ite 
->> Editor Really?
->> * Why do we need to provide an editor when there are so many text editors and IDEs available?
->> * We provide an editor as a cross-platform and minimalistic solution that comes with ITE, without requiring additional installation. The editor provides basic functionality, including font adjustment, support for other ITE components, basic file management such as saving, opening, and auto-saving, as well as file encoding and code selection integration. Additionally, the editor allows users to view test results through the interface.
->> * The term "minimalistic" refers to the basic functionalities that are essential for a text editor, without the advanced features commonly found in other IDEs or text editors.
+### JEditor
+> * JEditor is a simple text editor, but it has all the necessary features.
+> * JEditor is one of the components of ITE, but modularization allows it to be used separately.
+> * JEditor defaults to using a dark interface as shown below:
+>> * JEditor has the following features:
+>>    * Font change.
+>>    * Font size change.
+>>    * Auto-save (after first save or open).
+>>    * Tree file structure browsing.
+>>    * Save and open files.
+>>    * Python formatting check using yapf.
+>>    * Run python programs.
+>>    * Run shell commands.
 ---
 ### GUI Testing components
 > Image & Coordinate based GUI Testing \
@@ -103,7 +110,7 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b7d32ed8600b4bd2a2f3e960f46f2ad0)](https://www.codacy.com/gh/JE-Chen/Integration-testing-environment/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JE-Chen/Integration-testing-environment&amp;utm_campaign=Badge_Grade)
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/JE-Chen/Integration-testing-environment/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/JE-Chen/Integration-testing-environment/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/Integrated-Testing-Environment/Integration-testing-environment/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Integrated-Testing-Environment/Integration-testing-environment/tree/main)
 
 [![ITE GitHub Actions Dev](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_dev.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_dev.yml)
 
