@@ -74,6 +74,14 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
         ui_we_want_to_set.open_load_density_github_action
     )
     ui_we_want_to_set.load_density_project_menu = ui_we_want_to_set.load_density_menu.addMenu("Project")
+    # Create Project
+    ui_we_want_to_set.create_load_density_project_action = QAction("Create LoadDensity Project")
+    ui_we_want_to_set.create_load_density_project_action.triggered.connect(
+        create_project
+    )
+    ui_we_want_to_set.load_density_project_menu.addAction(
+        ui_we_want_to_set.create_load_density_project_action
+    )
     ui_we_want_to_set.load_density_report_menu = ui_we_want_to_set.load_density_menu.addMenu("Report")
 
 

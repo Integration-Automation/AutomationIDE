@@ -74,6 +74,14 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
         ui_we_want_to_set.open_autocontrol_github_action
     )
     ui_we_want_to_set.autocontrol_project_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Project")
+    # Create Project
+    ui_we_want_to_set.create_autocontrol_project_action = QAction("Create AutoControl Project")
+    ui_we_want_to_set.create_autocontrol_project_action.triggered.connect(
+        create_project
+    )
+    ui_we_want_to_set.autocontrol_project_menu.addAction(
+        ui_we_want_to_set.create_autocontrol_project_action
+    )
     ui_we_want_to_set.autocontrol_report_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Report")
 
 

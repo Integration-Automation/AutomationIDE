@@ -73,6 +73,14 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
         ui_we_want_to_set.open_apitestka_github_action
     )
     ui_we_want_to_set.apitestka_project_menu = ui_we_want_to_set.apitestka_menu.addMenu("Project")
+    # Create Project
+    ui_we_want_to_set.create_apitestka_project_action = QAction("Create APITestka Project")
+    ui_we_want_to_set.create_apitestka_project_action.triggered.connect(
+        create_project
+    )
+    ui_we_want_to_set.apitestka_project_menu.addAction(
+        ui_we_want_to_set.create_apitestka_project_action
+    )
     ui_we_want_to_set.apitestka_report_menu = ui_we_want_to_set.apitestka_menu.addMenu("Report")
 
 

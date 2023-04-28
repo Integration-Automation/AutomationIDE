@@ -73,6 +73,14 @@ def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
         ui_we_want_to_set.open_web_runner_github_action
     )
     ui_we_want_to_set.web_runner_project_menu = ui_we_want_to_set.web_runner_menu.addMenu("Project")
+    # Create Project
+    ui_we_want_to_set.create_web_runner_project_action = QAction("Create WebRunner Project")
+    ui_we_want_to_set.create_web_runner_project_action.triggered.connect(
+        create_project
+    )
+    ui_we_want_to_set.web_runner_project_menu.addAction(
+        ui_we_want_to_set.create_web_runner_project_action
+    )
     ui_we_want_to_set.web_runner_report_menu = ui_we_want_to_set.web_runner_menu.addMenu("Report")
 
 
