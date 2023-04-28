@@ -82,7 +82,6 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.load_density_project_menu.addAction(
         ui_we_want_to_set.create_load_density_project_action
     )
-    ui_we_want_to_set.load_density_report_menu = ui_we_want_to_set.load_density_menu.addMenu("Report")
 
 
 def open_web_browser(url: str):

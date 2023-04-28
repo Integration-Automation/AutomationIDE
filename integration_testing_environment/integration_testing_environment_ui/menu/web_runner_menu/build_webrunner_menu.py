@@ -81,7 +81,6 @@ def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.web_runner_project_menu.addAction(
         ui_we_want_to_set.create_web_runner_project_action
     )
-    ui_we_want_to_set.web_runner_report_menu = ui_we_want_to_set.web_runner_menu.addMenu("Report")
 
 
 def open_web_browser(url: str):

@@ -82,7 +82,6 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.autocontrol_project_menu.addAction(
         ui_we_want_to_set.create_autocontrol_project_action
     )
-    ui_we_want_to_set.autocontrol_report_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Report")
 
 
 def open_web_browser(url: str):
@@ -93,3 +92,4 @@ def create_project():
     package = package_manager.installed_package_dict.get("je_auto_control", None)
     if package is not None:
         package.create_project_dir()
+

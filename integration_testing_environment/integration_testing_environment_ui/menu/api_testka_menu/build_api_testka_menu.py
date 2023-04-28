@@ -81,7 +81,6 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.apitestka_project_menu.addAction(
         ui_we_want_to_set.create_apitestka_project_action
     )
-    ui_we_want_to_set.apitestka_report_menu = ui_we_want_to_set.apitestka_menu.addMenu("Report")
 
 
 def open_web_browser(url: str):
