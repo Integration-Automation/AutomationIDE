@@ -10,10 +10,6 @@ from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QTextEdit, QWidget
 from je_editor import error_color, output_color
 
-from integration_testing_environment.utils.exception.exception_tags import not_install_exception
-from integration_testing_environment.utils.exception.exceptions import ITETestExecutorException
-from integration_testing_environment.utils.manager.package_manager.package_manager_class import package_manager
-
 
 class TaskProcessManager(object):
     def __init__(

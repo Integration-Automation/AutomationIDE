@@ -21,7 +21,23 @@ class PackageManager(object):
             "je_api_testka",
             "je_web_runner"
         ]
+        try:
+            import je_load_density
+            import je_web_runner
+            import je_auto_control
+            import je_api_testka
+            self.installed_package_dict.update(
+                {
+                    "je_api_testka": je_api_testka,
+                    "je_web_runner": je_web_runner,
+                    "je_auto_control": je_auto_control,
+                    "je_load_density": je_load_density,
+                }
+            )
+        except ImportError:
+            pass
 
+    # This will make subprocess deadlock so emm we don't use this
     def check_package(self):
         for package, value in self.installed_package_dict.items():
             found_spec = find_spec(package)
