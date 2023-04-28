@@ -110,15 +110,7 @@
 [![ITE GitHub Actions Stable](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml)
 
 ### install
-
-#### stable
-
-```commandline
-pip install integration_testing_environment
-```
-
-#### dev
-
-```commandline
-pip install integration_testing_environment_dev
-```
+#### we suggest install full package
+* pip install integration_testing_environment[full_extension]
+#### if we don't want to use send after test
+* pip install integration_testing_environment

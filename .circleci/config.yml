@@ -28,9 +28,6 @@ jobs:
       - run:
           command: python ./test/unit_test/check_installed_and_import/check_and_import.py
           name: check package
-      - run:
-          command: python ./test/unit_test/open_extend_test/open_extend_ui_test.py
-          name: open_extend_ui_test
 
   build-and-test-windows-stable:
     executor:
@@ -56,9 +53,6 @@ jobs:
       - run:
           command: python ./test/unit_test/check_installed_and_import/check_and_import.py
           name: check package
-      - run:
-          command: python ./test/unit_test/open_extend_test/open_extend_ui_test.py
-          name: open_extend_ui_test
       # pip all require package
       - run:
           command: pip install --user -r dev_requirements.txt

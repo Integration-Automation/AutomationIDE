@@ -1,3 +1,4 @@
-from integration_testing_environment import start_ite
+from integration_testing_environment import start_editor
 
-start_ite(debug=True)
+
+start_editor()
