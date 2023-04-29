@@ -1,4 +1,4 @@
-from integration_testing_environment import start_editor
+from automation_editor import start_editor
 
 
 start_editor()

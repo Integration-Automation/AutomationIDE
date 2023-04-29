@@ -1,38 +1,20 @@
-# Table of contents 
-> ITE Intro \
+# Table of contents
 > Editor components \
-> GUI Testing components \
-> WEB Testing components \
-> API Testing components \
-> Load & Stress Testing components
+> GUI components \
+> WEB components \
+> API components \
+> Load components
 ---
-## What is ITE
+## What is Automation Editor
 > Project Kanban \
-> https://github.com/orgs/Integrated-Testing-Environment/projects/4/views/1 \
-> Integrated Testing Environment (ITE) 
-> * ITE mainly provides an integrated automated testing environment. 
-> * ITE is composed of the following components: 
+> https://github.com/orgs/Intergration-Automation-Testing/projects/2/views/1 \
+> Tool for automation
+> * Automation Editor is composed of the following components: 
 >> * Editor。
->> * GUI Testing。
->> * Web Testing。
->> * API Testing。
->> * Load & Stress Testing。
----
-## ITE Testing
-
-> How does ITE perform self-testing?
-> * CircleCI & GitHub Actions。
->> * What are the benefits of using CircleCI and GitHub Actions?
->> * They provide GitHub/Gitlab hooks for automated testing on every commit.
->> * They provide detailed test logs.
->> * They allow for automatic deployment to selected environments.
->> * They make it easy to specify branches for testing.
->> * They can parallelize multiple tests for faster execution.
----
-## ITE Dev
-> * ITE's development process: CI/CD (Continuous Integration/Continuous Deployment).
-> * Continuous Integration: The longer the code is away from the last update, the higher the risk, so continuous integration encourages committing and automated testing after completing each part to reduce risk.
-> * Continuous Deployment: Continuously deploying the code to the real environment for testing, usually achieved through automation.
+>> * GUI Automation。
+>> * Web Automation。
+>> * API Automation。
+>> * Load Automation。
 ---
 ### JEditor
 > * JEditor is a simple text editor, but it has all the necessary features.
@@ -49,8 +31,8 @@
 >>    * Run shell commands.
 ---
 ### GUI Testing components
-> Image & Coordinate based GUI Testing \
-> GUI automated testing based on image comparison and coordinates. \
+> Image & Coordinate based GUI Automation \
+> GUI automated based on image comparison and coordinates. \
 > Cross-platform and cross-programming language.\
 > Solve problems:
 >> * Provide automation execution for repetitive tasks.
@@ -62,8 +44,8 @@
 >> * Can use keywords for development to improve readability.
 ---
 ### WEB Testing components
-> Multiton Selenium Instance testing \
-> The WEB Testing component is a web automation testing solution based on Selenium. \
+> Multiton Selenium Instance Automation \
+> The WEB Automation component is a web automation solution based on Selenium. \
 > It wraps Selenium and therefore has all the functionality of Selenium. \
 > What problems does it solve? 
 >> * Automatically downloads and updates the required web driver, so users no longer need to install it manually.
@@ -74,7 +56,7 @@
 >> * Offers a CLI mode for Web Testing.
 ---
 ### API Testing components
-> Simple way to testing HTTP/S & Soap \
+> Simple way to Automation Requests HTTP/S & Soap \
 > Wrapper for Requests package, designed for those with experience using Requests. \
 > Send HTTP/S and SOAP requests with a simple line of code or keyword. \
 > Detailed information on Requests and Responses. \
@@ -96,12 +78,11 @@
 
 ### Features
 
-> * ITE GUI for beginner
-> * GUI testing (use AutoControl)
-> * API testing (use APITestka)
-> * Web testing (use WebRunner)
-> * Loading testing (use LoadDensity)
-> * Multi test task runner (multi process)
+> * GUI Automation (use AutoControl)
+> * API Automation (use APITestka)
+> * Web Automation (use WebRunner)
+> * Loading Automation (use LoadDensity)
+> * Multi test task runner (multiprocess, but without AutoControl)
 > * you can run multi testing on same time
 > * open log window to check testing result
 > * Send mail when testing failure (need to setting mail)
@@ -112,12 +93,12 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/Integrated-Testing-Environment/Integration-testing-environment/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/Integrated-Testing-Environment/Integration-testing-environment/tree/main)
 
-[![ITE GitHub Actions Dev](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_dev.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_dev.yml)
+[![GitHub Actions Dev](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_dev.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_dev.yml)
 
-[![ITE GitHub Actions Stable](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml)
+[![GitHub Actions Stable](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml/badge.svg)](https://github.com/JE-Chen/Integration-testing-environment/actions/workflows/ITE-github-actions_stable.yml)
 
 ### install
 #### we suggest install full package
-* pip install integration_testing_environment[full_extension]
+* pip install automation_editor[full_extension]
 #### if we don't want to use send after test
-* pip install integration_testing_environment
+* pip install automation_editor
