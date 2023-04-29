@@ -1,11 +1,11 @@
-# Rename to dev version
-# This is dev version
+# Rename to build stable version
+# This is stable version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "automation_editor_dev"
+name = "automation_editor"
 version = "0.0.2"
 authors = [
     { name = "JE-Chen", email = "zenmailman@gmail.com" },
@@ -34,7 +34,7 @@ full_extension = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/JE-Chen/Integration-testing-environment"
+"Homepage" = "https://github.com/Integrated-Testing-Environment/AutomationEditor"
 
 [tool.setuptools.packages]
 find = { namespaces = false }
