@@ -30,48 +30,48 @@
 >>    * Run python programs.
 >>    * Run shell commands.
 ---
-### GUI Testing components
+### GUI Automation components
 > Image & Coordinate based GUI Automation \
 > GUI automated based on image comparison and coordinates. \
 > Cross-platform and cross-programming language.\
 > Solve problems:
 >> * Provide automation execution for repetitive tasks.
->> * Multiple methods are available, including recording, image recognition, and coordinate-based testing.
+>> * Multiple methods are available, including recording, image recognition, and coordinate-based automation.
 >> * Tests can be executed remotely through TCP/IP.
 >> * Test reports can be generated with records for each action.
 >> * The same code can be used for three platforms, reducing the possibility of platform-dependent programs.
 >> * Provide hooks for keyboard and mouse events and state checks (including using code to simulate key presses).
 >> * Can use keywords for development to improve readability.
 ---
-### WEB Testing components
+### WEB Automation components
 > Multiton Selenium Instance Automation \
 > The WEB Automation component is a web automation solution based on Selenium. \
 > It wraps Selenium and therefore has all the functionality of Selenium. \
 > What problems does it solve? 
 >> * Automatically downloads and updates the required web driver, so users no longer need to install it manually.
 >> * Provides the ability to simultaneously run and monitor multiple Selenium instances.
->> * Provides a keyword-based testing approach that Selenium does not have.
+>> * Provides a keyword-based automation approach that Selenium does not have.
 >> * Can produce test reports that record actions taken during the test.
 >> * Can execute tests remotely through TCP/IP.
->> * Offers a CLI mode for Web Testing.
+>> * Offers a CLI mode for Web automation.
 ---
-### API Testing components
+### API Automation components
 > Simple way to Automation Requests HTTP/S & Soap \
 > Wrapper for Requests package, designed for those with experience using Requests. \
 > Send HTTP/S and SOAP requests with a simple line of code or keyword. \
 > Detailed information on Requests and Responses. \
 > Solves problems such as:
->> * Detailed testing reports on Requests and Responses.
->> * Testing for SOAP protocol.
+>> * Detailed automation reports on Requests and Responses.
+>> * Automation for SOAP protocol.
 >> * Data comparison for each Request.
->> * API Testing in pure CLI mode.
+>> * API automation in pure CLI mode.
 ---
-### Load & Stress Testing components
+### Load & Stress Automation components
 > Locust Wrapper \
 > Wrapper for Locust, simplifying complex Locust configurations. \
 > Solves problems:
 >> * Checking Requests & Response for each load test
->> * Load testing for SOAP protocols
+>> * Load automation for SOAP protocols
 >> * Comparison of numerical values for each load test
 >> * Detailed load test reports for each test.
 ---
@@ -83,9 +83,9 @@
 > * Web Automation (use WebRunner)
 > * Loading Automation (use LoadDensity)
 > * Multi test task runner (multiprocess, but without AutoControl)
-> * you can run multi testing on same time
-> * open log window to check testing result
-> * Send mail when testing failure (need to setting mail)
+> * you can run multi automation on same time
+> * open log window to check automation result
+> * Send mail when automation failure (need to setting mail)
 
 ---
 
