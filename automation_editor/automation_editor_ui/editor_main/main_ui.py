@@ -35,4 +35,4 @@ def start_editor():
     window = ITE()
     apply_stylesheet(new_editor, theme='dark_amber.xml')
     window.show()
-    sys.exit(new_editor.exec_())
+    sys.exit(new_editor.exec())
