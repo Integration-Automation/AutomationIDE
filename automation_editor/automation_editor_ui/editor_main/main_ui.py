@@ -27,7 +27,7 @@ class ITE(EditorMain):
         set_load_density_menu(self)
         set_web_runner_menu(self)
         syntax_extend_package(self)
-        self.setWindowTitle("ITE & RPA")
+        self.setWindowTitle("Automation Editor")
 
 
 def start_editor():

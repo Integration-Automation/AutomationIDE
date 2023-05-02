@@ -7,4 +7,4 @@ je-load-density
 je-auto-control
 je-web-runner
 je-mail-thunder
-integration_testing_environment_dev
+automation_editor_dev

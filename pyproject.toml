@@ -1,17 +1,16 @@
-# Rename to build stable version
-# This is stable version
+# Rename to dev version
+# This is dev version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "automation_editor"
-version = "0.0.3"
+name = "automation_editor_dev"
+version = "0.0.4"
 authors = [
-    { name = "JE-Chen", email = "zenmailman@gmail.com" },
+    { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
 description = "Automation Editor for GUI, WEB, API, Load Automation"
-readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.8"
 license = { text = "MIT" }
 dependencies = [
@@ -19,7 +18,7 @@ dependencies = [
     "je_load_density", "je_api_testka"
 ]
 classifiers = [
-    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
     "Development Status :: 2 - Pre-Alpha",
     "Environment :: Win32 (MS Windows)",
     "Environment :: MacOS X",
@@ -34,7 +33,15 @@ full_extension = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/Integrated-Testing-Environment/AutomationEditor"
+Homepage = "https://github.com/Intergration-Automation-Testing/AutomationEditor"
+Code = "https://github.com/Intergration-Automation-Testing/AutomationEditor"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
 
 [tool.setuptools.packages]
 find = { namespaces = false }
