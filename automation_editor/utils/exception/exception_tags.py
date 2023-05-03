@@ -18,7 +18,7 @@ not_install_exception: str = "Please install package first, Can't find package"
 # ui exception
 wrong_test_data_format_exception_tag: str = "get the wrong test data format"
 # exec exception
-exec_error: str = "ITE exec error"
+exec_error: str = "AutomationEditor exec error"
 file_not_fond_error: str = "File not found"
 compiler_not_found_error: str = "Compiler not found"
 not_install_package_error: str = "not install required package"

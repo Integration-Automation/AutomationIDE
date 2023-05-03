@@ -1,14 +1,20 @@
+import os
 import queue
 import shutil
 import subprocess
+import sys
 import threading
 import typing
+from pathlib import Path
 from queue import Queue
 from threading import Thread
 
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QTextEdit, QWidget
 from je_editor import error_color, output_color
+
+from automation_editor.utils.exception.exception_tags import compiler_not_found_error
+from automation_editor.utils.exception.exceptions import ITEExecException
 
 
 class TaskProcessManager(object):
@@ -37,9 +43,31 @@ class TaskProcessManager(object):
 
     def start_test_process(self, package: str, exec_str: str):
         # try to find file and compiler
-        compiler_path = shutil.which("python")
+        if sys.platform in ["win32", "cygwin", "msys"]:
+            venv_path = Path(os.getcwd() + "/venv/Scripts")
+        else:
+            venv_path = Path(os.getcwd() + "/venv/bin")
+        if venv_path.is_dir() and venv_path.exists():
+            compiler_path = shutil.which(
+                cmd="python3",
+                path=str(venv_path)
+            )
+        else:
+            compiler_path = shutil.which(cmd="python3")
         if compiler_path is None:
-            compiler_path = shutil.which("python3")
+            if sys.platform in ["win32", "cygwin", "msys"]:
+                venv_path = Path(os.getcwd() + "/venv/Scripts")
+            else:
+                venv_path = Path(os.getcwd() + "/venv/bin")
+            if venv_path.is_dir() and venv_path.exists():
+                compiler_path = shutil.which(
+                    cmd="python",
+                    path=str(venv_path)
+                )
+            else:
+                compiler_path = shutil.which(cmd="python")
+        if compiler_path is None:
+            raise ITEExecException(compiler_not_found_error)
         self.process = subprocess.Popen(
             [
                 compiler_path,
@@ -110,6 +138,8 @@ class TaskProcessManager(object):
         self.print_and_clear_queue()
         if self.process is not None:
             self.process.terminate()
+            print(f"Task exit with code {self.process.returncode}")
+            self.process = None
 
     def print_and_clear_queue(self):
         try:
@@ -123,7 +153,6 @@ class TaskProcessManager(object):
                 if std_err:
                     self.code_result.append(std_err)
             self.code_result.setTextColor(output_color)
-            print(f"Task exit with code {self.process.returncode}")
         except queue.Empty:
             pass
         self.run_output_queue = queue.Queue()
