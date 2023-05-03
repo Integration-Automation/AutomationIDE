@@ -91,3 +91,4 @@ def create_project():
     package = package_manager.installed_package_dict.get("je_api_testka", None)
     if package is not None:
         package.create_project_dir()
+

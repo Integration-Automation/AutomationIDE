@@ -91,10 +91,11 @@ class TaskProcessManager(object):
         except queue.Empty:
             pass
         if self.process.returncode == 0:
+            self.timer.stop()
             self.exit_program()
         elif self.process.returncode is not None:
-            self.exit_program()
             self.timer.stop()
+            self.exit_program()
         if self.still_run_program:
             # poll return code
             self.process.poll()
@@ -122,6 +123,7 @@ class TaskProcessManager(object):
                 if std_err:
                     self.code_result.append(std_err)
             self.code_result.setTextColor(output_color)
+            print(f"Task exit with code {self.process.returncode}")
         except queue.Empty:
             pass
         self.run_output_queue = queue.Queue()
