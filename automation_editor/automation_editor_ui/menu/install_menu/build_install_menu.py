@@ -1,5 +1,11 @@
+import os
+import shutil
+import sys
+from pathlib import Path
+
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
+from je_editor import shell_manager
 
 
 def set_install_menu(ui_we_want_to_set: QMainWindow):
@@ -36,26 +42,43 @@ def set_install_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.install_menu.addAction(ui_we_want_to_set.install_web_runner_action)
 
 
+def install_package(package_text: str):
+    if sys.platform in ["win32", "cygwin", "msys"]:
+        venv_path = Path(os.getcwd() + "/venv/Scripts")
+    else:
+        venv_path = Path(os.getcwd() + "/venv/bin")
+    if venv_path.is_dir() and venv_path.exists():
+        compiler_path = shutil.which(
+            cmd="python3",
+            path=str(venv_path)
+        )
+    else:
+        compiler_path = shutil.which(cmd="python3")
+    if compiler_path is None:
+        compiler_path = shutil.which(
+            cmd="python",
+            path=str(venv_path)
+        )
+    else:
+        compiler_path = shutil.which(cmd="python")
+    shell_manager.exec_shell(f"{compiler_path} -m pip install {package_text}")
+
+
 def install_build_tools():
-    from je_editor import shell_manager
-    shell_manager.exec_shell("pip install --user --upgrade pip setuptools wheel")
+    install_package("setuptools build wheel")
 
 
 def install_autocontrol():
-    from je_editor import shell_manager
-    shell_manager.exec_shell("pip install --user --upgrade je_auto_control")
+    install_package("je_auto_control")
 
 
 def install_api_testka():
-    from je_editor import shell_manager
-    shell_manager.exec_shell("pip install --user --upgrade je_api_testka")
+    install_package("je_api_testka")
 
 
 def install_load_density():
-    from je_editor import shell_manager
-    shell_manager.exec_shell("pip install --user --upgrade je_load_density")
+    install_package("je_load_density")
 
 
 def install_web_runner():
-    from je_editor import shell_manager
-    shell_manager.exec_shell("pip install --user --upgrade je_web_runner")
+    install_package("je_web_runner")
