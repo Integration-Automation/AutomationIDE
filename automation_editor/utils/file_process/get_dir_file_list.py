@@ -1,5 +1,4 @@
 import sys
-import tkinter.filedialog
 from os import getcwd
 from os import walk
 from os.path import abspath

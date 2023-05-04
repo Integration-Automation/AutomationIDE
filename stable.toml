@@ -1,0 +1,47 @@
+# Rename to build stable version
+# This is stable version
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "automation_editor"
+version = "0.0.4"
+authors = [
+    { name = "JE-Chen", email = "jechenmailman@gmail.com" },
+]
+description = "Automation Editor for GUI, WEB, API, Load Automation"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+dependencies = [
+    "je-editor", "je_auto_control", "je_web_runner",
+    "je_load_density", "je_api_testka"
+]
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: MacOS X",
+    "Environment :: X11 Applications",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.optional-dependencies]
+full_extension = [
+    "je-mail-thunder"
+]
+
+[project.urls]
+Homepage = "https://github.com/Intergration-Automation-Testing/AutomationEditor"
+Code = "https://github.com/Intergration-Automation-Testing/AutomationEditor"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[tool.setuptools]
+license-files = ["LICENSE"]
+
+[tool.setuptools.packages]
+find = { namespaces = false }
