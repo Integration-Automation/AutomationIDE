@@ -1,7 +1,7 @@
 import sys
 
 from PySide6.QtWidgets import QApplication
-from je_editor import EditorMain, shell_manager
+from je_editor import EditorMain, ShellManager
 from qt_material import apply_stylesheet
 
 from automation_editor.automation_editor_ui. \
@@ -29,8 +29,6 @@ class AutomationEditor(EditorMain):
         set_web_runner_menu(self)
         set_install_menu(self)
         syntax_extend_package(self)
-        shell_manager.main_window = self
-        shell_manager.later_init()
         self.setWindowTitle("Automation Editor")
 
 
