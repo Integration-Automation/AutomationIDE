@@ -4,7 +4,7 @@ add_command_not_allow_package_exception_tag: str = "choose to add command packag
 # send html report exception
 send_html_exception_tag: str = """
 make sure you have installed je_mail_thunder \n
-can't send html report check login user and password is correct \n
+can"t send html report check login user and password is correct \n
 and current working folder have default_name.html (html report default execute_detail) \n
 or you should get the function file_path to read
 """

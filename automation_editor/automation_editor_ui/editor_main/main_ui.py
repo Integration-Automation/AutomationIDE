@@ -35,7 +35,7 @@ class AutomationEditor(EditorMain):
 def start_editor():
     new_editor = QApplication(sys.argv)
     window = AutomationEditor()
-    apply_stylesheet(new_editor, theme='dark_amber.xml')
+    apply_stylesheet(new_editor, theme="dark_amber.xml")
     window.showMaximized()
     try:
         window.startup_setting()
