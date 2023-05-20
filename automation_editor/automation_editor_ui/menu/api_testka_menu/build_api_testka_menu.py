@@ -83,11 +83,11 @@ def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
     )
 
 
-def open_web_browser(url: str):
+def open_web_browser(url: str) -> None:
     webbrowser.open(url=url)
 
 
-def create_project():
+def create_project() -> None:
     package = package_manager.installed_package_dict.get("je_api_testka", None)
     if package is not None:
         package.create_project_dir()

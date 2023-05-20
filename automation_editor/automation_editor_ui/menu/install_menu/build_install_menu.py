@@ -41,7 +41,7 @@ def set_install_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.install_menu.addAction(ui_we_want_to_set.install_web_runner_action)
 
 
-def install_package(package_text: str, ui_we_want_to_set: QMainWindow):
+def install_package(package_text: str, ui_we_want_to_set: QMainWindow) -> None:
     if sys.platform in ["win32", "cygwin", "msys"]:
         venv_path = Path(os.getcwd() + "/venv/Scripts")
     else:
@@ -66,23 +66,23 @@ def install_package(package_text: str, ui_we_want_to_set: QMainWindow):
     shell_manager.exec_shell([f"{compiler_path}", "-m", "pip", "install", f"{package_text}"])
 
 
-def install_build_tools(ui_we_want_to_set: QMainWindow):
+def install_build_tools(ui_we_want_to_set: QMainWindow) -> None:
     install_package("setuptools", ui_we_want_to_set)
     install_package("build", ui_we_want_to_set)
     install_package("wheel", ui_we_want_to_set)
 
 
-def install_autocontrol(ui_we_want_to_set: QMainWindow):
+def install_autocontrol(ui_we_want_to_set: QMainWindow) -> None:
     install_package("je_auto_control", ui_we_want_to_set)
 
 
-def install_api_testka(ui_we_want_to_set: QMainWindow):
+def install_api_testka(ui_we_want_to_set: QMainWindow) -> None:
     install_package("je_api_testka", ui_we_want_to_set)
 
 
-def install_load_density(ui_we_want_to_set: QMainWindow):
+def install_load_density(ui_we_want_to_set: QMainWindow) -> None:
     install_package("je_load_density", ui_we_want_to_set)
 
 
-def install_web_runner(ui_we_want_to_set: QMainWindow):
+def install_web_runner(ui_we_want_to_set: QMainWindow) -> None:
     install_package("je_web_runner", ui_we_want_to_set)

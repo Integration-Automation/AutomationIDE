@@ -32,10 +32,14 @@ class AutomationEditor(EditorMain):
         self.setWindowTitle("Automation Editor")
 
 
-def start_editor():
+def start_editor() -> None:
+    """
+    Start editor instance
+    :return: None
+    """
     new_editor = QApplication(sys.argv)
     window = AutomationEditor()
-    apply_stylesheet(new_editor, theme='dark_amber.xml')
+    apply_stylesheet(new_editor, theme="dark_amber.xml")
     window.showMaximized()
     try:
         window.startup_setting()
