@@ -8,7 +8,7 @@ from automation_editor.utils.exception.exception_tags import wrong_json_data_err
 from automation_editor.utils.exception.exceptions import ITEJsonException
 
 
-def __process_json(json_string: str, **kwargs):
+def __process_json(json_string: str, **kwargs) -> str:
     try:
         return dumps(loads(json_string), indent=4, sort_keys=True, **kwargs)
     except json.JSONDecodeError as error:
@@ -21,7 +21,7 @@ def __process_json(json_string: str, **kwargs):
             raise ITEJsonException(wrong_json_data_error)
 
 
-def reformat_json(json_string: str, **kwargs):
+def reformat_json(json_string: str, **kwargs) -> str:
     try:
         return __process_json(json_string, **kwargs)
     except ITEJsonException:

@@ -7,7 +7,7 @@ from automation_editor.automation_editor_ui.syntax.syntax_keyword import \
 from automation_editor.utils.manager.package_manager.package_manager_class import package_manager
 
 
-def syntax_extend_package(main_window: QMainWindow):
+def syntax_extend_package(main_window: QMainWindow) -> None:
     for package in package_manager.syntax_check_list:
         text_char_format = QTextCharFormat()
         text_char_format.setForeground(QColor(255, 255, 0))

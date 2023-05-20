@@ -5,7 +5,7 @@ from automation_editor.utils.exception.exception_tags import send_html_exception
 from automation_editor.utils.exception.exceptions import ITESendHtmlReportException
 
 
-def send_after_test(html_report_path: str = None):
+def send_after_test(html_report_path: str = None) -> None:
     try:
         from je_mail_thunder import SMTPWrapper
         mail_thunder_smtp: SMTPWrapper = SMTPWrapper()
