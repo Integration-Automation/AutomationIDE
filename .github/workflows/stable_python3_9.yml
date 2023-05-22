@@ -1,0 +1,28 @@
+name: AutomationEditor Stable Python3.9
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build_dev_version:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.9"
+    - name: Update pip wheel setuptools
+      run: python -m pip install --upgrade --user pip setuptools wheel
+    - name: Run pip requirements.txt
+      run: python -m pip install --user -r requirements.txt
+    - name: Run AutomationEditor With Debug Mode
+      run: python ./test/unit_test/start_automation/start_automation_test.py
+
