@@ -1,5 +1,6 @@
 import sys
 
+from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication
 from je_editor import EditorMain, ShellManager
 from qt_material import apply_stylesheet
@@ -19,7 +20,7 @@ from automation_editor.automation_editor_ui.syntax.syntax_extend import \
 
 class AutomationEditor(EditorMain):
 
-    def __init__(self):
+    def __init__(self, debug_mode: bool = False, **kwargs):
         super().__init__()
         self.current_run_code_window = list()
         self.help_menu.deleteLater()
@@ -30,15 +31,24 @@ class AutomationEditor(EditorMain):
         set_install_menu(self)
         syntax_extend_package(self)
         self.setWindowTitle("Automation Editor")
+        if debug_mode:
+            close_timer = QTimer(self)
+            close_timer.setInterval(10000)
+            close_timer.timeout.connect(self.debug_close)
+            close_timer.start()
+
+    @classmethod
+    def debug_close(cls):
+        sys.exit(0)
 
 
-def start_editor() -> None:
+def start_editor(debug_mode: bool = False, **kwargs) -> None:
     """
     Start editor instance
     :return: None
     """
     new_editor = QApplication(sys.argv)
-    window = AutomationEditor()
+    window = AutomationEditor(debug_mode, **kwargs)
     apply_stylesheet(new_editor, theme="dark_amber.xml")
     window.showMaximized()
     try:
