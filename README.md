@@ -20,7 +20,7 @@
 ---
 ## What is Automation Editor
 > Project Kanban \
-> https://github.com/orgs/Intergration-Automation-Testing/projects/2/views/1 \
+> https://github.com/orgs/Integration-Automation/projects/2/views/1 \
 > Tool for automation
 > * Automation Editor is composed of the following components: 
 >> * Editor。
