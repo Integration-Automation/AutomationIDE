@@ -1,3 +1,4 @@
+import sys
 import webbrowser
 
 from PySide6.QtGui import QAction
@@ -88,7 +89,11 @@ def open_web_browser(url: str) -> None:
 
 
 def create_project() -> None:
-    package = package_manager.installed_package_dict.get("je_api_testka", None)
-    if package is not None:
-        package.create_project_dir()
+    try:
+        import je_api_testka
+        package = je_api_testka
+        if package is not None:
+            package.create_project_dir()
+    except ImportError as error:
+        print(repr(error), file=sys.stderr)
 
