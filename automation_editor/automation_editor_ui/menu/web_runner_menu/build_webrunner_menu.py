@@ -1,9 +1,9 @@
+import sys
 import webbrowser
 
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
 
-from automation_editor.utils.manager.package_manager.package_manager_class import package_manager
 from automation_editor.utils.test_executor.web_runner.web_runner_process import call_web_runner_test, \
     call_web_runner_test_with_send, call_web_runner_test_multi_file, call_web_runner_test_multi_file_and_send
 
@@ -88,6 +88,10 @@ def open_web_browser(url: str) -> None:
 
 
 def create_project() -> None:
-    package = package_manager.installed_package_dict.get("je_web_runner", None)
-    if package is not None:
-        package.create_project_dir()
+    try:
+        import je_web_runner
+        package = je_web_runner
+        if package is not None:
+            package.create_project_dir()
+    except ImportError as error:
+        print(repr(error), file=sys.stderr)
