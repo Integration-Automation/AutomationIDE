@@ -1,16 +1,16 @@
-# Rename to build stable version
-# This is stable version
+# Rename to dev version
+# This is dev version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "automation_editor"
-version = "0.0.9"
+name = "automation_editor_dev"
+version = "0.0.10"
 authors = [
     { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
-description = "Automation Editor for GUI, WEB, API, Load Automation"
+description = "AutomationEditor for multi automation"
 requires-python = ">=3.8"
 license = { text = "MIT" }
 dependencies = [
