@@ -2,9 +2,10 @@ import sys
 
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication
-from je_editor import EditorMain, ShellManager
+from je_editor import EditorMain
 from qt_material import apply_stylesheet
 
+from automation_editor.automation_editor_ui.complete.complete_extend import complete_extend_package
 from automation_editor.automation_editor_ui. \
     menu.api_testka_menu.build_api_testka_menu import set_apitestka_menu
 from automation_editor.automation_editor_ui. \
@@ -30,6 +31,7 @@ class AutomationEditor(EditorMain):
         set_web_runner_menu(self)
         set_install_menu(self)
         syntax_extend_package(self)
+        complete_extend_package(self)
         self.setWindowTitle("Automation Editor")
         if debug_mode:
             close_timer = QTimer(self)
