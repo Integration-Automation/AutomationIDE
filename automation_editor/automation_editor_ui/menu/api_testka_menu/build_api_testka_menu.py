@@ -10,6 +10,11 @@ from automation_editor.utils.test_executor.api_testka.api_testka_process import 
 
 
 def set_apitestka_menu(ui_we_want_to_set: QMainWindow):
+    """
+    Build menu include APITestka feature.
+    :param ui_we_want_to_set: main window to add menu.
+    :return: None
+    """
     ui_we_want_to_set.apitestka_menu = ui_we_want_to_set.menu.addMenu("APITestka")
     ui_we_want_to_set.apitestka_run_menu = ui_we_want_to_set.apitestka_menu.addMenu("Run")
     # Run APITestka Script

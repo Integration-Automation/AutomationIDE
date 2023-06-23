@@ -40,7 +40,11 @@ class AutomationEditor(EditorMain):
             close_timer.start()
 
     @classmethod
-    def debug_close(cls):
+    def debug_close(cls) -> None:
+        """
+        Use to run CI test.
+        :return: None
+        """
         sys.exit(0)
 
 

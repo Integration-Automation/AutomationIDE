@@ -4,13 +4,17 @@ import webbrowser
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
 
-from automation_editor.utils.manager.package_manager.package_manager_class import package_manager
 from automation_editor.utils.test_executor.auto_control.auto_control_process import \
     call_auto_control_test, call_auto_control_test_with_send, call_auto_control_test_multi_file, \
     call_auto_control_test_multi_file_and_send
 
 
 def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
+    """
+    Build menu include AutoControl feature.
+    :param ui_we_want_to_set: main window to add menu.
+    :return: None
+    """
     ui_we_want_to_set.autocontrol_menu = ui_we_want_to_set.menu.addMenu("AutoControl")
     ui_we_want_to_set.autocontrol_run_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Run")
     # Run AutoControl Script
@@ -97,4 +101,3 @@ def create_project() -> None:
             package.create_project_dir()
     except ImportError as error:
         print(repr(error), file=sys.stderr)
-

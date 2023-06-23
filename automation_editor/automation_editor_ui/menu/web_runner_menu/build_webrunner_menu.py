@@ -9,6 +9,11 @@ from automation_editor.utils.test_executor.web_runner.web_runner_process import 
 
 
 def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
+    """
+    Build menu include WebRunner feature.
+    :param ui_we_want_to_set: main window to add menu.
+    :return: None
+    """
     ui_we_want_to_set.web_runner_menu = ui_we_want_to_set.menu.addMenu("WebRunner")
     ui_we_want_to_set.web_runner_run_menu = ui_we_want_to_set.web_runner_menu.addMenu("Run")
     # Run WebRunner Script
