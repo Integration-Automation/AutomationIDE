@@ -11,6 +11,11 @@ from automation_editor.utils.test_executor.load_density.load_density_process imp
 
 
 def set_load_density_menu(ui_we_want_to_set: QMainWindow):
+    """
+    Build menu include LoadDensity feature.
+    :param ui_we_want_to_set: main window to add menu.
+    :return: None
+    """
     ui_we_want_to_set.load_density_menu = ui_we_want_to_set.menu.addMenu("LoadDensity")
     ui_we_want_to_set.load_density_run_menu = ui_we_want_to_set.load_density_menu.addMenu("Run")
     # Run LoadDensity Script

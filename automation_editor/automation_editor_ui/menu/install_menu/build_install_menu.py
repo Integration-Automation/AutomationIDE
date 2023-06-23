@@ -7,7 +7,13 @@ from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
 from je_editor import ShellManager
 
+
 def set_install_menu(ui_we_want_to_set: QMainWindow):
+    """
+    Build menu include install package feature.
+    :param ui_we_want_to_set: main window to add menu.
+    :return: None
+    """
     ui_we_want_to_set.install_menu = ui_we_want_to_set.menu.addMenu("Install")
     # Try to install Build Tools
     ui_we_want_to_set.install_tool_action = QAction("Install Build Tools")

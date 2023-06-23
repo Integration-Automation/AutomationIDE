@@ -8,6 +8,7 @@ from automation_editor.utils.manager.package_manager.package_manager_class impor
 
 
 def syntax_extend_package(main_window: QMainWindow) -> None:
+    # Extend JEditor syntax to include more keyword.
     for package in package_manager.syntax_check_list:
         text_char_format = QTextCharFormat()
         text_char_format.setForeground(QColor(255, 255, 0))

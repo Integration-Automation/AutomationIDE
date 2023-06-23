@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QWidget, QGridLayout, QTextEdit, QScrollArea
 class CodeWindow(QWidget):
 
     def __init__(self):
+        # UI used to show run code or shell command result.
         super().__init__()
         self.grid_layout = QGridLayout()
         self.code_result = QTextEdit()

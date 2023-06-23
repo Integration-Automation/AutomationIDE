@@ -5,6 +5,11 @@ from automation_editor.utils.manager.package_manager.package_manager_class impor
 
 
 def complete_extend_package(main_window: QMainWindow) -> None:
+    """
+    Add complete keyword to JEditor complete_list.
+    :param main_window: main ui.
+    :return: None
+    """
     for package in package_manager.syntax_check_list:
         for word in package_keyword_list.get(package):
             # Complete
