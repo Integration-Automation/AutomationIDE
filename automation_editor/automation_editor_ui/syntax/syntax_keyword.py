@@ -3,8 +3,8 @@ api_testka_keys: list = [
     "generate_json_report", "generate_xml",
     "generate_xml_report", "execute_action", "execute_files", "add_package_to_executor",
     "flask_mock_server_add_router",
-    "start_flask_mock_server"
-]
+    "start_flask_mock_server"]
+
 auto_control_keys: list = [
     "mouse_left", "mouse_right", "mouse_middle", "click_mouse", "get_mouse_table", "get_mouse_position", "press_mouse",
     "release_mouse", "mouse_scroll", "set_mouse_position", "get_special_table", "get_keyboard_keys_table",
@@ -13,8 +13,8 @@ auto_control_keys: list = [
     "locate_image_center", "locate_and_click", "screen_size", "screenshot", "set_record_enable", "generate_html",
     "generate_json", "generate_xml", "generate_html_report", "generate_json_report", "generate_xml_report", "record",
     "stop_record", "execute_action", "execute_files", "add_package_to_executor", "add_package_to_callback_executor",
-    "create_project"
-]
+    "create_project"]
+
 web_runner_keys: list = [
     "get_webdriver_manager", "change_index_of_webdriver", "quit", "SaveTestObject", "CleanTestObject", "set_driver",
     "set_webdriver_options_capability", "find_element", "find_elements", "implicitly_wait", "explict_wait", "to_url",
@@ -32,17 +32,26 @@ web_runner_keys: list = [
     "element_value_of_css_property", "element_screenshot", "element_change_web_element",
     "element_check_current_web_element", "element_get_select", "set_record_enable", "generate_html",
     "generate_html_report", "generate_json", "generate_json_report", "generate_xml", "generate_xml_report",
-    "execute_action", "execute_files", "add_package_to_executor", "add_package_to_callback_executor"
-]
+    "execute_action", "execute_files", "add_package_to_executor", "add_package_to_callback_executor"]
 
 load_density_keys: list = [
     "start_test", "generate_html", "generate_html_report", "generate_json", "generate_json_report", "generate_xml",
-    "generate_xml_report", "execute_action", "execute_files", "add_package_to_executor"
-]
+    "generate_xml_report", "execute_action", "execute_files", "add_package_to_executor"]
+
+automation_file_keys: list = [
+    "create_file", "copy_file", "rename_file", "remove_file", "copy_all_file_to_dir",
+    "copy_specify_extension_file", "copy_dir", "create_dir", "remove_dir_tree", "zip_dir", "zip_file", "zip_info",
+    "zip_file_info", "set_zip_password", "unzip_file", "read_zip_file", "unzip_all", "drive_later_init",
+    "drive_search_all_file", "drive_search_field", "drive_search_file_mimetype", "drive_upload_dir_to_folder",
+    "drive_upload_to_folder", "drive_upload_dir_to_drive", "drive_upload_to_drive",
+    "drive_add_folder", "drive_share_file_to_anyone", "drive_share_file_to_domain",
+    "drive_share_file_to_user", "drive_delete_file", "drive_download_file", "drive_download_file_from_folder",
+    "execute_action", "execute_files", "add_package_to_executor"]
 
 package_keyword_list = {
     "je_auto_control": auto_control_keys,
     "je_load_density": load_density_keys,
     "je_api_testka": api_testka_keys,
-    "je_web_runner": web_runner_keys
+    "je_web_runner": web_runner_keys,
+    "automation_file": automation_file_keys
 }
