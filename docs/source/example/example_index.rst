@@ -1,0 +1,1 @@
+docs/source/example/apitestka_script_example/apitestka_script.rst
