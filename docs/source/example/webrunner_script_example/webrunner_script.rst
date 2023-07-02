@@ -1,2 +1,2 @@
-WEBRunner    example script
+WEBRunner example
 ----

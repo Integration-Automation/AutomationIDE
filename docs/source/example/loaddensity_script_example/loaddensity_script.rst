@@ -1,2 +1,2 @@
-LoadDensity example script
+LoadDensity example
 ----

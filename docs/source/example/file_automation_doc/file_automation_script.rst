@@ -1,2 +1,2 @@
-File Automation example script
+File Automation example
 ----

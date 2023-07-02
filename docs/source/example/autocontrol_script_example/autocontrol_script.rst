@@ -1,2 +1,2 @@
-AutoControl example script
+AutoControl example
 ----

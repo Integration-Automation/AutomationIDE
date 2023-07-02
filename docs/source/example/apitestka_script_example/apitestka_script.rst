@@ -1,3 +1,3 @@
-APITestka example script
+APITestka example
 ----
 
