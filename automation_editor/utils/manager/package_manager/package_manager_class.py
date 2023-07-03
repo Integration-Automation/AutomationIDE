@@ -9,7 +9,8 @@ class PackageManager(object):
             "je_auto_control",
             "je_load_density",
             "je_api_testka",
-            "je_web_runner"
+            "je_web_runner",
+            "automation_file"
         ]
 
 

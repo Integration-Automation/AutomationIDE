@@ -4,7 +4,7 @@ from automation_editor.utils.manager.package_manager.package_manager_class impor
 
 
 def check_mail_thunder_install():
-    if package_manager.installed_package_dict.get("je_mail_thunder", None) is None:
-        raise ITETestExecutorException(
-            not_install_exception + " je_mail_thunder"
-        )
+    try:
+        import je_mail_thunder
+    except ImportError:
+        raise ITETestExecutorException(not_install_exception + " je_mail_thunder")
