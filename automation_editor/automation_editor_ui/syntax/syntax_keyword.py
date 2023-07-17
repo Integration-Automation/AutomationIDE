@@ -6,14 +6,20 @@ api_testka_keys: list = [
     "start_flask_mock_server"]
 
 auto_control_keys: list = [
-    "mouse_left", "mouse_right", "mouse_middle", "click_mouse", "get_mouse_table", "get_mouse_position", "press_mouse",
-    "release_mouse", "mouse_scroll", "set_mouse_position", "get_special_table", "get_keyboard_keys_table",
-    "type_keyboard",
-    "press_keyboard_key", "release_keyboard_key", "check_key_is_press", "write", "hotkey", "locate_all_image",
-    "locate_image_center", "locate_and_click", "screen_size", "screenshot", "set_record_enable", "generate_html",
-    "generate_json", "generate_xml", "generate_html_report", "generate_json_report", "generate_xml_report", "record",
-    "stop_record", "execute_action", "execute_files", "add_package_to_executor", "add_package_to_callback_executor",
-    "create_project"]
+    "AC_mouse_left", "AC_mouse_right", "AC_mouse_middle", "AC_click_mouse", "AC_get_mouse_table",
+    "AC_get_mouse_position", "AC_press_mouse", "AC_release_mouse", "AC_mouse_scroll",
+    "AC_set_mouse_position", "AC_get_special_table", "AC_get_keyboard_keys_table",
+    "AC_type_keyboard", "AC_press_keyboard_key", "AC_release_keyboard_key", "AC_check_key_is_press",
+    "AC_write", "AC_hotkey", "AC_locate_all_image", "AC_locate_image_center",
+    "AC_locate_and_click", "AC_screen_size", "AC_screenshot", "AC_set_record_enable", "AC_generate_html",
+    "AC_generate_json", "AC_generate_xml", "AC_generate_html_report", "AC_generate_json_report",
+    "AC_generate_xml_report", "AC_record", "AC_stop_record", "AC_execute_action",
+    "AC_execute_files", "AC_add_package_to_executor", "AC_add_package_to_callback_executor",
+    "AC_create_project", "AC_shell_command", "AC_execute_process", "AC_scheduler_event_trigger",
+    "AC_remove_blocking_scheduler_job", "AC_remove_nonblocking_scheduler_job",
+    "AC_start_blocking_scheduler", "AC_start_nonblocking_scheduler", "AC_start_all_scheduler",
+    "AC_shutdown_blocking_scheduler", "AC_shutdown_nonblocking_scheduler"
+]
 
 web_runner_keys: list = [
     "get_webdriver_manager", "change_index_of_webdriver", "quit", "SaveTestObject", "CleanTestObject", "set_driver",
@@ -48,10 +54,21 @@ automation_file_keys: list = [
     "drive_share_file_to_user", "drive_delete_file", "drive_download_file", "drive_download_file_from_folder",
     "execute_action", "execute_files", "add_package_to_executor"]
 
+mail_thunder_keys: list = [
+    "MT_smtp_later_init", "MT_smtp_create_message_with_attach_and_send", "MT_smtp_create_message_and_send",
+    "MT_smtp_quit", "MT_imap_later_init", "MT_imap_select_mailbox", "MT_imap_search_mailbox",
+    "MT_imap_mail_content_list", "MT_imap_output_all_mail_as_file", "MT_imap_quit",
+    "MT_set_mail_thunder_os_environ", "MT_get_mail_thunder_os_environ", "MT_add_package_to_executor",
+    "MT_scheduler_event_trigger", "MT_remove_blocking_scheduler_job", "MT_remove_nonblocking_scheduler_job",
+    "MT_start_blocking_scheduler", "MT_start_nonblocking_scheduler", "MT_start_all_scheduler",
+    "MT_shutdown_blocking_scheduler", "MT_shutdown_nonblocking_scheduler"
+]
+
 package_keyword_list = {
     "je_auto_control": auto_control_keys,
     "je_load_density": load_density_keys,
     "je_api_testka": api_testka_keys,
     "je_web_runner": web_runner_keys,
-    "automation_file": automation_file_keys
+    "automation_file": automation_file_keys,
+    "mail_thunder": mail_thunder_keys,
 }
