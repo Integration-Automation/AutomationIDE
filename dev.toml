@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "automation_editor_dev"
-version = "0.0.12"
+version = "0.0.14"
 authors = [
     { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
@@ -15,7 +15,8 @@ requires-python = ">=3.8"
 license = { text = "MIT" }
 dependencies = [
     "je-editor", "je_auto_control", "je_web_runner",
-    "je_load_density", "je_api_testka"
+    "je_load_density", "je_api_testka", "je-mail-thunder",
+    "automation-file"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.8",
@@ -25,11 +26,6 @@ classifiers = [
     "Environment :: X11 Applications",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"
-]
-
-[project.optional-dependencies]
-full_extension = [
-    "je-mail-thunder"
 ]
 
 [project.urls]

@@ -16,7 +16,7 @@ def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
     """
     ui_we_want_to_set.web_runner_menu = ui_we_want_to_set.menu.addMenu("WebRunner")
     ui_we_want_to_set.web_runner_run_menu = ui_we_want_to_set.web_runner_menu.addMenu("Run")
-    # Run WebRunner Script
+    # Run WEBRunner Script
     ui_we_want_to_set.run_web_runner_action = QAction("Run WebRunner Script")
     ui_we_want_to_set.run_web_runner_action.triggered.connect(
         lambda: call_web_runner_test(
@@ -25,7 +25,7 @@ def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
         )
     )
     ui_we_want_to_set.web_runner_run_menu.addAction(ui_we_want_to_set.run_web_runner_action)
-    # Run AutoControl Script With Send
+    # Run WEBRunner Script With Send
     ui_we_want_to_set.run_web_runner_action_with_send = QAction("Run WebRunner With Send")
     ui_we_want_to_set.run_web_runner_action_with_send.triggered.connect(
         lambda: call_web_runner_test_with_send(
@@ -36,7 +36,7 @@ def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.web_runner_run_menu.addAction(
         ui_we_want_to_set.run_web_runner_action_with_send
     )
-    # Run Multi AutoControl Script
+    # Run Multi WEBRunner Script
     ui_we_want_to_set.run_multi_web_runner_action = QAction("Run Multi WebRunner Script")
     ui_we_want_to_set.run_multi_web_runner_action.triggered.connect(
         lambda: call_web_runner_test_multi_file(
@@ -46,7 +46,7 @@ def set_web_runner_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.web_runner_run_menu.addAction(
         ui_we_want_to_set.run_multi_web_runner_action
     )
-    # Run Multi AutoControl Script With Send
+    # Run Multi WEBRunner Script With Send
     ui_we_want_to_set.run_multi_web_runner_action_with_send = QAction("Run Multi WebRunner Script With Send")
     ui_we_want_to_set.run_multi_web_runner_action_with_send.triggered.connect(
         lambda: call_web_runner_test_multi_file_and_send(
