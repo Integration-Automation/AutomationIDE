@@ -1,8 +1,9 @@
 import sys
 import webbrowser
 
+import je_auto_control
 from PySide6.QtGui import QAction
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QPlainTextEdit
 
 from automation_editor.utils.test_executor.auto_control.auto_control_process import \
     call_auto_control_test, call_auto_control_test_with_send, call_auto_control_test_multi_file, \
@@ -87,6 +88,23 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
     ui_we_want_to_set.autocontrol_project_menu.addAction(
         ui_we_want_to_set.create_autocontrol_project_action
     )
+    # Record
+    ui_we_want_to_set.autocontrol_record_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Record")
+    ui_we_want_to_set.record_action = QAction("Start Record")
+    ui_we_want_to_set.record_action.triggered.connect(
+        je_auto_control.record
+    )
+    ui_we_want_to_set.autocontrol_record_menu.addAction(
+        ui_we_want_to_set.record_action
+    )
+    # Stop Record
+    ui_we_want_to_set.stop_record_action = QAction("Stop Record")
+    ui_we_want_to_set.stop_record_action.triggered.connect(
+        lambda: stop_record(ui_we_want_to_set.code_edit)
+    )
+    ui_we_want_to_set.autocontrol_record_menu.addAction(
+        ui_we_want_to_set.stop_record_action
+    )
 
 
 def open_web_browser(url: str) -> None:
@@ -101,3 +119,7 @@ def create_project() -> None:
             package.create_project_dir()
     except ImportError as error:
         print(repr(error), file=sys.stderr)
+
+
+def stop_record(set_stop_record_text_container: QPlainTextEdit):
+    set_stop_record_text_container.appendPlainText(str(je_auto_control.stop_record()))
