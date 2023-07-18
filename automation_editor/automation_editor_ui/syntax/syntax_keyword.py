@@ -52,18 +52,28 @@ web_runner_keys: list = [
 ]
 
 load_density_keys: list = [
-    "start_test", "generate_html", "generate_html_report", "generate_json", "generate_json_report", "generate_xml",
-    "generate_xml_report", "execute_action", "execute_files", "add_package_to_executor"]
+    "LD_start_test", "LD_generate_html", "LD_generate_html_report", "LD_generate_json", "LD_generate_json_report",
+    "LD_generate_xml", "LD_generate_xml_report", "LD_execute_action", "LD_execute_files",
+    "LD_add_package_to_executor", "LD_scheduler_event_trigger", "LD_remove_blocking_scheduler_job",
+    "LD_remove_nonblocking_scheduler_job", "LD_start_blocking_scheduler", "LD_start_nonblocking_scheduler",
+    "LD_start_all_scheduler", "LD_shutdown_blocking_scheduler", "LD_shutdown_nonblocking_scheduler"
+]
 
 automation_file_keys: list = [
-    "create_file", "copy_file", "rename_file", "remove_file", "copy_all_file_to_dir",
-    "copy_specify_extension_file", "copy_dir", "create_dir", "remove_dir_tree", "zip_dir", "zip_file", "zip_info",
-    "zip_file_info", "set_zip_password", "unzip_file", "read_zip_file", "unzip_all", "drive_later_init",
-    "drive_search_all_file", "drive_search_field", "drive_search_file_mimetype", "drive_upload_dir_to_folder",
-    "drive_upload_to_folder", "drive_upload_dir_to_drive", "drive_upload_to_drive",
-    "drive_add_folder", "drive_share_file_to_anyone", "drive_share_file_to_domain",
-    "drive_share_file_to_user", "drive_delete_file", "drive_download_file", "drive_download_file_from_folder",
-    "execute_action", "execute_files", "add_package_to_executor"]
+    "FA_create_file", "FA_copy_file", "FA_rename_file", "FA_remove_file", "FA_copy_all_file_to_dir",
+    "FA_copy_specify_extension_file", "FA_copy_dir", "FA_create_dir", "FA_remove_dir_tree",
+    "FA_zip_dir", "FA_zip_file", "FA_zip_info", "FA_zip_file_info", "FA_set_zip_password", "FA_unzip_file",
+    "FA_read_zip_file", "FA_unzip_all", "FA_drive_later_init",
+    "FA_drive_search_all_file", "FA_drive_search_field", "FA_drive_search_file_mimetype",
+    "FA_drive_upload_dir_to_folder", "FA_drive_upload_to_folder", "FA_drive_upload_dir_to_drive",
+    "FA_drive_upload_to_drive", "FA_drive_add_folder", "FA_drive_share_file_to_anyone",
+    "FA_drive_share_file_to_domain", "FA_drive_share_file_to_user", "FA_drive_delete_file",
+    "FA_drive_download_file", "FA_drive_download_file_from_folder",
+    "FA_execute_action", "FA_execute_files", "FA_add_package_to_executor",
+    "FA_scheduler_event_trigger", "FA_remove_blocking_scheduler_job", "FA_remove_nonblocking_scheduler_job",
+    "FA_start_blocking_scheduler", "FA_start_nonblocking_scheduler", "FA_start_all_scheduler",
+    "FA_shutdown_blocking_scheduler", "FA_shutdown_nonblocking_scheduler"
+]
 
 mail_thunder_keys: list = [
     "MT_smtp_later_init", "MT_smtp_create_message_with_attach_and_send", "MT_smtp_create_message_and_send",
