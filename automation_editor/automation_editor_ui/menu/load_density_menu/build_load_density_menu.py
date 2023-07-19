@@ -4,10 +4,9 @@ import webbrowser
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
 
-from automation_editor.utils.manager.package_manager.package_manager_class import package_manager
-from automation_editor.utils.test_executor.load_density.load_density_process import \
-    call_load_density_test, call_load_density_test_with_send, call_load_density_test_multi_file, \
-    call_load_density_test_multi_file_and_send
+from automation_editor.extend.process_executor.load_density.load_density_process import \
+    call_load_density, call_load_density_with_send, call_load_density_multi_file, \
+    call_load_density_multi_file_and_send
 
 
 def set_load_density_menu(ui_we_want_to_set: QMainWindow):
@@ -21,7 +20,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
     # Run LoadDensity Script
     ui_we_want_to_set.run_load_density_action = QAction("Run LoadDensity Script")
     ui_we_want_to_set.run_load_density_action.triggered.connect(
-        lambda: call_load_density_test(
+        lambda: call_load_density(
             ui_we_want_to_set,
             ui_we_want_to_set.code_edit.toPlainText()
         )
@@ -30,7 +29,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
     # Run LoadDensity Script With Send
     ui_we_want_to_set.run_load_density_action_with_send = QAction("Run LoadDensity With Send")
     ui_we_want_to_set.run_load_density_action_with_send.triggered.connect(
-        lambda: call_load_density_test_with_send(
+        lambda: call_load_density_with_send(
             ui_we_want_to_set,
             ui_we_want_to_set.code_edit.toPlainText()
         )
@@ -41,7 +40,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
     # Run Multi LoadDensity Script
     ui_we_want_to_set.run_multi_load_density_action = QAction("Run Multi LoadDensity Script")
     ui_we_want_to_set.run_multi_load_density_action.triggered.connect(
-        lambda: call_load_density_test_multi_file(
+        lambda: call_load_density_multi_file(
             ui_we_want_to_set,
         )
     )
@@ -51,7 +50,7 @@ def set_load_density_menu(ui_we_want_to_set: QMainWindow):
     # Run Multi LoadDensity Script With Send
     ui_we_want_to_set.run_multi_load_density_action_with_send = QAction("Run Multi LoadDensity Script With Send")
     ui_we_want_to_set.run_multi_load_density_action_with_send.triggered.connect(
-        lambda: call_load_density_test_multi_file_and_send(
+        lambda: call_load_density_multi_file_and_send(
             ui_we_want_to_set,
         )
     )

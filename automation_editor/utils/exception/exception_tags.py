@@ -9,10 +9,10 @@ and current working folder have default_name.html (html report default execute_d
 or you should get the function file_path to read
 """
 # test executor exception
-auto_control_test_executor_exception_tag: str = "can't run AutoControl"
-api_testka_test_executor_exception_tag: str = "can't run APITestka"
-web_runner_test_executor_exception_tag: str = "can't run WebRunner"
-load_density_test_executor_exception_tag: str = "can't run LoadDensity"
+auto_control_process_executor_exception_tag: str = "can't run AutoControl"
+api_testka_process_executor_exception_tag: str = "can't run APITestka"
+web_runner_process_executor_exception_tag: str = "can't run WebRunner"
+load_density_process_executor_exception_tag: str = "can't run LoadDensity"
 # Install
 not_install_exception: str = "Please install package first, Can't find package"
 # ui exception

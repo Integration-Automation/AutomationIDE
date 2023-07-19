@@ -5,9 +5,9 @@ import je_auto_control
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow, QPlainTextEdit
 
-from automation_editor.utils.test_executor.auto_control.auto_control_process import \
-    call_auto_control_test, call_auto_control_test_with_send, call_auto_control_test_multi_file, \
-    call_auto_control_test_multi_file_and_send
+from automation_editor.extend.process_executor.auto_control.auto_control_process import \
+    call_auto_control, call_auto_control_with_send, call_auto_control_multi_file, \
+    call_auto_control_multi_file_and_send
 
 
 def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
@@ -21,7 +21,7 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
     # Run AutoControl Script
     ui_we_want_to_set.run_autocontrol_action = QAction("Run AutoControl Script")
     ui_we_want_to_set.run_autocontrol_action.triggered.connect(
-        lambda: call_auto_control_test(
+        lambda: call_auto_control(
             ui_we_want_to_set,
             ui_we_want_to_set.code_edit.toPlainText()
         )
@@ -30,7 +30,7 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
     # Run AutoControl Script With Send
     ui_we_want_to_set.run_autocontrol_action_with_send = QAction("Run AutoControl With Send")
     ui_we_want_to_set.run_autocontrol_action_with_send.triggered.connect(
-        lambda: call_auto_control_test_with_send(
+        lambda: call_auto_control_with_send(
             ui_we_want_to_set,
             ui_we_want_to_set.code_edit.toPlainText()
         )
@@ -41,7 +41,7 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
     # Run Multi AutoControl Script
     ui_we_want_to_set.run_multi_autocontrol_action = QAction("Run Multi AutoControl Script")
     ui_we_want_to_set.run_multi_autocontrol_action.triggered.connect(
-        lambda: call_auto_control_test_multi_file(
+        lambda: call_auto_control_multi_file(
             ui_we_want_to_set,
         )
     )
@@ -51,7 +51,7 @@ def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
     # Run Multi AutoControl Script With Send
     ui_we_want_to_set.run_multi_autocontrol_action_with_send = QAction("Run Multi AutoControl Script With Send")
     ui_we_want_to_set.run_multi_autocontrol_action_with_send.triggered.connect(
-        lambda: call_auto_control_test_multi_file_and_send(
+        lambda: call_auto_control_multi_file_and_send(
             ui_we_want_to_set,
         )
     )

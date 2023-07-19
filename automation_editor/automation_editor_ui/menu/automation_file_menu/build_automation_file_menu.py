@@ -4,7 +4,7 @@ import webbrowser
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
 
-from automation_editor.utils.test_executor.file_automation.file_automation_process import call_file_automation_test, \
+from automation_editor.extend.process_executor.file_automation.file_automation_process import call_file_automation_test, \
     call_file_automation_test_with_send, call_file_automation_test_multi_file, \
     call_file_automation_test_multi_file_and_send
 

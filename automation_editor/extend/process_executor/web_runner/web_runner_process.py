@@ -3,13 +3,12 @@ import sys
 
 from PySide6.QtWidgets import QMainWindow
 
-from automation_editor.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
+from automation_editor.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
+from automation_editor.extend.process_executor.task_process_manager import TaskProcessManager
 from automation_editor.utils.exception.exception_tags import wrong_test_data_format_exception_tag
 from automation_editor.utils.exception.exceptions import ITETestExecutorException
 from automation_editor.utils.file_process.get_dir_file_list import ask_and_get_dir_files_as_list
-from automation_editor.utils.test_executor.check_mail_thunder import check_mail_thunder_install
-from automation_editor.utils.test_executor.task_process_manager import TaskProcessManager
 
 
 def call_web_runner_test(
@@ -44,7 +43,7 @@ def call_web_runner_test_with_send(
         program_buffer: int = 1024000
 ):
     try:
-        check_mail_thunder_install()
+
         code_window = CodeWindow()
         main_window.current_run_code_window.append(code_window)
         TaskProcessManager(
@@ -89,7 +88,7 @@ def call_web_runner_test_multi_file_and_send(
         program_buffer: int = 1024000
 ):
     try:
-        check_mail_thunder_install()
+
         need_to_execute_list: list = ask_and_get_dir_files_as_list(main_window)
         if need_to_execute_list is not None and isinstance(need_to_execute_list, list) and len(need_to_execute_list) > 0:
             for execute_file in need_to_execute_list:
