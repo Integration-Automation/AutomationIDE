@@ -10,7 +10,8 @@ class PackageManager(object):
             "je_load_density",
             "je_api_testka",
             "je_web_runner",
-            "automation_file"
+            "automation_file",
+            "mail_thunder"
         ]
 
 

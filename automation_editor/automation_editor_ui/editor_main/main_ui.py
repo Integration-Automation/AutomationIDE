@@ -15,6 +15,7 @@ from automation_editor.automation_editor_ui.menu.automation_file_menu.build_auto
 from automation_editor.automation_editor_ui.menu.install_menu.build_install_menu import set_install_menu
 from automation_editor.automation_editor_ui.menu. \
     load_density_menu.build_load_density_menu import set_load_density_menu
+from automation_editor.automation_editor_ui.menu.mail_thunder_menu.build_mail_thunder_menu import set_mail_thunder_menu
 from automation_editor.automation_editor_ui \
     .menu.web_runner_menu.build_webrunner_menu import set_web_runner_menu
 from automation_editor.automation_editor_ui.syntax.syntax_extend import \
@@ -32,6 +33,7 @@ class AutomationEditor(EditorMain):
         set_load_density_menu(self)
         set_web_runner_menu(self)
         set_automation_file_menu(self)
+        set_mail_thunder_menu(self)
         set_install_menu(self)
         syntax_extend_package(self)
         complete_extend_package(self)
