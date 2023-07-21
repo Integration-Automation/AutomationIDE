@@ -4,6 +4,8 @@ import webbrowser
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QMainWindow
 
+from automation_editor.extend.process_executor.mail_thunder.mail_thunder_process import call_mail_thunder
+
 
 def set_mail_thunder_menu(ui_we_want_to_set: QMainWindow):
     """
@@ -13,7 +15,18 @@ def set_mail_thunder_menu(ui_we_want_to_set: QMainWindow):
     """
     ui_we_want_to_set.mail_thunder_menu = ui_we_want_to_set.menu.addMenu("MailThunder")
     ui_we_want_to_set.mail_thunder_run_menu = ui_we_want_to_set.mail_thunder_menu.addMenu("Run")
-
+    # Run MailThunder
+    ui_we_want_to_set.run_mail_thunder_action = QAction("Run MailThunder")
+    ui_we_want_to_set.run_mail_thunder_action.triggered.connect(
+        lambda: call_mail_thunder(
+            ui_we_want_to_set,
+            ui_we_want_to_set.code_edit.toPlainText()
+        )
+    )
+    ui_we_want_to_set.mail_thunder_run_menu.addAction(
+        ui_we_want_to_set.run_mail_thunder_action
+    )
+    # Help menu
     ui_we_want_to_set.mail_thunder_help_menu = ui_we_want_to_set.mail_thunder_menu.addMenu("HELP")
     # Open Github
     ui_we_want_to_set.open_mail_thunder_github_action = QAction("Open MailThunder GitHub")
