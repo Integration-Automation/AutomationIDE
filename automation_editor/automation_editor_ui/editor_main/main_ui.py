@@ -44,6 +44,9 @@ class AutomationEditor(EditorMain):
             close_timer.timeout.connect(self.debug_close)
             close_timer.start()
 
+    def closeEvent(self, event) -> None:
+        super().closeEvent(event)
+
     @classmethod
     def debug_close(cls) -> None:
         """
