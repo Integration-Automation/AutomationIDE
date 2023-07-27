@@ -16,7 +16,7 @@ def call_mail_thunder(
 ):
     try:
         code_window = CodeWindow()
-        main_window.code_result.append(code_window)
+        main_window.current_run_code_window.append(code_window)
         TaskProcessManager(
             main_window=code_window,
             program_buffer_size=program_buffer
