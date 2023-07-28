@@ -1,7 +1,8 @@
 import sys
+from typing import List
 
 from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QWidget
 from je_editor import EditorMain
 from qt_material import apply_stylesheet
 
@@ -26,7 +27,7 @@ class AutomationEditor(EditorMain):
 
     def __init__(self, debug_mode: bool = False, **kwargs):
         super().__init__()
-        self.current_run_code_window = list()
+        self.current_run_code_window: List[QWidget] = list()
         self.help_menu.deleteLater()
         set_autocontrol_menu(self)
         set_apitestka_menu(self)
@@ -43,6 +44,11 @@ class AutomationEditor(EditorMain):
             close_timer.setInterval(10000)
             close_timer.timeout.connect(self.debug_close)
             close_timer.start()
+
+    def closeEvent(self, event) -> None:
+        for widget in self.current_run_code_window:
+            widget.close()
+        super().closeEvent(event)
 
     @classmethod
     def debug_close(cls) -> None:
