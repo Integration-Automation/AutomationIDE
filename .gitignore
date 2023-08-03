@@ -1,5 +1,3 @@
-# IDEA
-.idea/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -129,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Google drive
+
+**/token.json
+**/credentials.json
+
+# Bing
+**/bing_cookies.json
+
+# Pycharm
+.idea/*
