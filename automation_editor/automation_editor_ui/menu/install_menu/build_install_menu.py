@@ -69,7 +69,7 @@ def install_package(package_text: str, ui_we_want_to_set: QMainWindow) -> None:
     shell_manager = ShellManager()
     shell_manager.main_window = ui_we_want_to_set
     shell_manager.later_init()
-    shell_manager.exec_shell([f"{compiler_path}", "-m", "pip", "install", f"{package_text}"])
+    shell_manager.exec_shell([f"{compiler_path}", "-m", "pip", "install", f"{package_text}", "-U"])
 
 
 def install_build_tools(ui_we_want_to_set: QMainWindow) -> None:
