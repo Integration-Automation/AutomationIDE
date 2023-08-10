@@ -1,15 +1,20 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import sys
 import webbrowser
 
 from PySide6.QtGui import QAction
-from PySide6.QtWidgets import QMainWindow
 
 from automation_editor.extend.process_executor.file_automation.file_automation_process import call_file_automation_test, \
     call_file_automation_test_with_send, call_file_automation_test_multi_file, \
     call_file_automation_test_multi_file_and_send
 
 
-def set_automation_file_menu(ui_we_want_to_set: QMainWindow):
+def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     """
     Build menu include WebRunner feature.
     :param ui_we_want_to_set: main window to add menu.

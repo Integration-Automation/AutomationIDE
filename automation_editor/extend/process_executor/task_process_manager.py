@@ -10,7 +10,6 @@ from queue import Queue
 from threading import Thread
 
 from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QTextEdit, QWidget
 from je_editor import error_color, output_color
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
@@ -30,7 +29,7 @@ class TaskProcessManager(object):
         # ite_instance param
         self.read_program_error_output_from_thread: [threading.Thread, None] = None
         self.read_program_output_from_thread: [threading.Thread, None] = None
-        self.main_window: QWidget = main_window
+        self.main_window: CodeWindow = main_window
         self.timer: QTimer = QTimer(self.main_window)
         self.still_run_program: bool = True
         self.program_encoding: str = "utf-8"

@@ -2,6 +2,7 @@ wheel
 twine
 sphinx
 sphinx-rtd-theme
+PySide6
 je-api-testka
 je-load-density
 je-auto-control

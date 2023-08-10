@@ -1,7 +1,11 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import json
 import sys
-
-from PySide6.QtWidgets import QMainWindow
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_editor.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
@@ -12,13 +16,14 @@ from automation_editor.utils.file_process.get_dir_file_list import ask_and_get_d
 
 
 def call_web_runner_test(
-        main_window: QMainWindow,
+        main_window: AutomationEditor,
         test_format_code: str,
         program_buffer: int = 1024000
 ):
     try:
         code_window = CodeWindow()
         main_window.current_run_code_window.append(code_window)
+        main_window.clear_code_result()
         TaskProcessManager(
             main_window=code_window,
             program_buffer_size=program_buffer
@@ -38,7 +43,7 @@ def call_web_runner_test(
 
 
 def call_web_runner_test_with_send(
-        main_window: QMainWindow,
+        main_window: AutomationEditor,
         test_format_code: str,
         program_buffer: int = 1024000
 ):
@@ -66,12 +71,13 @@ def call_web_runner_test_with_send(
 
 
 def call_web_runner_test_multi_file(
-        main_window: QMainWindow,
+        main_window: AutomationEditor,
         program_buffer: int = 1024000
 ):
     try:
         need_to_execute_list: list = ask_and_get_dir_files_as_list(main_window)
-        if need_to_execute_list is not None and isinstance(need_to_execute_list, list) and len(need_to_execute_list) > 0:
+        if need_to_execute_list is not None and isinstance(need_to_execute_list, list) and len(
+                need_to_execute_list) > 0:
             for execute_file in need_to_execute_list:
                 with open(execute_file, "r+") as test_script_json:
                     call_web_runner_test(
@@ -84,13 +90,14 @@ def call_web_runner_test_multi_file(
 
 
 def call_web_runner_test_multi_file_and_send(
-        main_window: QMainWindow,
+        main_window: AutomationEditor,
         program_buffer: int = 1024000
 ):
     try:
 
         need_to_execute_list: list = ask_and_get_dir_files_as_list(main_window)
-        if need_to_execute_list is not None and isinstance(need_to_execute_list, list) and len(need_to_execute_list) > 0:
+        if need_to_execute_list is not None and isinstance(need_to_execute_list, list) and len(
+                need_to_execute_list) > 0:
             for execute_file in need_to_execute_list:
                 with open(execute_file, "r+") as test_script_json:
                     call_web_runner_test_with_send(

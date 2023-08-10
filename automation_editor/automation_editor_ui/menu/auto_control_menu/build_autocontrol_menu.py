@@ -1,16 +1,22 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import sys
 import webbrowser
 
 import je_auto_control
 from PySide6.QtGui import QAction
-from PySide6.QtWidgets import QMainWindow, QPlainTextEdit
+from PySide6.QtWidgets import QPlainTextEdit
 
 from automation_editor.extend.process_executor.auto_control.auto_control_process import \
     call_auto_control, call_auto_control_with_send, call_auto_control_multi_file, \
     call_auto_control_multi_file_and_send
 
 
-def set_autocontrol_menu(ui_we_want_to_set: QMainWindow):
+def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     """
     Build menu include AutoControl feature.
     :param ui_we_want_to_set: main window to add menu.

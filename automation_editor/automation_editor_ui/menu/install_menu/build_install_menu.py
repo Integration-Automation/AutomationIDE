@@ -1,14 +1,20 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
+
 import os
 import shutil
 import sys
 from pathlib import Path
 
 from PySide6.QtGui import QAction
-from PySide6.QtWidgets import QMainWindow
 from je_editor import ShellManager
 
 
-def set_install_menu(ui_we_want_to_set: QMainWindow):
+def set_install_menu(ui_we_want_to_set: AutomationEditor):
     """
     Build menu include install package feature.
     :param ui_we_want_to_set: main window to add menu.
@@ -45,9 +51,21 @@ def set_install_menu(ui_we_want_to_set: QMainWindow):
         lambda: install_web_runner(ui_we_want_to_set)
     )
     ui_we_want_to_set.install_menu.addAction(ui_we_want_to_set.install_web_runner_action)
+    # Try to install Automation File
+    ui_we_want_to_set.install_automation_file_action = QAction("Install Automation File")
+    ui_we_want_to_set.install_automation_file_action.triggered.connect(
+        lambda: install_automation_file(ui_we_want_to_set)
+    )
+    ui_we_want_to_set.install_menu.addAction(ui_we_want_to_set.install_automation_file_action)
+    # Try to install MailThunder
+    ui_we_want_to_set.install_mail_thunder_action = QAction("Install MailThunder")
+    ui_we_want_to_set.install_mail_thunder_action.triggered.connect(
+        lambda: install_mail_thunder_file(ui_we_want_to_set)
+    )
+    ui_we_want_to_set.install_menu.addAction(ui_we_want_to_set.install_mail_thunder_action)
 
 
-def install_package(package_text: str, ui_we_want_to_set: QMainWindow) -> None:
+def install_package(package_text: str, ui_we_want_to_set: AutomationEditor) -> None:
     if sys.platform in ["win32", "cygwin", "msys"]:
         venv_path = Path(os.getcwd() + "/venv/Scripts")
     else:
@@ -72,23 +90,31 @@ def install_package(package_text: str, ui_we_want_to_set: QMainWindow) -> None:
     shell_manager.exec_shell([f"{compiler_path}", "-m", "pip", "install", f"{package_text}", "-U"])
 
 
-def install_build_tools(ui_we_want_to_set: QMainWindow) -> None:
+def install_build_tools(ui_we_want_to_set: AutomationEditor) -> None:
     install_package("setuptools", ui_we_want_to_set)
     install_package("build", ui_we_want_to_set)
     install_package("wheel", ui_we_want_to_set)
 
 
-def install_autocontrol(ui_we_want_to_set: QMainWindow) -> None:
+def install_autocontrol(ui_we_want_to_set: AutomationEditor) -> None:
     install_package("je_auto_control", ui_we_want_to_set)
 
 
-def install_api_testka(ui_we_want_to_set: QMainWindow) -> None:
+def install_api_testka(ui_we_want_to_set: AutomationEditor) -> None:
     install_package("je_api_testka", ui_we_want_to_set)
 
 
-def install_load_density(ui_we_want_to_set: QMainWindow) -> None:
+def install_load_density(ui_we_want_to_set: AutomationEditor) -> None:
     install_package("je_load_density", ui_we_want_to_set)
 
 
-def install_web_runner(ui_we_want_to_set: QMainWindow) -> None:
+def install_web_runner(ui_we_want_to_set: AutomationEditor) -> None:
     install_package("je_web_runner", ui_we_want_to_set)
+
+
+def install_automation_file(ui_we_want_to_set: AutomationEditor) -> None:
+    install_package("automation_file", ui_we_want_to_set)
+
+
+def install_mail_thunder_file(ui_we_want_to_set: AutomationEditor) -> None:
+    install_package("je_mail_thunder", ui_we_want_to_set)
