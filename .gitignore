@@ -140,7 +140,5 @@ dmypy.json
 .idea/*
 
 # Driver
-**/wdm/*
+**/.wdm/*
 
-# Test source
-**/test_source/*
