@@ -1,5 +1,6 @@
 api_testka_keys: list = [
-    "AT_test_api_method", "AT_generate_html", "AT_generate_html_report", "AT_generate_json",
+    "AT_test_api_method", "AT_delegate_async_httpx", "AT_test_api_method_httpx",
+    "AT_generate_html", "AT_generate_html_report", "AT_generate_json",
     "AT_generate_json_report", "AT_generate_xml", "AT_generate_xml_report", "AT_execute_action",
     "AT_execute_files", "AT_add_package_to_executor", "AT_add_package_to_callback_executor",
     "AT_flask_mock_server_add_router", "AT_start_flask_mock_server", "AT_scheduler_event_trigger",

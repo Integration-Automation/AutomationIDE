@@ -13,7 +13,7 @@ def send_after_test(html_report_path: str = None) -> None:
             user: str = mail_thunder_smtp.user
             with open("default_name.html", "r+") as file:
                 html_string: str = file.read()
-            message = mail_thunder_smtp.create_message_with_attach(
+            message = mail_thunder_smtp.smtp_create_message_with_attach(
                 html_string,
                 {"Subject": "Test Report", "To": user, "From": user},
                 "default_name.html", use_html=True)
@@ -23,7 +23,7 @@ def send_after_test(html_report_path: str = None) -> None:
             user: str = mail_thunder_smtp.user
             with open(html_report_path, "r+") as file:
                 html_string: str = file.read()
-            message: MIMEMultipart = mail_thunder_smtp.create_message_with_attach(
+            message: MIMEMultipart = mail_thunder_smtp.smtp_create_message_with_attach(
                 html_string,
                 {"Subject": "Test Report", "To": user, "From": user},
                 html_report_path, use_html=True)

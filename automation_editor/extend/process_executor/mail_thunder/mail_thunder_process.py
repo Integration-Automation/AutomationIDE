@@ -1,7 +1,11 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import json
 import sys
-
-from PySide6.QtWidgets import QMainWindow
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_editor.extend.process_executor.task_process_manager import TaskProcessManager
@@ -10,13 +14,14 @@ from automation_editor.utils.exception.exceptions import ITETestExecutorExceptio
 
 
 def call_mail_thunder(
-        main_window: QMainWindow,
+        main_window: AutomationEditor,
         test_format_code: str,
         program_buffer: int = 1024000
 ):
     try:
         code_window = CodeWindow()
         main_window.current_run_code_window.append(code_window)
+        main_window.clear_code_result()
         TaskProcessManager(
             main_window=code_window,
             program_buffer_size=program_buffer

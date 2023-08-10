@@ -138,3 +138,9 @@ dmypy.json
 
 # Pycharm
 .idea/*
+
+# Driver
+**/wdm/*
+
+# Test source
+**/test_source/*

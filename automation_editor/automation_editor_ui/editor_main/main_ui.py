@@ -1,5 +1,5 @@
 import sys
-from typing import List
+from typing import List, Dict, Type
 
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication, QWidget
@@ -22,10 +22,12 @@ from automation_editor.automation_editor_ui \
 from automation_editor.automation_editor_ui.syntax.syntax_extend import \
     syntax_extend_package
 
+EDITOR_EXTEND_TAB: Dict[str, Type[QWidget]] = {}
+
 
 class AutomationEditor(EditorMain):
 
-    def __init__(self, debug_mode: bool = False, **kwargs):
+    def __init__(self, debug_mode: bool = False):
         super().__init__()
         self.current_run_code_window: List[QWidget] = list()
         self.help_menu.deleteLater()
@@ -38,6 +40,13 @@ class AutomationEditor(EditorMain):
         set_install_menu(self)
         syntax_extend_package(self)
         complete_extend_package(self)
+        # System tray change
+        self.system_tray.main_window = self
+        self.system_tray.setToolTip("Automation Editor")
+        # Tab
+        for widget_name, widget in EDITOR_EXTEND_TAB.items():
+            self.tab_widget.addTab(widget(), widget_name)
+        # Title
         self.setWindowTitle("Automation Editor")
         if debug_mode:
             close_timer = QTimer(self)
