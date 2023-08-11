@@ -1,6 +1,6 @@
 UI
 ----
 .. toctree::
-   :maxdepth: 4
+    :maxdepth: 4
 
     ui.rst
