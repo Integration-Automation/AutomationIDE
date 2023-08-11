@@ -10,6 +10,10 @@
 
 [![AutomationEditor Stable Python3.11](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_11.yml/badge.svg)](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_11.yml)
 
+[![Documentation Status](https://readthedocs.org/projects/automationeditor/badge/?version=latest)](https://automationeditor.readthedocs.io/en/latest/?badge=latest)
+
+[Automation Editor Doc Click Here!](https://automationeditor.readthedocs.io/en/latest/)
+
 ---
 # Table of contents
 > Editor components \
