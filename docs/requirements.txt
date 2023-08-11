@@ -1,1 +1,1 @@
-groundwork-sphinx-theme
+sphinx-rtd-theme
