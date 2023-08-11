@@ -14,9 +14,9 @@ import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, os.path.abspath("source"))
-sys.path.insert(0, str(Path(__file__).parent))
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, os.path.abspath(str(Path(str(Path(__file__).parent) + "/source"))))
+sys.path.insert(1, str(Path(__file__).parent))
+sys.path.insert(2, str(Path(__file__).parent.parent))
 
 # -- Project information -----------------------------------------------------
 
