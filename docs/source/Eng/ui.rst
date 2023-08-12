@@ -1,7 +1,7 @@
-How To User Automation Editor UI
+How To Use Automation Editor UI
 ----
 
-.. image:: image/ui.png
+.. image:: images/ui.png
 
 * Menubar
     * File Menu

@@ -3,6 +3,7 @@ from PySide6.QtWidgets import QWidget, QGridLayout, QLineEdit, QPushButton, QLab
 from automation_editor import start_editor, EDITOR_EXTEND_TAB
 
 
+# You can use you own QWidget
 class TestUI(QWidget):
 
     def __init__(self):
