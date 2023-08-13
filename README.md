@@ -44,3 +44,5 @@
 * pip install automation_editor[full_extension]
 #### if we don't want to use send after test
 * pip install automation_editor
+* 
+![Architecture Diagram](architecture_diagram/AutomationEditorArchitectureDiagram.drawio.png)
