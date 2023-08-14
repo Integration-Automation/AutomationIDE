@@ -1,17 +1,17 @@
-# Rename to build stable version
-# This is stable version
+# Rename to dev version
+# This is dev version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "automation_editor"
-version = "0.0.22"
+name = "automation_editor_dev"
+version = "0.0.23"
 authors = [
     { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
 description = "AutomationEditor for multi automation"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 license = { text = "MIT" }
 dependencies = [
     "je-editor", "je_auto_control", "je_web_runner",
@@ -19,7 +19,7 @@ dependencies = [
     "automation-file"
 ]
 classifiers = [
-    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Development Status :: 2 - Pre-Alpha",
     "Environment :: Win32 (MS Windows)",
     "Environment :: MacOS X",
