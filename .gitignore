@@ -142,3 +142,5 @@ dmypy.json
 # Driver
 **/.wdm/*
 
+# Mailthunder
+**/mail_thunder_content.json
