@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from je_editor import EditorWidget
+
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import sys
@@ -29,7 +31,6 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_autocontrol_action.triggered.connect(
         lambda: call_auto_control(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.autocontrol_run_menu.addAction(ui_we_want_to_set.run_autocontrol_action)
@@ -38,7 +39,6 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_autocontrol_action_with_send.triggered.connect(
         lambda: call_auto_control_with_send(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.autocontrol_run_menu.addAction(
@@ -106,7 +106,7 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     # Stop Record
     ui_we_want_to_set.stop_record_action = QAction("Stop Record")
     ui_we_want_to_set.stop_record_action.triggered.connect(
-        lambda: stop_record(ui_we_want_to_set.code_edit)
+        lambda: stop_record(ui_we_want_to_set)
     )
     ui_we_want_to_set.autocontrol_record_menu.addAction(
         ui_we_want_to_set.stop_record_action
@@ -127,5 +127,7 @@ def create_project() -> None:
         print(repr(error), file=sys.stderr)
 
 
-def stop_record(set_stop_record_text_container: QPlainTextEdit):
-    set_stop_record_text_container.appendPlainText(str(je_auto_control.stop_record()))
+def stop_record(editor_instance: AutomationEditor):
+    widget = editor_instance.tab_widget.currentWidget()
+    if type(widget) is EditorWidget:
+        widget.code_edit.appendPlainText(str(je_auto_control.stop_record()))

@@ -2,8 +2,6 @@
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b7d32ed8600b4bd2a2f3e960f46f2ad0)](https://www.codacy.com/gh/JE-Chen/Integration-testing-environment/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JE-Chen/Integration-testing-environment&amp;utm_campaign=Badge_Grade)
 
-[![AutomationEditor Stable Python3.8](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_8.yml/badge.svg)](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_8.yml)
-
 [![AutomationEditor Stable Python3.9](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_9.yml/badge.svg)](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_9.yml)
 
 [![AutomationEditor Stable Python3.10](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_10.yml/badge.svg)](https://github.com/Intergration-Automation-Testing/AutomationEditor/actions/workflows/stable_python3_10.yml)
