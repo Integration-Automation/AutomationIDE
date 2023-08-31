@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from je_editor import EditorWidget
+
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import json
@@ -15,20 +17,22 @@ from automation_editor.utils.exception.exceptions import ITETestExecutorExceptio
 
 def call_mail_thunder(
         main_window: AutomationEditor,
-        test_format_code: str,
         program_buffer: int = 1024000
 ):
     try:
-        code_window = CodeWindow()
-        main_window.current_run_code_window.append(code_window)
-        main_window.clear_code_result()
-        TaskProcessManager(
-            main_window=code_window,
-            program_buffer_size=program_buffer
-        ).start_test_process(
-            "je_mail_thunder",
-            exec_str=test_format_code,
-        )
+        widget = main_window.tab_widget.currentWidget()
+        if type(widget) is EditorWidget:
+            test_format_code = widget.code_edit.toPlainText()
+            code_window = CodeWindow()
+            main_window.current_run_code_window.append(code_window)
+            main_window.clear_code_result()
+            TaskProcessManager(
+                main_window=code_window,
+                program_buffer_size=program_buffer
+            ).start_test_process(
+                "je_mail_thunder",
+                exec_str=test_format_code,
+            )
     except json.decoder.JSONDecodeError as error:
         print(
             repr(error) +

@@ -26,7 +26,6 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_apitestka_action.triggered.connect(
         lambda: call_api_testka(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.apitestka_run_menu.addAction(ui_we_want_to_set.run_apitestka_action)
@@ -35,7 +34,6 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_apitestka_action_with_send.triggered.connect(
         lambda: call_api_testka_with_send(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.apitestka_run_menu.addAction(

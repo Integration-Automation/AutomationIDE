@@ -26,7 +26,6 @@ def set_web_runner_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_web_runner_action.triggered.connect(
         lambda: call_web_runner_test(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.web_runner_run_menu.addAction(ui_we_want_to_set.run_web_runner_action)
@@ -34,8 +33,6 @@ def set_web_runner_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_web_runner_action_with_send = QAction("Run WebRunner With Send")
     ui_we_want_to_set.run_web_runner_action_with_send.triggered.connect(
         lambda: call_web_runner_test_with_send(
-            ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.web_runner_run_menu.addAction(

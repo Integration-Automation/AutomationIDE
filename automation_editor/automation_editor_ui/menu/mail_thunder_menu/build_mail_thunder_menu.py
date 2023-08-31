@@ -25,7 +25,6 @@ def set_mail_thunder_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_mail_thunder_action.triggered.connect(
         lambda: call_mail_thunder(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.mail_thunder_run_menu.addAction(

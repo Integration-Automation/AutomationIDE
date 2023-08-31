@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 from PySide6.QtGui import QAction
-from je_editor import ShellManager
+from je_editor import ShellManager, EditorWidget
 
 
 def set_install_menu(ui_we_want_to_set: AutomationEditor):
@@ -84,10 +84,12 @@ def install_package(package_text: str, ui_we_want_to_set: AutomationEditor) -> N
         )
     else:
         compiler_path = shutil.which(cmd="python")
-    shell_manager = ShellManager()
-    shell_manager.main_window = ui_we_want_to_set
-    shell_manager.later_init()
-    shell_manager.exec_shell([f"{compiler_path}", "-m", "pip", "install", f"{package_text}", "-U"])
+    widget = ui_we_want_to_set.tab_widget.currentWidget()
+    if type(widget) is EditorWidget:
+        shell_manager = ShellManager()
+        shell_manager.main_window = widget
+        shell_manager.later_init()
+        shell_manager.exec_shell([f"{compiler_path}", "-m", "pip", "install", f"{package_text}", "-U"])
 
 
 def install_build_tools(ui_we_want_to_set: AutomationEditor) -> None:

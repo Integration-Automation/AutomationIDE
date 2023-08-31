@@ -27,7 +27,6 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_file_automation_action.triggered.connect(
         lambda: call_file_automation_test(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.automation_run_file_menu.addAction(ui_we_want_to_set.run_file_automation_action)
@@ -36,7 +35,6 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_file_automation_action_with_send.triggered.connect(
         lambda: call_file_automation_test_with_send(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.automation_run_file_menu.addAction(

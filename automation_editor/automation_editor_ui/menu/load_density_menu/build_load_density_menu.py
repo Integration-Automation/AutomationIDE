@@ -27,7 +27,6 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_load_density_action.triggered.connect(
         lambda: call_load_density(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.load_density_run_menu.addAction(ui_we_want_to_set.run_load_density_action)
@@ -36,7 +35,6 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.run_load_density_action_with_send.triggered.connect(
         lambda: call_load_density_with_send(
             ui_we_want_to_set,
-            ui_we_want_to_set.code_edit.toPlainText()
         )
     )
     ui_we_want_to_set.load_density_run_menu.addAction(
