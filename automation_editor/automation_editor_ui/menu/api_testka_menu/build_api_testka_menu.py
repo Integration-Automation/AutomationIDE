@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from automation_editor.automation_editor_ui.menu.menu_utils import open_web_browser
+
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import sys
-import webbrowser
 
 from PySide6.QtGui import QAction
 
@@ -64,7 +65,9 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.open_apitestka_doc_action = QAction("Open APITestka Doc")
     ui_we_want_to_set.open_apitestka_doc_action.triggered.connect(
         lambda: open_web_browser(
-            "https://apitestka.readthedocs.io/en/latest/"
+            ui_we_want_to_set,
+            "https://apitestka.readthedocs.io/en/latest/",
+            "APITestka Doc"
         )
     )
     ui_we_want_to_set.apitestka_help_menu.addAction(
@@ -74,7 +77,9 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.open_apitestka_github_action = QAction("Open APITestka GitHub")
     ui_we_want_to_set.open_apitestka_github_action.triggered.connect(
         lambda: open_web_browser(
-            "https://github.com/Intergration-Automation-Testing/APITestka"
+            ui_we_want_to_set,
+            "https://github.com/Intergration-Automation-Testing/APITestka",
+            "APITestka Github"
         )
     )
     ui_we_want_to_set.apitestka_help_menu.addAction(
@@ -89,10 +94,6 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.apitestka_project_menu.addAction(
         ui_we_want_to_set.create_apitestka_project_action
     )
-
-
-def open_web_browser(url: str) -> None:
-    webbrowser.open(url=url)
 
 
 def create_project() -> None:

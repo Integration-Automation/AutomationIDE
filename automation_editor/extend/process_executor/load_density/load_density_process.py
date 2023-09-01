@@ -1,8 +1,10 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
 
 from je_editor import EditorWidget
+
+from automation_editor.extend.process_executor.process_executor_utils import build_process
 
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
@@ -19,60 +21,18 @@ from automation_editor.utils.file_process.get_dir_file_list import ask_and_get_d
 
 def call_load_density(
         main_window: AutomationEditor,
+        exec_str: Union[str, None] = None,
         program_buffer: int = 1024000
 ):
-    try:
-        widget = main_window.tab_widget.currentWidget()
-        if type(widget) is EditorWidget:
-            test_format_code = widget.code_edit.toPlainText()
-            code_window = CodeWindow()
-            main_window.current_run_code_window.append(code_window)
-            main_window.clear_code_result()
-            TaskProcessManager(
-                main_window=code_window,
-                program_buffer_size=program_buffer
-            ).start_test_process(
-                "je_load_density",
-                exec_str=test_format_code,
-            )
-    except json.decoder.JSONDecodeError as error:
-        print(
-            repr(error) +
-            "\n"
-            + wrong_test_data_format_exception_tag,
-            file=sys.stderr
-        )
-    except ITETestExecutorException as error:
-        print(repr(error), file=sys.stderr)
+    build_process(main_window, "je_load_density", exec_str, False, program_buffer)
 
 
 def call_load_density_with_send(
         main_window: AutomationEditor,
+        exec_str: Union[str, None] = None,
         program_buffer: int = 1024000
 ):
-    try:
-        widget = main_window.tab_widget.currentWidget()
-        if type(widget) is EditorWidget:
-            test_format_code = widget.code_edit.toPlainText()
-            code_window = CodeWindow()
-            main_window.code_result.append(code_window)
-            TaskProcessManager(
-                main_window=code_window,
-                task_done_trigger_function=send_after_test,
-                program_buffer_size=program_buffer
-            ).start_test_process(
-                "je_load_density",
-                exec_str=test_format_code,
-            )
-    except json.decoder.JSONDecodeError as error:
-        print(
-            repr(error) +
-            "\n"
-            + wrong_test_data_format_exception_tag,
-            file=sys.stderr
-        )
-    except ITETestExecutorException as error:
-        print(repr(error), file=sys.stderr)
+    build_process(main_window, "je_load_density", exec_str, True, program_buffer)
 
 
 def call_load_density_multi_file(

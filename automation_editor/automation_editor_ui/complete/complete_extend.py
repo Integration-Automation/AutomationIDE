@@ -19,7 +19,7 @@ def complete_extend_package(main_window: AutomationEditor) -> None:
     :return: None
     """
     widget = main_window.tab_widget.currentWidget()
-    if type(widget) is EditorWidget:
+    if isinstance(widget, EditorWidget):
         for package in package_manager.syntax_check_list:
             for word in package_keyword_list.get(package):
                 # Complete
