@@ -119,7 +119,6 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
 
 def create_project() -> None:
     try:
-        import je_auto_control
         package = je_auto_control
         if package is not None:
             package.create_project_dir()
@@ -129,5 +128,5 @@ def create_project() -> None:
 
 def stop_record(editor_instance: AutomationEditor):
     widget = editor_instance.tab_widget.currentWidget()
-    if type(widget) is EditorWidget:
+    if isinstance(widget, EditorWidget):
         widget.code_edit.appendPlainText(str(je_auto_control.stop_record()))
