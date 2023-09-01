@@ -26,4 +26,3 @@ def complete_extend_package(main_window: AutomationEditor) -> None:
                 widget.code_edit.complete_list.append(word)
                 complete_list.append(word)
             widget.code_edit.set_complete(widget.code_edit.complete_list)
-

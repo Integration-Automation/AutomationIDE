@@ -35,4 +35,3 @@ def syntax_extend_package(main_window: AutomationEditor) -> None:
                 }
             }
         )
-

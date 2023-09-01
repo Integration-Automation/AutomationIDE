@@ -2,20 +2,12 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Union
 
-from je_editor import EditorWidget
-
 from automation_editor.extend.process_executor.process_executor_utils import build_process
 
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
-import json
 import sys
 
-from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
-from automation_editor.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
-from automation_editor.extend.process_executor.task_process_manager import TaskProcessManager
-from automation_editor.utils.exception.exception_tags import wrong_test_data_format_exception_tag
-from automation_editor.utils.exception.exceptions import ITETestExecutorException
 from automation_editor.utils.file_process.get_dir_file_list import ask_and_get_dir_files_as_list
 
 
@@ -25,6 +17,7 @@ def call_web_runner_test(
         program_buffer: int = 1024000
 ):
     build_process(main_window, "je_web_runner", exec_str, False, program_buffer)
+
 
 def call_web_runner_test_with_send(
         main_window: AutomationEditor,

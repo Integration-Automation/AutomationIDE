@@ -4,14 +4,13 @@ import json
 import sys
 from typing import TYPE_CHECKING, Union
 
-from automation_editor.utils.exception.exceptions import ITETestExecutorException
-
-from automation_editor.utils.exception.exception_tags import wrong_test_data_format_exception_tag
 from je_editor import EditorWidget
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_editor.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
 from automation_editor.extend.process_executor.task_process_manager import TaskProcessManager
+from automation_editor.utils.exception.exception_tags import wrong_test_data_format_exception_tag
+from automation_editor.utils.exception.exceptions import ITETestExecutorException
 
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
