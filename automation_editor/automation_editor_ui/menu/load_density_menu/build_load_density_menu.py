@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from automation_editor.automation_editor_ui.menu.menu_utils import open_web_browser
+
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 import sys
-import webbrowser
 
 from PySide6.QtGui import QAction
 
@@ -65,7 +66,9 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.open_load_density_doc_action = QAction("Open LoadDensity Doc")
     ui_we_want_to_set.open_load_density_doc_action.triggered.connect(
         lambda: open_web_browser(
-            "https://loaddensity.readthedocs.io/en/latest/"
+            ui_we_want_to_set,
+            "https://loaddensity.readthedocs.io/en/latest/",
+            "LoadDensity Doc"
         )
     )
     ui_we_want_to_set.load_density_help_menu.addAction(
@@ -75,7 +78,9 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.open_load_density_github_action = QAction("Open LoadDensity GitHub")
     ui_we_want_to_set.open_load_density_github_action.triggered.connect(
         lambda: open_web_browser(
-            "https://github.com/Intergration-Automation-Testing/LoadDensity"
+            ui_we_want_to_set,
+            "https://github.com/Intergration-Automation-Testing/LoadDensity",
+            "LoadDensity GitHub"
         )
     )
     ui_we_want_to_set.load_density_help_menu.addAction(
@@ -90,10 +95,6 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.load_density_project_menu.addAction(
         ui_we_want_to_set.create_load_density_project_action
     )
-
-
-def open_web_browser(url: str) -> None:
-    webbrowser.open(url=url)
 
 
 def create_project() -> None:

@@ -18,7 +18,7 @@ from je_editor import syntax_word_setting_dict
 
 def syntax_extend_package(main_window: AutomationEditor) -> None:
     widget = main_window.tab_widget.currentWidget()
-    if type(widget) is EditorWidget:
+    if isinstance(widget, EditorWidget):
         for package in package_manager.syntax_check_list:
             text_char_format = QTextCharFormat()
             text_char_format.setForeground(QColor(255, 255, 0))
@@ -35,4 +35,3 @@ def syntax_extend_package(main_window: AutomationEditor) -> None:
                 }
             }
         )
-

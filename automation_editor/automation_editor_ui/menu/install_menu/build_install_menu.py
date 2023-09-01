@@ -85,7 +85,7 @@ def install_package(package_text: str, ui_we_want_to_set: AutomationEditor) -> N
     else:
         compiler_path = shutil.which(cmd="python")
     widget = ui_we_want_to_set.tab_widget.currentWidget()
-    if type(widget) is EditorWidget:
+    if isinstance(widget, EditorWidget):
         shell_manager = ShellManager()
         shell_manager.main_window = widget
         shell_manager.later_init()
