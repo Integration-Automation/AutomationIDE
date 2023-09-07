@@ -10,7 +10,7 @@ from queue import Queue
 from threading import Thread
 
 from PySide6.QtCore import QTimer
-from je_editor import error_color, output_color
+from je_editor import user_setting_color_dict
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_editor.utils.exception.exception_tags import compiler_not_found_error
@@ -77,7 +77,8 @@ class TaskProcessManager(object):
                 exec_str
             ],
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            stderr=subprocess.PIPE,
+            shell=True
         )
         self.still_run_program = True
         # program output message queue thread
@@ -104,18 +105,19 @@ class TaskProcessManager(object):
     # Pyside UI update method
     def pull_text(self):
         try:
-            self.main_window.code_result.setTextColor(error_color)
-            if not self.run_error_queue.empty():
-                error_message = self.run_error_queue.get_nowait()
-                error_message = str(error_message).strip()
-                if error_message:
-                    self.main_window.code_result.append(error_message)
-            self.main_window.code_result.setTextColor(output_color)
+            self.main_window.code_result.setTextColor(user_setting_color_dict.get("normal_output_color"))
             if not self.run_output_queue.empty():
                 output_message = self.run_output_queue.get_nowait()
                 output_message = str(output_message).strip()
                 if output_message:
                     self.main_window.code_result.append(output_message)
+            self.main_window.code_result.setTextColor(user_setting_color_dict.get("error_output_color"))
+            if not self.run_error_queue.empty():
+                error_message = self.run_error_queue.get_nowait()
+                error_message = str(error_message).strip()
+                if error_message:
+                    self.main_window.code_result.append(error_message)
+            self.main_window.code_result.setTextColor(user_setting_color_dict.get("normal_output_color"))
         except queue.Empty:
             pass
         if self.process is not None:
@@ -144,23 +146,10 @@ class TaskProcessManager(object):
         self.print_and_clear_queue()
         if self.process is not None:
             self.process.terminate()
-            print(f"Task exit with code {self.process.returncode}")
+            self.main_window.code_result.append(f"Task exit with code {self.process.returncode}")
             self.process = None
 
     def print_and_clear_queue(self):
-        try:
-            for std_output in iter(self.run_output_queue.get_nowait, None):
-                std_output = str(std_output).strip()
-                if std_output:
-                    self.main_window.code_result.append(std_output)
-            self.main_window.code_result.setTextColor(error_color)
-            for std_err in iter(self.run_error_queue.get_nowait, None):
-                std_err = str(std_err).strip()
-                if std_err:
-                    self.main_window.code_result.append(std_err)
-            self.main_window.code_result.setTextColor(output_color)
-        except queue.Empty:
-            pass
         self.run_output_queue = queue.Queue()
         self.run_error_queue = queue.Queue()
 
