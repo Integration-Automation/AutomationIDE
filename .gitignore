@@ -144,3 +144,7 @@ dmypy.json
 
 # Mailthunder
 **/mail_thunder_content.json
+
+# JEditor
+.jeditor
+**/.jeditor
