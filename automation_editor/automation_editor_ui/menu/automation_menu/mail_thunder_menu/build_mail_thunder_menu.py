@@ -19,7 +19,7 @@ def set_mail_thunder_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.mail_thunder_menu = ui_we_want_to_set.menu.addMenu("MailThunder")
+    ui_we_want_to_set.mail_thunder_menu = ui_we_want_to_set.automation_menu.addMenu("MailThunder")
     ui_we_want_to_set.mail_thunder_run_menu = ui_we_want_to_set.mail_thunder_menu.addMenu("Run")
     # Run MailThunder
     ui_we_want_to_set.run_mail_thunder_action = QAction("Run MailThunder")

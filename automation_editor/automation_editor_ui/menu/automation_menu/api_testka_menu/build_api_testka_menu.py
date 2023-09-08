@@ -20,7 +20,7 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.apitestka_menu = ui_we_want_to_set.menu.addMenu("APITestka")
+    ui_we_want_to_set.apitestka_menu = ui_we_want_to_set.automation_menu.addMenu("APITestka")
     ui_we_want_to_set.apitestka_run_menu = ui_we_want_to_set.apitestka_menu.addMenu("Run")
     # Run APITestka Script
     ui_we_want_to_set.run_apitestka_action = QAction("Run APITestka Script")

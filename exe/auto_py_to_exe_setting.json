@@ -7,7 +7,7 @@
   },
   {
    "optionDest": "filenames",
-   "value": "C:/Users/JeffreyChen/Desktop/Code_Space/AutomationEditor/exe/start_automation_editor.py"
+   "value": "C:/CodeWorkspace/AutomationEditor/exe/start_automation_editor.py"
   },
   {
    "optionDest": "onefile",
@@ -19,7 +19,7 @@
   },
   {
    "optionDest": "icon_file",
-   "value": "C:/Users/JeffreyChen/Desktop/Code_Space/AutomationEditor/exe/je_driver_icon.ico"
+   "value": "C:/CodeWorkspace/AutomationEditor/exe/je_driver_icon.ico"
   },
   {
    "optionDest": "name",
@@ -75,11 +75,11 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/Users/JeffreyChen/Desktop/Code_Space/AutomationEditor/exe/je_driver_icon.ico;."
+   "value": "C:/CodeWorkspace/AutomationEditor/exe/je_driver_icon.ico;."
   },
   {
    "optionDest": "pathex",
-   "value": "C:/Users/JeffreyChen/Desktop/Code_Space/AutomationEditor/venv"
+   "value": "C:/CodeWorkspace/AutomationEditor/venv"
   }
  ],
  "nonPyinstallerOptions": {

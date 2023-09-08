@@ -21,7 +21,7 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.load_density_menu = ui_we_want_to_set.menu.addMenu("LoadDensity")
+    ui_we_want_to_set.load_density_menu = ui_we_want_to_set.automation_menu.addMenu("LoadDensity")
     ui_we_want_to_set.load_density_run_menu = ui_we_want_to_set.load_density_menu.addMenu("Run")
     # Run LoadDensity Script
     ui_we_want_to_set.run_load_density_action = QAction("Run LoadDensity Script")

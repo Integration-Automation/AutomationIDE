@@ -24,7 +24,7 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.autocontrol_menu = ui_we_want_to_set.menu.addMenu("AutoControl")
+    ui_we_want_to_set.autocontrol_menu = ui_we_want_to_set.automation_menu.addMenu("AutoControl")
     ui_we_want_to_set.autocontrol_run_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Run")
     # Run AutoControl Script
     ui_we_want_to_set.run_autocontrol_action = QAction("Run AutoControl Script")

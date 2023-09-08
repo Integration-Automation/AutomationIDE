@@ -7,18 +7,7 @@ from je_editor import EditorMain
 from qt_material import apply_stylesheet
 
 from automation_editor.automation_editor_ui.complete.complete_extend import complete_extend_package
-from automation_editor.automation_editor_ui. \
-    menu.api_testka_menu.build_api_testka_menu import set_apitestka_menu
-from automation_editor.automation_editor_ui. \
-    menu.auto_control_menu.build_autocontrol_menu import set_autocontrol_menu
-from automation_editor.automation_editor_ui.menu.automation_file_menu.build_automation_file_menu import \
-    set_automation_file_menu
-from automation_editor.automation_editor_ui.menu.install_menu.build_install_menu import set_install_menu
-from automation_editor.automation_editor_ui.menu. \
-    load_density_menu.build_load_density_menu import set_load_density_menu
-from automation_editor.automation_editor_ui.menu.mail_thunder_menu.build_mail_thunder_menu import set_mail_thunder_menu
-from automation_editor.automation_editor_ui \
-    .menu.web_runner_menu.build_webrunner_menu import set_web_runner_menu
+from automation_editor.automation_editor_ui.menu.build_menubar import add_menu_to_menubar
 from automation_editor.automation_editor_ui.syntax.syntax_extend import \
     syntax_extend_package
 
@@ -30,14 +19,12 @@ class AutomationEditor(EditorMain):
     def __init__(self, debug_mode: bool = False):
         super().__init__()
         self.current_run_code_window: List[QWidget] = list()
+        # Project compiler if user not choose this will use which to find
+        self.python_compiler = None
+        # Delete JEditor help
         self.help_menu.deleteLater()
-        set_autocontrol_menu(self)
-        set_apitestka_menu(self)
-        set_load_density_menu(self)
-        set_web_runner_menu(self)
-        set_automation_file_menu(self)
-        set_mail_thunder_menu(self)
-        set_install_menu(self)
+        # Menu
+        add_menu_to_menubar(self)
         syntax_extend_package(self)
         complete_extend_package(self)
         # System tray change
