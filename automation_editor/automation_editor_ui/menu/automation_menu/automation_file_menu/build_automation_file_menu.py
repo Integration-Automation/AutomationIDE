@@ -21,7 +21,7 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.automation_file_menu = ui_we_want_to_set.menu.addMenu("FileAutomation")
+    ui_we_want_to_set.automation_file_menu = ui_we_want_to_set.automation_menu.addMenu("FileAutomation")
     ui_we_want_to_set.automation_run_file_menu = ui_we_want_to_set.automation_file_menu.addMenu("Run")
     # Run FileAutomation Script
     ui_we_want_to_set.run_file_automation_action = QAction("Run FileAutomation Script")

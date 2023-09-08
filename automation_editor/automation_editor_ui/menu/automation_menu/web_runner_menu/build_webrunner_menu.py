@@ -20,7 +20,7 @@ def set_web_runner_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.web_runner_menu = ui_we_want_to_set.menu.addMenu("WebRunner")
+    ui_we_want_to_set.web_runner_menu = ui_we_want_to_set.automation_menu.addMenu("WebRunner")
     ui_we_want_to_set.web_runner_run_menu = ui_we_want_to_set.web_runner_menu.addMenu("Run")
     # Run WEBRunner Script
     ui_we_want_to_set.run_web_runner_action = QAction("Run WebRunner Script")
