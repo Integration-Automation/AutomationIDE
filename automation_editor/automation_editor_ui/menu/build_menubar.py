@@ -18,6 +18,7 @@ from automation_editor.automation_editor_ui.menu.install_menu.automation_menu.bu
     build_automation_install_menu
 from automation_editor.automation_editor_ui.menu.install_menu.tools_menu.build_tool_install_menu import \
     build_tool_install_menu
+from automation_editor.automation_editor_ui.menu.tools_menu.bing_gpt_menu.build_bing_gpt_menu import set_bing_gpt_menu
 
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
@@ -34,3 +35,4 @@ def add_menu_to_menubar(ui_we_want_to_set: AutomationEditor):
     set_web_runner_menu(ui_we_want_to_set)
     build_automation_install_menu(ui_we_want_to_set)
     build_tool_install_menu(ui_we_want_to_set)
+    set_bing_gpt_menu(ui_we_want_to_set)
