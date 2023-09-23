@@ -23,10 +23,14 @@ from automation_editor.automation_editor_ui.menu.tools_menu.bing_gpt_menu.build_
 if TYPE_CHECKING:
     from automation_editor.automation_editor_ui.editor_main.main_ui import AutomationEditor
 
+from je_editor import language_wrapper
+
 
 def add_menu_to_menubar(ui_we_want_to_set: AutomationEditor):
-    ui_we_want_to_set.automation_menu = ui_we_want_to_set.menu.addMenu("Automation")
-    ui_we_want_to_set.install_menu = ui_we_want_to_set.menu.addMenu("Install")
+    ui_we_want_to_set.automation_menu = ui_we_want_to_set.menu.addMenu(
+        language_wrapper.language_word_dict.get("automation_menu_label"))
+    ui_we_want_to_set.install_menu = ui_we_want_to_set.menu.addMenu(
+        language_wrapper.language_word_dict.get("install_menu_label"))
     set_apitestka_menu(ui_we_want_to_set)
     set_autocontrol_menu(ui_we_want_to_set)
     set_automation_file_menu(ui_we_want_to_set)

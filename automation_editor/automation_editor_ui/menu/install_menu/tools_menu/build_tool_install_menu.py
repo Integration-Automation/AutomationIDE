@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from PySide6.QtGui import QAction
+from je_editor import language_wrapper
 
 from automation_editor.automation_editor_ui.menu.install_menu.install_utils import install_package
 
@@ -11,9 +12,11 @@ if TYPE_CHECKING:
 
 
 def build_tool_install_menu(ui_we_want_to_set: AutomationEditor):
-    ui_we_want_to_set.install_tools_menu = ui_we_want_to_set.install_menu.addMenu("Tools")
+    ui_we_want_to_set.install_tools_menu = ui_we_want_to_set.install_menu.addMenu(
+        language_wrapper.language_word_dict.get("install_menu_tools_install_menu_label"))
     # Try to install Build Tools
-    ui_we_want_to_set.install_tool_action = QAction("Install Build Tools")
+    ui_we_want_to_set.install_tool_action = QAction(
+        language_wrapper.language_word_dict.get("install_menu_tools_install_build_tools"))
     ui_we_want_to_set.install_tool_action.triggered.connect(
         lambda: install_build_tools(ui_we_want_to_set)
     )

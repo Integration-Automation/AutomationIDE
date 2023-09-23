@@ -1,4 +1,4 @@
-from automation_editor import *
+from automation_editor import start_editor
 
 
 start_editor()
