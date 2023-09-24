@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from je_editor import language_wrapper
+
 from automation_editor.automation_editor_ui.menu.menu_utils import open_web_browser
 
 if TYPE_CHECKING:
@@ -21,10 +23,13 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.automation_file_menu = ui_we_want_to_set.automation_menu.addMenu("FileAutomation")
-    ui_we_want_to_set.automation_run_file_menu = ui_we_want_to_set.automation_file_menu.addMenu("Run")
+    ui_we_want_to_set.automation_file_menu = ui_we_want_to_set.automation_menu.addMenu(
+        language_wrapper.language_word_dict.get("file_automation_menu_label"))
+    ui_we_want_to_set.automation_run_file_menu = ui_we_want_to_set.automation_file_menu.addMenu(
+        language_wrapper.language_word_dict.get("run_label"))
     # Run FileAutomation Script
-    ui_we_want_to_set.run_file_automation_action = QAction("Run FileAutomation Script")
+    ui_we_want_to_set.run_file_automation_action = QAction(
+        language_wrapper.language_word_dict.get("file_automation_run_script_label"))
     ui_we_want_to_set.run_file_automation_action.triggered.connect(
         lambda: call_file_automation_test(
             ui_we_want_to_set,
@@ -32,7 +37,8 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     )
     ui_we_want_to_set.automation_run_file_menu.addAction(ui_we_want_to_set.run_file_automation_action)
     # Run FileAutomation Script With Send
-    ui_we_want_to_set.run_file_automation_action_with_send = QAction("Run FileAutomation With Send")
+    ui_we_want_to_set.run_file_automation_action_with_send = QAction(
+        language_wrapper.language_word_dict.get("file_automation_run_script_with_send_label"))
     ui_we_want_to_set.run_file_automation_action_with_send.triggered.connect(
         lambda: call_file_automation_test_with_send(
             ui_we_want_to_set,
@@ -42,7 +48,8 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
         ui_we_want_to_set.run_file_automation_action_with_send
     )
     # Run Multi FileAutomation Script
-    ui_we_want_to_set.run_multi_file_automation_action = QAction("Run Multi FileAutomation Script")
+    ui_we_want_to_set.run_multi_file_automation_action = QAction(
+        language_wrapper.language_word_dict.get("file_automation_run_multi_script_label"))
     ui_we_want_to_set.run_multi_file_automation_action.triggered.connect(
         lambda: call_file_automation_test_multi_file(
             ui_we_want_to_set,
@@ -52,7 +59,8 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
         ui_we_want_to_set.run_multi_file_automation_action
     )
     # Run Multi FileAutomation Script With Send
-    ui_we_want_to_set.run_multi_file_automation_action_with_send = QAction("Run Multi FileAutomation Script With Send")
+    ui_we_want_to_set.run_multi_file_automation_action_with_send = QAction(
+        language_wrapper.language_word_dict.get("file_automation_run_multi_script_with_send_label"))
     ui_we_want_to_set.run_multi_file_automation_action_with_send.triggered.connect(
         lambda: call_file_automation_test_multi_file_and_send(
             ui_we_want_to_set,
@@ -61,34 +69,41 @@ def set_automation_file_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.automation_run_file_menu.addAction(
         ui_we_want_to_set.run_multi_file_automation_action_with_send
     )
-    ui_we_want_to_set.file_automation_help_menu = ui_we_want_to_set.automation_file_menu.addMenu("HELP")
+    ui_we_want_to_set.file_automation_help_menu = ui_we_want_to_set.automation_file_menu.addMenu(
+        language_wrapper.language_word_dict.get("help_label")
+    )
     # Open Doc
-    ui_we_want_to_set.open_file_automation_doc_action = QAction("Open FileAutomation Doc")
+    ui_we_want_to_set.open_file_automation_doc_action = QAction(
+        language_wrapper.language_word_dict.get("file_automation_doc_label"))
     ui_we_want_to_set.open_file_automation_doc_action.triggered.connect(
         lambda: open_web_browser(
             ui_we_want_to_set,
             "https://fileautomation.readthedocs.io/en/latest/",
-            "FileAutomation Doc"
+            language_wrapper.language_word_dict.get("file_automation_doc_tab_label")
         )
     )
     ui_we_want_to_set.file_automation_help_menu.addAction(
         ui_we_want_to_set.open_file_automation_doc_action
     )
     # Open Github
-    ui_we_want_to_set.open_file_automation_github_action = QAction("Open FileAutomation GitHub")
+    ui_we_want_to_set.open_file_automation_github_action = QAction(
+        language_wrapper.language_word_dict.get("file_automation_github_label"))
     ui_we_want_to_set.open_file_automation_github_action.triggered.connect(
         lambda: open_web_browser(
             ui_we_want_to_set,
             "https://github.com/Integration-Automation/FileAutomation",
-            "FileAutomation GitHub"
+            language_wrapper.language_word_dict.get("file_automation_github_tab_label")
         )
     )
     ui_we_want_to_set.file_automation_help_menu.addAction(
         ui_we_want_to_set.open_file_automation_github_action
     )
-    ui_we_want_to_set.file_automation_project_menu = ui_we_want_to_set.automation_file_menu.addMenu("Project")
+    ui_we_want_to_set.file_automation_project_menu = ui_we_want_to_set.automation_file_menu.addMenu(
+        language_wrapper.language_word_dict.get("project_label")
+    )
     # Create Project
-    ui_we_want_to_set.create_web_runner_project_action = QAction("Create FileAutomation Project")
+    ui_we_want_to_set.create_web_runner_project_action = QAction(
+        language_wrapper.language_word_dict.get("file_automation_create_project_label"))
     ui_we_want_to_set.create_web_runner_project_action.triggered.connect(
         create_project
     )

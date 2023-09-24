@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from je_editor import EditorWidget
+from je_editor import EditorWidget, language_wrapper
 
 from automation_editor.automation_editor_ui.menu.menu_utils import open_web_browser
 
@@ -24,10 +24,13 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     :param ui_we_want_to_set: main window to add menu.
     :return: None
     """
-    ui_we_want_to_set.autocontrol_menu = ui_we_want_to_set.automation_menu.addMenu("AutoControl")
-    ui_we_want_to_set.autocontrol_run_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Run")
+    ui_we_want_to_set.autocontrol_menu = ui_we_want_to_set.automation_menu.addMenu(
+         language_wrapper.language_word_dict.get("autocontrol_menu_label"))
+    ui_we_want_to_set.autocontrol_run_menu = ui_we_want_to_set.autocontrol_menu.addMenu(
+        language_wrapper.language_word_dict.get("run_label"))
     # Run AutoControl Script
-    ui_we_want_to_set.run_autocontrol_action = QAction("Run AutoControl Script")
+    ui_we_want_to_set.run_autocontrol_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_run_script_label"))
     ui_we_want_to_set.run_autocontrol_action.triggered.connect(
         lambda: call_auto_control(
             ui_we_want_to_set,
@@ -35,7 +38,8 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     )
     ui_we_want_to_set.autocontrol_run_menu.addAction(ui_we_want_to_set.run_autocontrol_action)
     # Run AutoControl Script With Send
-    ui_we_want_to_set.run_autocontrol_action_with_send = QAction("Run AutoControl With Send")
+    ui_we_want_to_set.run_autocontrol_action_with_send = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_run_script_with_send_label"))
     ui_we_want_to_set.run_autocontrol_action_with_send.triggered.connect(
         lambda: call_auto_control_with_send(
             ui_we_want_to_set,
@@ -45,7 +49,8 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
         ui_we_want_to_set.run_autocontrol_action_with_send
     )
     # Run Multi AutoControl Script
-    ui_we_want_to_set.run_multi_autocontrol_action = QAction("Run Multi AutoControl Script")
+    ui_we_want_to_set.run_multi_autocontrol_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_run_multi_script_label"))
     ui_we_want_to_set.run_multi_autocontrol_action.triggered.connect(
         lambda: call_auto_control_multi_file(
             ui_we_want_to_set,
@@ -55,7 +60,9 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
         ui_we_want_to_set.run_multi_autocontrol_action
     )
     # Run Multi AutoControl Script With Send
-    ui_we_want_to_set.run_multi_autocontrol_action_with_send = QAction("Run Multi AutoControl Script With Send")
+    ui_we_want_to_set.run_multi_autocontrol_action_with_send = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_run_multi_script_with_send_label")
+    )
     ui_we_want_to_set.run_multi_autocontrol_action_with_send.triggered.connect(
         lambda: call_auto_control_multi_file_and_send(
             ui_we_want_to_set,
@@ -64,34 +71,39 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.autocontrol_run_menu.addAction(
         ui_we_want_to_set.run_multi_autocontrol_action_with_send
     )
-    ui_we_want_to_set.autocontrol_help_menu = ui_we_want_to_set.autocontrol_menu.addMenu("HELP")
+    ui_we_want_to_set.autocontrol_help_menu = ui_we_want_to_set.autocontrol_menu.addMenu(
+        language_wrapper.language_word_dict.get("help_label"))
     # Open Doc
-    ui_we_want_to_set.open_autocontrol_doc_action = QAction("Open AutoControl Doc")
+    ui_we_want_to_set.open_autocontrol_doc_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_doc_label"))
     ui_we_want_to_set.open_autocontrol_doc_action.triggered.connect(
         lambda: open_web_browser(
             ui_we_want_to_set,
             "https://autocontrol.readthedocs.io/en/latest/",
-            "AutoControl Doc"
+            language_wrapper.language_word_dict.get("autocontrol_doc_tab_label")
         )
     )
     ui_we_want_to_set.autocontrol_help_menu.addAction(
         ui_we_want_to_set.open_autocontrol_doc_action
     )
     # Open Github
-    ui_we_want_to_set.open_autocontrol_github_action = QAction("Open AutoControl GitHub")
+    ui_we_want_to_set.open_autocontrol_github_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_github_label"))
     ui_we_want_to_set.open_autocontrol_github_action.triggered.connect(
         lambda: open_web_browser(
             ui_we_want_to_set,
             "https://github.com/Intergration-Automation-Testing/AutoControl",
-            "AutoControl GitHub"
+            language_wrapper.language_word_dict.get("autocontrol_github_tab_label")
         )
     )
     ui_we_want_to_set.autocontrol_help_menu.addAction(
         ui_we_want_to_set.open_autocontrol_github_action
     )
-    ui_we_want_to_set.autocontrol_project_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Project")
+    ui_we_want_to_set.autocontrol_project_menu = ui_we_want_to_set.autocontrol_menu.addMenu(
+        language_wrapper.language_word_dict.get("project_label"))
     # Create Project
-    ui_we_want_to_set.create_autocontrol_project_action = QAction("Create AutoControl Project")
+    ui_we_want_to_set.create_autocontrol_project_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_create_project_label"))
     ui_we_want_to_set.create_autocontrol_project_action.triggered.connect(
         create_project
     )
@@ -99,8 +111,10 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
         ui_we_want_to_set.create_autocontrol_project_action
     )
     # Record
-    ui_we_want_to_set.autocontrol_record_menu = ui_we_want_to_set.autocontrol_menu.addMenu("Record")
-    ui_we_want_to_set.record_action = QAction("Start Record")
+    ui_we_want_to_set.autocontrol_record_menu = ui_we_want_to_set.autocontrol_menu.addMenu(
+        language_wrapper.language_word_dict.get("autocontrol_record_menu_label"))
+    ui_we_want_to_set.record_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_record_start_label"))
     ui_we_want_to_set.record_action.triggered.connect(
         je_auto_control.record
     )
@@ -108,7 +122,8 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
         ui_we_want_to_set.record_action
     )
     # Stop Record
-    ui_we_want_to_set.stop_record_action = QAction("Stop Record")
+    ui_we_want_to_set.stop_record_action = QAction(
+        language_wrapper.language_word_dict.get("autocontrol_record_stop_label"))
     ui_we_want_to_set.stop_record_action.triggered.connect(
         lambda: stop_record(ui_we_want_to_set)
     )

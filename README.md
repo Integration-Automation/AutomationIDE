@@ -33,6 +33,20 @@
 > * Automation instance monitor.
 > * Automation project support.
 > * Docs support.
+> * BingGPT (requires setting up cookies, tutorial available in the IDE) 
+> * DALL-E3 Bing version for image generation (requires setting up another type of cookie, tutorial available in the IDE)
+> * Auto-save (available after the first save or after opening a file), auto-complete, jump to definition. 
+> * Bilingual interface (English, Traditional Chinese) Choose font and size. 
+> * Tabbed browsing, split window functionality. 
+> * Embedded browser. 
+> * Embedded Jupyter and IPython. 
+> * Built-in automation packages.
+> * Multiple UI style choices. 
+> * Python venv and management to choose the Python interpreter to use.
+> * Code style checking and auto-formatting (PEP8). 
+> * Debugger.
+> * Multiple Shell command executors (run multiple Shells at once). 
+> * Multiple program executors (run multiple programs at once). Custom colors.
 
 
 ---
