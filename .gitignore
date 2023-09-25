@@ -148,3 +148,4 @@ dmypy.json
 # JEditor
 .jeditor
 **/.jeditor
+**/user_setting.*

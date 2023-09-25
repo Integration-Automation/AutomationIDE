@@ -12,6 +12,8 @@
 
 [Automation Editor Doc Click Here!](https://automationeditor.readthedocs.io/en/latest/)
 
+[Using this IDE edit tkinter video](https://www.youtube.com/watch?v=VXm8L2qrdSU&ab_channel=JEChen)
+
 ---
 # Table of contents
 > Editor components \
