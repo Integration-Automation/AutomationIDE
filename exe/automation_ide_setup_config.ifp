@@ -3,7 +3,7 @@
 ProjectFileVersion = 1.1
 [General]
 Program name = AutomationIDE
-Program version = 1.0.3
+Program version = 1.0.4
 Windows XP = 0
 Windows Server 2003 = 0
 Windows Vista = 0
@@ -27,7 +27,7 @@ Header image = <main>
 Show Label = 1
 VisualStylesEnabled = 1
 [Files]
-Installation path = <ProgramFiles>\<Company>\<AppName>\
+Installation path = <UserProfile>\<Company>\<AppName>\
 Autcip = 1
 [Uninstall]
 Vwau = 0
@@ -351,6 +351,9 @@ pyd
 C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_zoneinfo.pyd
 43.8 KB
 pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutoControl.log
+69 Byte
+log
 C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE.exe
 13.7 MB
 exe
@@ -360,6 +363,9 @@ zip
 C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\concrt140.dll
 319.9 KB
 dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\FrontEngine.log
+0 Byte
+log
 C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\je_driver_icon.ico
 4.2 KB
 ico
