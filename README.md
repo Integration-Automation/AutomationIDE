@@ -10,17 +10,10 @@
 
 [![Documentation Status](https://readthedocs.org/projects/automationeditor/badge/?version=latest)](https://automationeditor.readthedocs.io/en/latest/?badge=latest)
 
-[Automation Editor Doc Click Here!](https://automationeditor.readthedocs.io/en/latest/)
+[AutomationIDE Doc Click Here!](https://automationeditor.readthedocs.io/en/latest/)
 
 [Using this IDE edit tkinter video](https://www.youtube.com/watch?v=VXm8L2qrdSU&ab_channel=JEChen)
 
----
-# Table of contents
-> Editor components \
-> GUI components \
-> WEB components \
-> API components \
-> Load components
 ---
 ## What is Automation Editor
 > Project Kanban \
@@ -54,9 +47,6 @@
 ---
 
 ### install
-#### we suggest install full package
-* pip install automation_editor[full_extension]
-#### if we don't want to use send after test
-* pip install automation_editor
-* 
+> pip install automation_editor
+
 ![Architecture Diagram](architecture_diagram/AutomationEditorArchitectureDiagram.drawio.png)
