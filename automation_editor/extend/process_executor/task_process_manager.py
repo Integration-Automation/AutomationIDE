@@ -11,6 +11,7 @@ from threading import Thread
 
 from PySide6.QtCore import QTimer
 from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
+from je_editor.utils.venv_check.check_venv import check_and_choose_venv
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_editor.utils.exception.exception_tags import compiler_not_found_error
@@ -27,6 +28,7 @@ class TaskProcessManager(object):
             program_encoding: str = "utf-8"
     ):
         super().__init__()
+        self.compiler_path = None
         # ite_instance param
         self.read_program_error_output_from_thread: [threading.Thread, None] = None
         self.read_program_output_from_thread: [threading.Thread, None] = None
@@ -42,36 +44,22 @@ class TaskProcessManager(object):
         self.error_trigger_function: typing.Callable = error_trigger_function
         self.program_buffer_size = program_buffer_size
 
-    def start_test_process(self, package: str, exec_str: str):
-        # try to find file and compiler
-        if sys.platform in ["win32", "cygwin", "msys"]:
-            venv_path = Path(os.getcwd() + "/venv/Scripts")
-        else:
-            venv_path = Path(os.getcwd() + "/venv/bin")
-        if venv_path.is_dir() and venv_path.exists():
-            compiler_path = shutil.which(
-                cmd="python3",
-                path=str(venv_path)
-            )
-        else:
-            compiler_path = shutil.which(cmd="python3")
-        if compiler_path is None:
+    def renew_path(self) -> None:
+        if self.main_window.python_compiler is None:
+            # Renew compiler path
             if sys.platform in ["win32", "cygwin", "msys"]:
-                venv_path = Path(os.getcwd() + "/venv/Scripts")
+                venv_path = Path(str(Path.cwd()) + "/venv/Scripts")
             else:
-                venv_path = Path(os.getcwd() + "/venv/bin")
-            if venv_path.is_dir() and venv_path.exists():
-                compiler_path = shutil.which(
-                    cmd="python",
-                    path=str(venv_path)
-                )
-            else:
-                compiler_path = shutil.which(cmd="python")
-        if compiler_path is None:
-            raise ITEExecException(compiler_not_found_error)
+                venv_path = Path(str(Path.cwd()) + "/venv/bin")
+            self.compiler_path = check_and_choose_venv(venv_path)
+        else:
+            self.compiler_path = self.main_window.python_compiler
+
+    def start_test_process(self, package: str, exec_str: str):
+        self.renew_path()
         self.process = subprocess.Popen(
             [
-                compiler_path,
+                self.compiler_path,
                 "-m",
                 package,
                 "--execute_str",

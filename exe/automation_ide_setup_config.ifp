@@ -3,7 +3,7 @@
 ProjectFileVersion = 1.1
 [General]
 Program name = AutomationIDE
-Program version = 1.0.5
+Program version = 1.0.6
 Windows XP = 0
 Windows Server 2003 = 0
 Windows Vista = 0
@@ -78,340 +78,340 @@ Execdlls = 0
 2
 21
 [Files/Dirs]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\aiohttp
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\aiohttp
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\APScheduler-3.10.4.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\APScheduler-3.10.4.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\attrs-23.1.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\attrs-23.1.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\black
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\black
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\certifi
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\certifi
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\cffi-1.15.1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\cffi-1.15.1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\charset_normalizer
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\charset_normalizer
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\cv2
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\cv2
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\debugpy
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\debugpy
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\docutils
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\docutils
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\flask-2.3.3.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\flask-2.3.3.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\frozenlist
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\frozenlist
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\gevent
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\gevent
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\gevent-23.9.1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\gevent-23.9.1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\geventhttpclient
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\geventhttpclient
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\google
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\google
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\google_api_core-2.12.0rc1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\google_api_core-2.12.0rc1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\greenlet
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\greenlet
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\greenlet-2.0.2.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\greenlet-2.0.2.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\importlib_metadata-6.8.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\importlib_metadata-6.8.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\IPython
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\IPython
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\ipython_genutils
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\ipython_genutils
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\ipython_genutils-0.2.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\ipython_genutils-0.2.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\ipython-8.15.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\ipython-8.15.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\jedi
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\jedi
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\jupyter_client
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\jupyter_client
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\jupyter_client-8.3.1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\jupyter_client-8.3.1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\jupyter_core
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\jupyter_core
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\jupyter_core-5.3.1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\jupyter_core-5.3.1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\lib2to3
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\lib2to3
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\markupsafe
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\markupsafe
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\msgpack
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\msgpack
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\multidict
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\multidict
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\numpy
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\numpy
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\parso
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\parso
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\PIL
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\PIL
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\psutil
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\psutil
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pyaudio
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pyaudio
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pycparser-2.21.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pycparser-2.21.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pydev_ipython
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pydev_ipython
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\PySide6
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\PySide6
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pytz
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pytz
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pytz-2023.3.post1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pytz-2023.3.post1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pywin32_system32
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pywin32_system32
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pyzmq.libs
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pyzmq.libs
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\qt_material
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\qt_material
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\qtconsole
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\qtconsole
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\qtconsole-5.4.4.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\qtconsole-5.4.4.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\regex
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\regex
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\selenium
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\selenium
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\setuptools-68.2.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\setuptools-68.2.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\shiboken6
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\shiboken6
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\six-1.16.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\six-1.16.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\speech_recognition
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\speech_recognition
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tcl
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tcl
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tcl8
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tcl8
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tk
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tk
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tornado
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tornado
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tzdata
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tzdata
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tzdata-2023.3.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tzdata-2023.3.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tzlocal-5.0.1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tzlocal-5.0.1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\werkzeug-2.3.7.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\werkzeug-2.3.7.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\wheel-0.41.2.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\wheel-0.41.2.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\win32
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\win32
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\yapf_third_party
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\yapf_third_party
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\yapf-0.40.1.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\yapf-0.40.1.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\yarl
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\yarl
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\zmq
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\zmq
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\zope
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\zope
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\zope.event-5.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\zope.event-5.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\zope.interface-6.0.dist-info
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\zope.interface-6.0.dist-info
 N/A
 [Folder]
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_asyncio.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_asyncio.pyd
 63.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_brotli.cp310-win_amd64.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_brotli.cp310-win_amd64.pyd
 861 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_bz2.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_bz2.pyd
 81.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_cffi_backend.cp310-win_amd64.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_cffi_backend.cp310-win_amd64.pyd
 177 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_ctypes.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_ctypes.pyd
 120.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_decimal.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_decimal.pyd
 248.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_elementtree.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_elementtree.pyd
 125.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_hashlib.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_hashlib.pyd
 63.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_lzma.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_lzma.pyd
 154.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_multiprocessing.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_multiprocessing.pyd
 33.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_overlapped.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_overlapped.pyd
 48.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_queue.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_queue.pyd
 30.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_socket.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_socket.pyd
 77.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_sqlite3.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_sqlite3.pyd
 96.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_ssl.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_ssl.pyd
 156.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_testcapi.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_testcapi.pyd
 130.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_testinternalcapi.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_testinternalcapi.pyd
 31.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_tkinter.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_tkinter.pyd
 64.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_uuid.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_uuid.pyd
 24.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\_zoneinfo.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\_zoneinfo.pyd
 43.8 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\AutomationIDE.exe
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE.exe
 13.7 MB
 exe
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\base_library.zip
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\base_library.zip
 1 MB
 zip
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\concrt140.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\concrt140.dll
 319.9 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\je_driver_icon.ico
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\je_driver_icon.ico
 4.2 KB
 ico
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\libcrypto-1_1.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\libcrypto-1_1.dll
 3.3 MB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\libffi-7.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\libffi-7.dll
 32 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\libopenblas64__v0.3.23-246-g3d31191b-gcc_10_3_0.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\libopenblas64__v0.3.23-246-g3d31191b-gcc_10_3_0.dll
 36.4 MB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\libsodium-ac42d648.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\libsodium-ac42d648.dll
 301 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\libssl-1_1.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\libssl-1_1.dll
 688.3 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\libzmq-v141-mt-4_3_4-0a6f51ca.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\libzmq-v141-mt-4_3_4-0a6f51ca.dll
 513 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\msvcp140.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\msvcp140.dll
 607.4 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\pyexpat.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\pyexpat.pyd
 194.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\python3.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\python3.dll
 64.8 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\python310.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\python310.dll
 4.3 MB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\select.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\select.pyd
 29.3 KB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\sqlite3.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\sqlite3.dll
 1.4 MB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tcl86t.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tcl86t.dll
 1.8 MB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\tk86t.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\tk86t.dll
 1.5 MB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\unicodedata.pyd
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\unicodedata.pyd
 1.1 MB
 pyd
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\VCRUNTIME140.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\VCRUNTIME140.dll
 95.9 KB
 dll
-C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\AutomationIDE\VCRUNTIME140_1.dll
+C:\CodeWorkspace\AutomationEditor\output\AutomationIDE\VCRUNTIME140_1.dll
 36.4 KB
 dll
 [Licence_Begin]

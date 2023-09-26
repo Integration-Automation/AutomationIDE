@@ -6,6 +6,7 @@ class CodeWindow(QWidget):
     def __init__(self):
         # UI used to show run code or shell command result.
         super().__init__()
+        self.python_compiler = None
         self.grid_layout = QGridLayout()
         self.code_result = QTextEdit()
         self.code_result.setLineWrapMode(self.code_result.LineWrapMode.NoWrap)
