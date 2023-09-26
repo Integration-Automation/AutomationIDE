@@ -10,7 +10,7 @@ from queue import Queue
 from threading import Thread
 
 from PySide6.QtCore import QTimer
-from je_editor import user_setting_color_dict
+from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_editor.utils.exception.exception_tags import compiler_not_found_error
@@ -23,7 +23,8 @@ class TaskProcessManager(object):
             main_window: CodeWindow,
             task_done_trigger_function: typing.Callable = None,
             error_trigger_function: typing.Callable = None,
-            program_buffer_size: int = 1024000
+            program_buffer_size: int = 1024000,
+            program_encoding: str = "utf-8"
     ):
         super().__init__()
         # ite_instance param
@@ -32,7 +33,7 @@ class TaskProcessManager(object):
         self.main_window: CodeWindow = main_window
         self.timer: QTimer = QTimer(self.main_window)
         self.still_run_program: bool = True
-        self.program_encoding: str = "utf-8"
+        self.program_encoding: str = program_encoding
         self.run_output_queue: Queue = Queue()
         self.run_error_queue: Queue = Queue()
         self.process: [subprocess.Popen, None] = None
@@ -105,19 +106,19 @@ class TaskProcessManager(object):
     # Pyside UI update method
     def pull_text(self):
         try:
-            self.main_window.code_result.setTextColor(user_setting_color_dict.get("normal_output_color"))
+            self.main_window.code_result.setTextColor(actually_color_dict.get("normal_output_color"))
             if not self.run_output_queue.empty():
                 output_message = self.run_output_queue.get_nowait()
                 output_message = str(output_message).strip()
                 if output_message:
                     self.main_window.code_result.append(output_message)
-            self.main_window.code_result.setTextColor(user_setting_color_dict.get("error_output_color"))
+            self.main_window.code_result.setTextColor(actually_color_dict.get("error_output_color"))
             if not self.run_error_queue.empty():
                 error_message = self.run_error_queue.get_nowait()
                 error_message = str(error_message).strip()
                 if error_message:
                     self.main_window.code_result.append(error_message)
-            self.main_window.code_result.setTextColor(user_setting_color_dict.get("normal_output_color"))
+            self.main_window.code_result.setTextColor(actually_color_dict.get("normal_output_color"))
         except queue.Empty:
             pass
         if self.process is not None:
