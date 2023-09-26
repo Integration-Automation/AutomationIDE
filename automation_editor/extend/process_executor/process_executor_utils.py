@@ -56,13 +56,15 @@ def start_process(
     if send_mail:
         process = TaskProcessManager(
             main_window=code_window,
-            program_buffer_size=program_buffer
+            program_buffer_size=program_buffer,
+            program_encoding=main_window.encoding
         )
     else:
         process = TaskProcessManager(
             code_window,
             task_done_trigger_function=send_after_test,
-            program_buffer_size=program_buffer
+            program_buffer_size=program_buffer,
+            program_encoding=main_window.encoding
         )
     process.start_test_process(
         package,
