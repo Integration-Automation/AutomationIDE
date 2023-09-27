@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0.0
+Name=AutomationIDE
+Comment="Python IDE with automation package"
+Exec=/usr/lib/AutomationIDE
+Icon=/usr/share/icons/je_driver_icon.ico
+Terminal=False
+Type=Application
+Categories=Development
