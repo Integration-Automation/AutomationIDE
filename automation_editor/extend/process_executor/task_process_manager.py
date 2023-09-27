@@ -61,7 +61,8 @@ class TaskProcessManager(object):
             exec_str
         ]
         if sys.platform not in ["win32", "cygwin", "msys"]:
-            args = " ".join(args)
+            args = " ".join([f"{self.compiler_path}", f"-m {package}", "--execute_str", f"{exec_str}"])
+            print(args)
         self.process: subprocess.Popen = subprocess.Popen(
             args,
             stdout=subprocess.PIPE,
