@@ -53,14 +53,17 @@ class TaskProcessManager(object):
 
     def start_test_process(self, package: str, exec_str: str):
         self.renew_path()
+        args = [
+            self.compiler_path,
+            "-m",
+            package,
+            "--execute_str",
+            exec_str
+        ]
+        if sys.platform not in ["win32", "cygwin", "msys"]:
+            args = " ".join(args)
         self.process: subprocess.Popen = subprocess.Popen(
-            [
-                self.compiler_path,
-                "-m",
-                package,
-                "--execute_str",
-                exec_str
-            ],
+            args,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True
@@ -142,6 +145,8 @@ class TaskProcessManager(object):
         while self.still_run_program:
             self.process: subprocess.Popen
             program_output_data = self.process.stdout.read(self.program_buffer_size).decode(self.program_encoding)
+            if self.process:
+                self.process.stdout.flush()
             if program_output_data.strip() != "":
                 self.run_output_queue.put(program_output_data)
 
@@ -149,5 +154,7 @@ class TaskProcessManager(object):
         while self.still_run_program:
             program_error_output_data = self.process.stderr.read(self.program_buffer_size).decode(
                 self.program_encoding)
+            if self.process:
+                self.process.stderr.flush()
             if program_error_output_data.strip() != "":
                 self.run_error_queue.put(program_error_output_data)
