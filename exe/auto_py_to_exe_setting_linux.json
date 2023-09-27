@@ -1,0 +1,133 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "/home/jeffrey/Projects/AutomationIDE/exe/start_automation_editor.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": false
+  },
+  {
+   "optionDest": "console",
+   "value": false
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "/home/jeffrey/Projects/AutomationIDE/exe/je_driver_icon.ico"
+  },
+  {
+   "optionDest": "name",
+   "value": "AutomationIDE"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/exe/je_driver_icon.ico:."
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/yapf_third_party:yapf_third_party/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/jupyter_client:jupyter_client/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/jupyter_client-8.3.1.dist-info:jupyter_client-8.3.1.dist-info/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/jupyter_core-5.3.1.dist-info:jupyter_core-5.3.1.dist-info/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/jupyter_core:jupyter_core/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/qtconsole-5.4.4.dist-info:qtconsole-5.4.4.dist-info/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/qtconsole:qtconsole/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/ipython-8.15.0.dist-info:ipython-8.15.0.dist-info/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/IPython:IPython/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/debugpy/_vendored/pydevd/pydev_ipython:pydev_ipython/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/ipython_genutils-0.2.0.dist-info:ipython_genutils-0.2.0.dist-info/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/ipython_genutils:ipython_genutils/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/debugpy:debugpy/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/parso:parso/"
+  },
+  {
+   "optionDest": "datas",
+   "value": "/home/jeffrey/Projects/AutomationIDE/venv/lib/python3.10/site-packages/jedi:jedi/"
+  },
+  {
+   "optionDest": "pathex",
+   "value": "/home/jeffrey/Projects/AutomationIDE"
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

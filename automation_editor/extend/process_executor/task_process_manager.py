@@ -1,6 +1,4 @@
-import os
 import queue
-import shutil
 import subprocess
 import sys
 import threading
@@ -14,8 +12,6 @@ from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import ac
 from je_editor.utils.venv_check.check_venv import check_and_choose_venv
 
 from automation_editor.automation_editor_ui.show_code_window.code_window import CodeWindow
-from automation_editor.utils.exception.exception_tags import compiler_not_found_error
-from automation_editor.utils.exception.exceptions import ITEExecException
 
 
 class TaskProcessManager(object):
@@ -24,7 +20,7 @@ class TaskProcessManager(object):
             main_window: CodeWindow,
             task_done_trigger_function: typing.Callable = None,
             error_trigger_function: typing.Callable = None,
-            program_buffer_size: int = 1024000,
+            program_buffer_size: int = 1024,
             program_encoding: str = "utf-8"
     ):
         super().__init__()
@@ -57,14 +53,18 @@ class TaskProcessManager(object):
 
     def start_test_process(self, package: str, exec_str: str):
         self.renew_path()
-        self.process = subprocess.Popen(
-            [
-                self.compiler_path,
-                "-m",
-                package,
-                "--execute_str",
-                exec_str
-            ],
+        args = [
+            self.compiler_path,
+            "-m",
+            package,
+            "--execute_str",
+            exec_str
+        ]
+        if sys.platform not in ["win32", "cygwin", "msys"]:
+            args = " ".join([f"{self.compiler_path}", f"-m {package}", "--execute_str", f"{exec_str}"])
+            print(args)
+        self.process: subprocess.Popen = subprocess.Popen(
+            args,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             shell=True
@@ -144,13 +144,18 @@ class TaskProcessManager(object):
 
     def read_program_output_from_process(self):
         while self.still_run_program:
-            program_output_data = self.process.stdout.raw.read(self.program_buffer_size).decode(self.program_encoding)
+            self.process: subprocess.Popen
+            program_output_data = self.process.stdout.read(self.program_buffer_size).decode(self.program_encoding)
+            if self.process:
+                self.process.stdout.flush()
             if program_output_data.strip() != "":
                 self.run_output_queue.put(program_output_data)
 
     def read_program_error_output_from_process(self):
         while self.still_run_program:
-            program_error_output_data = self.process.stderr.raw.read(self.program_buffer_size).decode(
+            program_error_output_data = self.process.stderr.read(self.program_buffer_size).decode(
                 self.program_encoding)
+            if self.process:
+                self.process.stderr.flush()
             if program_error_output_data.strip() != "":
                 self.run_error_queue.put(program_error_output_data)
