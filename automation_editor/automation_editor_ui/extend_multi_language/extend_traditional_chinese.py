@@ -69,7 +69,7 @@ def update_traditional_chinese_word_dict():
             "mail_thunder_github_tab_label": "MailThunder GitHub",
             "mail_thunder_create_project_label": "建立 MailThunder 專案",
             # Webrunner Menu
-            "web_runner_menu_label": "Web運行ner",
+            "web_runner_menu_label": "WebRunner",
             "web_runner_run_script_label": "運行 WebRunner 腳本",
             "web_runner_run_script_with_send_label": "運行 WebRunner 腳本並寄信",
             "web_runner_run_multi_script_label": "運行 Multi WebRunner 腳本",
