@@ -26,10 +26,6 @@
    "value": "AutomationIDE"
   },
   {
-   "optionDest": "ascii",
-   "value": false
-  },
-  {
    "optionDest": "clean_build",
    "value": false
   },
@@ -46,10 +42,6 @@
    "value": false
   },
   {
-   "optionDest": "embed_manifest",
-   "value": true
-  },
-  {
    "optionDest": "uac_admin",
    "value": false
   },
@@ -58,19 +50,11 @@
    "value": false
   },
   {
-   "optionDest": "win_private_assemblies",
-   "value": false
-  },
-  {
-   "optionDest": "win_no_prefer_redirects",
+   "optionDest": "argv_emulation",
    "value": false
   },
   {
    "optionDest": "bootloader_ignore_signals",
-   "value": false
-  },
-  {
-   "optionDest": "argv_emulation",
    "value": false
   },
   {
@@ -87,11 +71,11 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_client-8.3.1.dist-info;jupyter_client-8.3.1.dist-info/"
+   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_client-8.6.0.dist-info;jupyter_client-8.6.0.dist-info/"
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_core-5.3.1.dist-info;jupyter_core-5.3.1.dist-info/"
+   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_core-5.5.0.dist-info;jupyter_core-5.5.0.dist-info/"
   },
   {
    "optionDest": "datas",
@@ -99,7 +83,7 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/qtconsole-5.4.4.dist-info;qtconsole-5.4.4.dist-info/"
+   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/qtconsole-5.5.1.dist-info;qtconsole-5.5.1.dist-info/"
   },
   {
    "optionDest": "datas",
@@ -107,7 +91,7 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/ipython-8.15.0.dist-info;ipython-8.15.0.dist-info/"
+   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/ipython-8.18.1.dist-info;ipython-8.18.1.dist-info/"
   },
   {
    "optionDest": "datas",
