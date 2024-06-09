@@ -1,3 +1,1 @@
-PySide6
 automation_editor
-ipython_genutils
