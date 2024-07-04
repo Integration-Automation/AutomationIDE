@@ -14,15 +14,15 @@ def __process_json(json_string: str, **kwargs) -> str:
     except json.JSONDecodeError as error:
         print(wrong_json_data_error, file=sys.stderr)
         raise error
-    except TypeError:
+    except TypeError as exc:
         try:
             return dumps(json_string, indent=4, sort_keys=True, **kwargs)
         except TypeError:
-            raise ITEJsonException(wrong_json_data_error)
+            raise ITEJsonException(wrong_json_data_error) from exc
 
 
 def reformat_json(json_string: str, **kwargs) -> str:
     try:
         return __process_json(json_string, **kwargs)
-    except ITEJsonException:
-        raise ITEJsonException(cant_reformat_json_error)
+    except ITEJsonException as exc:
+        raise ITEJsonException(cant_reformat_json_error) from exc
