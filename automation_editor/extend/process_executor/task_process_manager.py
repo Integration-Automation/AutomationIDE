@@ -1,3 +1,4 @@
+import json
 import queue
 import subprocess
 import sys
@@ -53,21 +54,24 @@ class TaskProcessManager(object):
 
     def start_test_process(self, package: str, exec_str: str):
         self.renew_path()
-        args = [
-            self.compiler_path,
-            "-m",
-            package,
-            "--execute_str",
-            exec_str
-        ]
-        if sys.platform not in ["win32", "cygwin", "msys"]:
+        if sys.platform in ["win32", "cygwin", "msys"]:
+            exec_str = json.dumps(exec_str)
+            args = [
+                self.compiler_path,
+                "-m",
+                package,
+                "--execute_str",
+                exec_str
+            ]
+        else:
             args = " ".join([f"{self.compiler_path}", f"-m {package}", "--execute_str", f"{exec_str}"])
-            print(args)
         self.process: subprocess.Popen = subprocess.Popen(
             args,
+            stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            shell=True
+            shell=True,
+            encoding=self.program_encoding
         )
         self.still_run_program = True
         # program output message queue thread
@@ -145,7 +149,7 @@ class TaskProcessManager(object):
     def read_program_output_from_process(self):
         while self.still_run_program:
             self.process: subprocess.Popen
-            program_output_data = self.process.stdout.read(self.program_buffer_size).decode(self.program_encoding)
+            program_output_data = self.process.stdout.read(self.program_buffer_size)
             if self.process:
                 self.process.stdout.flush()
             if program_output_data.strip() != "":
@@ -153,8 +157,7 @@ class TaskProcessManager(object):
 
     def read_program_error_output_from_process(self):
         while self.still_run_program:
-            program_error_output_data = self.process.stderr.read(self.program_buffer_size).decode(
-                self.program_encoding)
+            program_error_output_data = self.process.stderr.read(self.program_buffer_size)
             if self.process:
                 self.process.stderr.flush()
             if program_error_output_data.strip() != "":

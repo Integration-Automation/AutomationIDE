@@ -15,6 +15,12 @@
 [Using this IDE edit tkinter video](https://www.youtube.com/watch?v=VXm8L2qrdSU&ab_channel=JEChen)
 
 ---
+
+## Notice
+> * If you can't run program and get argument or internal error on windows, Please update your powershell.
+> * https://github.com/PowerShell/PowerShell/releases
+
+---
 ## What is Automation Editor
 > Project Kanban \
 > https://github.com/orgs/Integration-Automation/projects/2/views/1 \
