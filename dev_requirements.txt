@@ -1,11 +1,11 @@
 build
 twine
-sphinx
-sphinx-rtd-theme
-PySide6
 je-api-testka
 je-load-density
 je-auto-control
 je-web-runner
 je-mail-thunder
-automation_editor_dev
+automation_ide_dev
+sphinx
+sphinx-rtd-theme
+PySide6==6.7.3

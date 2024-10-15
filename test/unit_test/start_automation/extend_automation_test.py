@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget, QGridLayout, QLineEdit, QPushButton, QLabel
 
-from automation_editor import start_editor, EDITOR_EXTEND_TAB
+from automation_ide import start_editor, EDITOR_EXTEND_TAB
 
 
 # You can use you own QWidget
