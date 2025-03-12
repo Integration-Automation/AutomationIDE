@@ -1,0 +1,40 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+from automation_ide.extend.process_executor.test_pioneer.test_pioneer_process_manager import init_and_start_test_pioneer_process
+
+if TYPE_CHECKING:
+    from automation_ide.automation_editor_ui.editor_main.main_ui import AutomationEditor
+
+from PySide6.QtGui import QAction
+from je_editor import language_wrapper
+from test_pioneer import create_template_dir, execute_yaml
+
+
+def set_test_pioneer_menu(ui_we_want_to_set: AutomationEditor):
+    """
+    Build menu include Test Pioneer feature.
+    :param ui_we_want_to_set: main window to add menu.
+    :return: None
+    """
+    ui_we_want_to_set.test_pioneer_menu = ui_we_want_to_set.automation_menu.addMenu(
+        language_wrapper.language_word_dict.get("test_pioneer_label"))
+    # Create test pioneer template
+    ui_we_want_to_set.create_template_action = QAction(
+        language_wrapper.language_word_dict.get("test_pioneer_create_template_label"))
+    ui_we_want_to_set.create_template_action.triggered.connect(
+        lambda: create_template_dir()
+    )
+    ui_we_want_to_set.test_pioneer_menu.addAction(
+        ui_we_want_to_set.create_template_action
+    )
+    # Run test pioneer yaml
+    ui_we_want_to_set.run_yaml_action = QAction(
+        language_wrapper.language_word_dict.get("test_pioneer_run_yaml"))
+    ui_we_want_to_set.run_yaml_action.triggered.connect(
+        lambda: init_and_start_test_pioneer_process(ui_we_want_to_set)
+    )
+    ui_we_want_to_set.test_pioneer_menu.addAction(
+        ui_we_want_to_set.run_yaml_action
+    )

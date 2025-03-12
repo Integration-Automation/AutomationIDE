@@ -8,7 +8,7 @@ from je_editor import EditorWidget
 
 from automation_ide.automation_editor_ui.show_code_window.code_window import CodeWindow
 from automation_ide.extend.mail_thunder_extend.mail_thunder_setting import send_after_test
-from automation_ide.extend.process_executor.task_process_manager import TaskProcessManager
+from automation_ide.extend.process_executor.python_task_process_manager import TaskProcessManager
 from automation_ide.utils.exception.exception_tags import wrong_test_data_format_exception_tag
 from automation_ide.utils.exception.exceptions import ITETestExecutorException
 

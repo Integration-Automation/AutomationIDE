@@ -142,6 +142,16 @@ mail_thunder_keys: list = [
     "add_command_to_executor", "create_project_dir"
 ]
 
+test_pioneer_keys: list = [
+    "jobs", "pioneer_log",
+    "steps",
+    "name",
+    "run", "with", "run_folder",
+    "wait",
+    "open_url",
+    "open_program", "close_program", "redirect_stdout", "redirect_stderr",
+]
+
 package_keyword_list = {
     "je_auto_control": auto_control_keys,
     "je_load_density": load_density_keys,
@@ -149,4 +159,5 @@ package_keyword_list = {
     "je_web_runner": web_runner_keys,
     "automation_file": automation_file_keys,
     "mail_thunder": mail_thunder_keys,
+    "test_pioneer": test_pioneer_keys
 }

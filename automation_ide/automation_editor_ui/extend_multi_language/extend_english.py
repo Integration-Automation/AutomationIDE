@@ -94,5 +94,9 @@ def update_english_word_dict():
             "tools_menu_re_edge_gpt_doc_tab_label": "ReEdgeGPT Doc",
             "tools_menu_re_edge_gpt_github_label": "Open ReEdgeGPT GitHub",
             "tools_menu_re_edge_gpt_github_tab_label": "ReEdgeGPT GitHub",
+            # Test Pioneer Menu
+            "test_pioneer_label": "TestPioneer",
+            "test_pioneer_create_template_label": "Create TestPioneer Yaml template",
+            "test_pioneer_run_yaml": "Execute Test Pioneer Yaml",
         }
     )
