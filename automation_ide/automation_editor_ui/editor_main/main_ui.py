@@ -1,7 +1,9 @@
 import sys
+from pathlib import Path
 from typing import List, Dict, Type
 
 from PySide6.QtCore import QTimer, QCoreApplication
+from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QWidget
 from je_editor import EditorMain, language_wrapper
 from qt_material import apply_stylesheet
@@ -36,6 +38,9 @@ class AutomationEditor(EditorMain):
         # Tab
         for widget_name, widget in EDITOR_EXTEND_TAB.items():
             self.tab_widget.addTab(widget(), widget_name)
+        # Icon
+        self.icon_path = Path(str(Path.cwd()) + "/je_driver_icon.ico")
+        self.icon = QIcon(str(self.icon_path))
         # Title
         self.setWindowTitle(language_wrapper.language_word_dict.get("automation_editor_application_name"))
         if debug_mode:

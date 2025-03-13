@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from automation_ide.automation_editor_ui.editor_main.main_ui import AutomationEditor
+
 from automation_ide.automation_editor_ui.menu.automation_menu.api_testka_menu.build_api_testka_menu import \
     set_apitestka_menu
 from automation_ide.automation_editor_ui.menu.automation_menu.auto_control_menu.build_autocontrol_menu import \
@@ -18,10 +21,8 @@ from automation_ide.automation_editor_ui.menu.install_menu.automation_menu.build
     build_automation_install_menu
 from automation_ide.automation_editor_ui.menu.install_menu.tools_menu.build_tool_install_menu import \
     build_tool_install_menu
-from automation_ide.automation_editor_ui.menu.tools_menu.bing_gpt_menu.build_bing_gpt_menu import set_bing_gpt_menu
-
-if TYPE_CHECKING:
-    from automation_ide.automation_editor_ui.editor_main.main_ui import AutomationEditor
+from automation_ide.automation_editor_ui.menu.automation_menu.test_pioneer_menu.build_test_pioneer_menu import \
+    set_test_pioneer_menu
 
 from je_editor import language_wrapper
 
@@ -37,6 +38,6 @@ def add_menu_to_menubar(ui_we_want_to_set: AutomationEditor):
     set_load_density_menu(ui_we_want_to_set)
     set_mail_thunder_menu(ui_we_want_to_set)
     set_web_runner_menu(ui_we_want_to_set)
+    set_test_pioneer_menu(ui_we_want_to_set)
     build_automation_install_menu(ui_we_want_to_set)
     build_tool_install_menu(ui_we_want_to_set)
-    set_bing_gpt_menu(ui_we_want_to_set)

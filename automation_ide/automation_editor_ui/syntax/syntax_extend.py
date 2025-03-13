@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
 from typing import TYPE_CHECKING
 
 from je_editor import EditorWidget
@@ -27,6 +26,15 @@ def syntax_extend_package(main_window: AutomationEditor) -> None:
                 }
             }
         )
+    syntax_extend_setting_dict.update({".yml": {}})
+    syntax_extend_setting_dict.get(".yml").update(
+        {
+            "test_pioneer": {
+                "words": set(package_keyword_list.get("test_pioneer")),
+                "color": QColor(255, 153, 0)
+            }
+        }
+    )
     widget = main_window.tab_widget.currentWidget()
     if isinstance(widget, EditorWidget):
         widget.code_edit.reset_highlighter()

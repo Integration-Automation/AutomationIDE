@@ -7,7 +7,7 @@
   },
   {
    "optionDest": "filenames",
-   "value": "C:/CodeWorkspace/AutomationEditor/exe/start_automation_editor.py"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/exe/start_automation_editor.py"
   },
   {
    "optionDest": "onefile",
@@ -19,7 +19,7 @@
   },
   {
    "optionDest": "icon_file",
-   "value": "C:/CodeWorkspace/AutomationEditor/exe/je_driver_icon.ico"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/exe/je_driver_icon.ico"
   },
   {
    "optionDest": "name",
@@ -59,71 +59,27 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/exe/je_driver_icon.ico;."
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/exe/je_driver_icon.ico;."
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/yapf_third_party;yapf_third_party/"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipython-8.32.0.dist-info;.ipython-8.32.0.dist-info/"
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_client;jupyter_client/"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/IPython;.IPython/"
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_client-8.6.0.dist-info;jupyter_client-8.6.0.dist-info/"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipykernel-6.29.5.dist-info;ipykernel-6.29.5.dist-info/"
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_core-5.5.0.dist-info;jupyter_core-5.5.0.dist-info/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jupyter_core;jupyter_core/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/qtconsole-5.5.1.dist-info;qtconsole-5.5.1.dist-info/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/qtconsole;qtconsole/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/ipython-8.18.1.dist-info;ipython-8.18.1.dist-info/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/IPython;IPython/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/debugpy/_vendored/pydevd/pydev_ipython;pydev_ipython/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/ipython_genutils-0.2.0.dist-info;ipython_genutils-0.2.0.dist-info/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/ipython_genutils;ipython_genutils/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/debugpy;debugpy/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/parso;parso/"
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv/Lib/site-packages/jedi;jedi/"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipykernel;ipykernel/"
   },
   {
    "optionDest": "pathex",
-   "value": "C:/CodeWorkspace/AutomationEditor/venv"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv"
   }
  ],
  "nonPyinstallerOptions": {

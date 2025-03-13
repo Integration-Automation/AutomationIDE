@@ -94,5 +94,9 @@ def update_traditional_chinese_word_dict():
             "tools_menu_re_edge_gpt_doc_tab_label": "ReEdgeGPT 文件",
             "tools_menu_re_edge_gpt_github_label": "開啟 ReEdgeGPT GitHub",
             "tools_menu_re_edge_gpt_github_tab_label": "ReEdgeGPT GitHub",
+            # Test Pioneer Menu
+            "test_pioneer_label": "TestPioneer",
+            "test_pioneer_create_template_label": "建立 TestPioneer Yaml 模板",
+            "test_pioneer_run_yaml": "執行 Test Pioneer Yaml",
         }
     )
