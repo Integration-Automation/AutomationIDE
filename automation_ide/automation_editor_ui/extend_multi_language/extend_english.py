@@ -98,5 +98,6 @@ def update_english_word_dict():
             "test_pioneer_label": "TestPioneer",
             "test_pioneer_create_template_label": "Create TestPioneer Yaml template",
             "test_pioneer_run_yaml": "Execute Test Pioneer Yaml",
+            "test_pioneer_not_choose_yaml": "Please choose a Yaml file",
         }
     )

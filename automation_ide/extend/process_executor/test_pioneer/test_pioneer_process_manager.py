@@ -6,11 +6,11 @@ import sys
 import threading
 from pathlib import Path
 from queue import Queue
-from typing import Union, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QWidget
-from je_editor import EditorWidget
+from PySide6.QtWidgets import QWidget, QFileDialog, QMessageBox
+from frontengine import language_wrapper
 from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
 from je_editor.utils.venv_check.check_venv import check_and_choose_venv
 
@@ -25,7 +25,7 @@ class TestPioneerProcess(object):
     def __init__(
             self,
             main_window: AutomationEditor,
-            exec_str: Union[str, None] = None,
+            executable_path: str,
             program_buffer: int = 1024000,
             encoding: str = "utf-8",
     ):
@@ -42,10 +42,6 @@ class TestPioneerProcess(object):
         self._read_program_error_output_from_thread: [threading.Thread, None] = None
         self._read_program_output_from_thread: [threading.Thread, None] = None
         self._timer: QTimer = QTimer(self._code_window)
-        if isinstance(self._widget, EditorWidget) and exec_str is None:
-            self._test_format_code = self._widget.code_edit.toPlainText()
-        else:
-            self._test_format_code = exec_str
         if self._main_window.python_compiler is None:
             # Renew compiler path
             if sys.platform in ["win32", "cygwin", "msys"]:
@@ -61,10 +57,12 @@ class TestPioneerProcess(object):
                 "-m",
                 "test_pioneer",
                 "-e",
-                self._test_format_code
+                executable_path
             ]
         else:
-            args = " ".join([f"{self._compiler_path}", "-m test_pioneer", "-e", f"{self._test_format_code}"])
+            args = " ".join([
+                f"{self._compiler_path}", "-m test_pioneer", "-e", f"{executable_path}"
+            ])
         self._process: subprocess.Popen = subprocess.Popen(
             args,
             stdin=subprocess.PIPE,
@@ -166,6 +164,9 @@ class TestPioneerProcess(object):
         self._timer.start()
 
 
-def init_and_start_test_pioneer_process(ui_we_want_to_set: AutomationEditor):
-    test_pioneer_process_manager = TestPioneerProcess(main_window=ui_we_want_to_set)
-    test_pioneer_process_manager.start_test_pioneer_process()
+def init_and_start_test_pioneer_process(ui_we_want_to_set: AutomationEditor, file_path: str):
+        test_pioneer_process_manager = TestPioneerProcess(
+            main_window=ui_we_want_to_set, executable_path=file_path)
+        test_pioneer_process_manager.start_test_pioneer_process()
+
+
