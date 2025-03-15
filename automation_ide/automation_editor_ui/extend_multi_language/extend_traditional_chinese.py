@@ -98,5 +98,6 @@ def update_traditional_chinese_word_dict():
             "test_pioneer_label": "TestPioneer",
             "test_pioneer_create_template_label": "建立 TestPioneer Yaml 模板",
             "test_pioneer_run_yaml": "執行 Test Pioneer Yaml",
+            "test_pioneer_not_choose_yaml": "請選擇 Yaml 檔案",
         }
     )
