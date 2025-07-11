@@ -6,20 +6,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "automation_ide"
-version = "0.0.42"
+version = "0.0.43"
 authors = [
     { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
 description = "AutomationEditor for multi automation"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license-files = ["LICENSE"]
 dependencies = [
     "je-editor", "je_auto_control", "je_web_runner",
     "je_load_density", "je_api_testka", "je-mail-thunder",
-    "automation-file", "PySide6==6.9.0", "test_pioneer"
+    "automation-file", "PySide6==6.9.1", "test_pioneer"
 ]
 classifiers = [
-    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
     "Development Status :: 2 - Pre-Alpha",
     "Environment :: Win32 (MS Windows)",
     "Environment :: MacOS X",

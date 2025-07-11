@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from je_editor import language_wrapper
+from je_load_density.gui.main_widget import LoadDensityWidget
 
 from automation_ide.automation_editor_ui.menu.menu_utils import open_web_browser
 
@@ -108,6 +109,16 @@ def set_load_density_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.load_density_project_menu.addAction(
         ui_we_want_to_set.create_load_density_project_action
     )
+    #  AutoControl GUI
+    ui_we_want_to_set.load_density_gui_action = QAction(
+        "LoadDensity GUI"
+    )
+    ui_we_want_to_set.load_density_gui_action.triggered.connect(
+        lambda: add_load_density_gui(ui_we_want_to_set)
+    )
+    ui_we_want_to_set.load_density_menu.addAction(
+        ui_we_want_to_set.load_density_gui_action
+    )
 
 
 def create_project() -> None:
@@ -118,3 +129,9 @@ def create_project() -> None:
             package.create_project_dir()
     except ImportError as error:
         print(repr(error), file=sys.stderr)
+
+
+def add_load_density_gui(ui_we_want_to_set: AutomationEditor) -> None:
+    ui_we_want_to_set.tab_widget.addTab(
+        LoadDensityWidget(), "LoadDensity GUI"
+    )

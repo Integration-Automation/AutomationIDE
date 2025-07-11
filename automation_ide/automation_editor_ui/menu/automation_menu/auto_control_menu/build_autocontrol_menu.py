@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from je_auto_control.gui.main_widget import AutoControlGUIWidget
 from je_editor import EditorWidget, language_wrapper
 
 from automation_ide.automation_editor_ui.menu.menu_utils import open_web_browser
@@ -130,6 +131,16 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.autocontrol_record_menu.addAction(
         ui_we_want_to_set.stop_record_action
     )
+    #  AutoControl GUI
+    ui_we_want_to_set.autocontrol_gui_action = QAction(
+        "AutoControl GUI"
+    )
+    ui_we_want_to_set.autocontrol_gui_action.triggered.connect(
+        lambda: add_autocontrol_gui(ui_we_want_to_set)
+    )
+    ui_we_want_to_set.autocontrol_menu.addAction(
+        ui_we_want_to_set.autocontrol_gui_action
+    )
 
 
 def create_project() -> None:
@@ -145,3 +156,9 @@ def stop_record(editor_instance: AutomationEditor):
     widget = editor_instance.tab_widget.currentWidget()
     if isinstance(widget, EditorWidget):
         widget.code_edit.appendPlainText(str(je_auto_control.stop_record()))
+
+
+def add_autocontrol_gui(ui_we_want_to_set: AutomationEditor) -> None:
+    ui_we_want_to_set.tab_widget.addTab(
+        AutoControlGUIWidget(), "AutoControl GUI"
+    )

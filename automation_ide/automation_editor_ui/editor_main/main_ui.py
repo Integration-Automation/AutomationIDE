@@ -3,11 +3,13 @@ import sys
 from pathlib import Path
 from typing import List, Dict, Type
 
+from os import environ
+environ["LOCUST_SKIP_MONKEY_PATCH"] = "1"
+
 from PySide6.QtCore import QTimer, QCoreApplication
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QWidget, QSystemTrayIcon
 from je_editor import EditorMain, language_wrapper
-from je_editor.pyside_ui.main_ui.system_tray.extend_system_tray import ExtendSystemTray
 from qt_material import apply_stylesheet
 
 from automation_ide.automation_editor_ui.extend_multi_language.update_language_dict import update_language_dict
@@ -15,8 +17,16 @@ from automation_ide.automation_editor_ui.menu.build_menubar import add_menu_to_m
 from automation_ide.automation_editor_ui.syntax.syntax_extend import \
     syntax_extend_package
 
-EDITOR_EXTEND_TAB: Dict[str, Type[QWidget]] = {}
+from je_api_testka.gui.main_widget import APITestkaWidget
+from je_load_density.gui.main_widget import LoadDensityWidget
+from je_auto_control.gui.main_widget import AutoControlGUIWidget
 
+
+EDITOR_EXTEND_TAB: Dict[str, Type[QWidget]] = {
+    "LoadDensity GUI": LoadDensityWidget,
+    "APITestka GUI": APITestkaWidget,
+    "AutoControl GUI": AutoControlGUIWidget,
+}
 
 class AutomationEditor(EditorMain):
 
