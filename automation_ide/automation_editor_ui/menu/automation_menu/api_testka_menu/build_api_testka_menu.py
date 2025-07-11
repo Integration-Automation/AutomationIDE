@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from je_api_testka.gui.main_widget import APITestkaWidget
 from je_editor import language_wrapper
 
 from automation_ide.automation_editor_ui.menu.menu_utils import open_web_browser
@@ -108,6 +109,16 @@ def set_apitestka_menu(ui_we_want_to_set: AutomationEditor):
     ui_we_want_to_set.apitestka_project_menu.addAction(
         ui_we_want_to_set.create_apitestka_project_action
     )
+    # APITestka GUI
+    ui_we_want_to_set.api_testka_gui_action = QAction(
+        "APITestka GUI"
+    )
+    ui_we_want_to_set.api_testka_gui_action.triggered.connect(
+        lambda: add_api_testka_gui(ui_we_want_to_set)
+    )
+    ui_we_want_to_set.apitestka_menu.addAction(
+        ui_we_want_to_set.api_testka_gui_action
+    )
 
 
 def create_project() -> None:
@@ -118,3 +129,8 @@ def create_project() -> None:
             package.create_project_dir()
     except ImportError as error:
         print(repr(error), file=sys.stderr)
+
+def add_api_testka_gui(ui_we_want_to_set: AutomationEditor) -> None:
+    ui_we_want_to_set.tab_widget.addTab(
+    APITestkaWidget(), "APITestka GUI"
+    )
