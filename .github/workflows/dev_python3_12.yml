@@ -1,4 +1,4 @@
-name: AutomationEditor Dev Python3.9
+name: AutomationEditor Dev Python3.12
 
 on:
   push:
