@@ -7,6 +7,7 @@ import typing
 from pathlib import Path
 from queue import Queue
 from threading import Thread
+from typing import Union
 
 from PySide6.QtCore import QTimer
 from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
@@ -27,15 +28,15 @@ class TaskProcessManager(object):
         super().__init__()
         self.compiler_path = None
         # ite_instance param
-        self.read_program_error_output_from_thread: [threading.Thread, None] = None
-        self.read_program_output_from_thread: [threading.Thread, None] = None
+        self.read_program_error_output_from_thread: Union[threading.Thread, None] = None
+        self.read_program_output_from_thread: Union[threading.Thread, None] = None
         self.main_window: CodeWindow = main_window
         self.timer: QTimer = QTimer(self.main_window)
         self.still_run_program: bool = True
         self.program_encoding: str = program_encoding
         self.run_output_queue: Queue = Queue()
         self.run_error_queue: Queue = Queue()
-        self.process: [subprocess.Popen, None] = None
+        self.process: Union[subprocess.Popen, None] = None
 
         self.task_done_trigger_function: typing.Callable = task_done_trigger_function
         self.error_trigger_function: typing.Callable = error_trigger_function
@@ -149,7 +150,8 @@ class TaskProcessManager(object):
     def read_program_output_from_process(self):
         while self.still_run_program:
             self.process: subprocess.Popen
-            program_output_data = self.process.stdout.read(self.program_buffer_size)
+            program_output_data = self.process.stdout.readline(self.program_buffer_size)\
+                .decode("utf-8", "replace")
             if self.process:
                 self.process.stdout.flush()
             if program_output_data.strip() != "":
@@ -157,7 +159,8 @@ class TaskProcessManager(object):
 
     def read_program_error_output_from_process(self):
         while self.still_run_program:
-            program_error_output_data = self.process.stderr.read(self.program_buffer_size)
+            program_error_output_data = self.process.stderr.readline(self.program_buffer_size)\
+                .decode("utf-8", "replace")
             if self.process:
                 self.process.stderr.flush()
             if program_error_output_data.strip() != "":

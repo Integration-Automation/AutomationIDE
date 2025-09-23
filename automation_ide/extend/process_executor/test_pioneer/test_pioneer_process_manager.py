@@ -125,7 +125,8 @@ class TestPioneerProcess(object):
     def read_program_output_from_process(self):
         while self._still_run_program:
             self.process: subprocess.Popen
-            program_output_data = self._process.stdout.read(self._program_buffer_size)
+            program_output_data = self._process.stdout.readline(self._program_buffer_size)\
+                .decode("utf-8", "replace")
             if self._process:
                 self._process.stdout.flush()
             if program_output_data.strip() != "":
@@ -133,7 +134,8 @@ class TestPioneerProcess(object):
 
     def read_program_error_output_from_process(self):
         while self._still_run_program:
-            program_error_output_data = self._process.stderr.read(self._program_buffer_size)
+            program_error_output_data = self._process.stderr.readline(self._program_buffer_size)\
+                .decode("utf-8", "replace")
             if self._process:
                 self._process.stderr.flush()
             if program_error_output_data.strip() != "":
