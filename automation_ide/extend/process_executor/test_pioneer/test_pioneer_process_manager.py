@@ -6,9 +6,10 @@ import sys
 import threading
 from pathlib import Path
 from queue import Queue
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
 
 from PySide6.QtCore import QTimer
+from PySide6.QtGui import QTextCharFormat
 from PySide6.QtWidgets import QWidget
 from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
 from je_editor.utils.venv_check.check_venv import check_and_choose_venv
@@ -38,8 +39,8 @@ class TestPioneerProcess(object):
         self._program_buffer_size = program_buffer
         self._run_output_queue: Queue = Queue()
         self._run_error_queue: Queue = Queue()
-        self._read_program_error_output_from_thread: [threading.Thread, None] = None
-        self._read_program_output_from_thread: [threading.Thread, None] = None
+        self._read_program_error_output_from_thread: Union[threading.Thread, None] = None
+        self._read_program_output_from_thread: Union[threading.Thread, None] = None
         self._timer: QTimer = QTimer(self._code_window)
         if self._main_window.python_compiler is None:
             # Renew compiler path
@@ -74,19 +75,24 @@ class TestPioneerProcess(object):
     # Pyside UI update method
     def pull_text(self):
         try:
-            self._code_window.code_result.setTextColor(actually_color_dict.get("normal_output_color"))
             if not self._run_output_queue.empty():
                 output_message = self._run_output_queue.get_nowait()
                 output_message = str(output_message).strip()
                 if output_message:
-                    self._code_window.code_result.append(output_message)
-            self._code_window.code_result.setTextColor(actually_color_dict.get("error_output_color"))
+                    text_cursor = self._code_window.code_result.textCursor()
+                    text_format = QTextCharFormat()
+                    text_format.setForeground(actually_color_dict.get("normal_output_color"))
+                    text_cursor.insertText(output_message, text_format)
+                    text_cursor.insertBlock()
             if not self._run_error_queue.empty():
                 error_message = self._run_error_queue.get_nowait()
                 error_message = str(error_message).strip()
                 if error_message:
-                    self._code_window.code_result.append(error_message)
-            self._code_window.code_result.setTextColor(actually_color_dict.get("normal_output_color"))
+                    text_cursor = self._code_window.code_result.textCursor()
+                    text_format = QTextCharFormat()
+                    text_format.setForeground(actually_color_dict.get("error_output_color"))
+                    text_cursor.insertText(error_message, text_format)
+                    text_cursor.insertBlock()
         except queue.Empty:
             pass
         if self._process is not None:
@@ -115,7 +121,11 @@ class TestPioneerProcess(object):
         self.print_and_clear_queue()
         if self._process is not None:
             self._process.terminate()
-            self._code_window.code_result.append(f"Task exit with code {self._process.returncode}")
+            text_cursor = self._code_window.code_result.textCursor()
+            text_format = QTextCharFormat()
+            text_format.setForeground(actually_color_dict.get("normal_output_color"))
+            text_cursor.insertText(f"Task exit with code {self._process.returncode}", text_format)
+            text_cursor.insertBlock()
             self._process = None
 
     def print_and_clear_queue(self):

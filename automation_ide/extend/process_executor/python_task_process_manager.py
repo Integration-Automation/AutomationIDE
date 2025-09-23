@@ -10,6 +10,7 @@ from threading import Thread
 from typing import Union
 
 from PySide6.QtCore import QTimer
+from PySide6.QtGui import QTextCharFormat
 from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
 from je_editor.utils.venv_check.check_venv import check_and_choose_venv
 
@@ -99,19 +100,24 @@ class TaskProcessManager(object):
     # Pyside UI update method
     def pull_text(self):
         try:
-            self.main_window.code_result.setTextColor(actually_color_dict.get("normal_output_color"))
             if not self.run_output_queue.empty():
                 output_message = self.run_output_queue.get_nowait()
                 output_message = str(output_message).strip()
                 if output_message:
-                    self.main_window.code_result.append(output_message)
-            self.main_window.code_result.setTextColor(actually_color_dict.get("error_output_color"))
+                    text_cursor = self.main_window.code_result.textCursor()
+                    text_format = QTextCharFormat()
+                    text_format.setForeground(actually_color_dict.get("normal_output_color"))
+                    text_cursor.insertText(output_message, text_format)
+                    text_cursor.insertBlock()
             if not self.run_error_queue.empty():
                 error_message = self.run_error_queue.get_nowait()
                 error_message = str(error_message).strip()
                 if error_message:
-                    self.main_window.code_result.append(error_message)
-            self.main_window.code_result.setTextColor(actually_color_dict.get("normal_output_color"))
+                    text_cursor = self.main_window.code_result.textCursor()
+                    text_format = QTextCharFormat()
+                    text_format.setForeground(actually_color_dict.get("error_output_color"))
+                    text_cursor.insertText(error_message, text_format)
+                    text_cursor.insertBlock()
         except queue.Empty:
             pass
         if self.process is not None:
@@ -140,7 +146,11 @@ class TaskProcessManager(object):
         self.print_and_clear_queue()
         if self.process is not None:
             self.process.terminate()
-            self.main_window.code_result.append(f"Task exit with code {self.process.returncode}")
+            text_cursor = self.main_window.code_result.textCursor()
+            text_format = QTextCharFormat()
+            text_format.setForeground(actually_color_dict.get("normal_output_color"))
+            text_cursor.insertText(f"Task exit with code {self.process.returncode}", text_format)
+            text_cursor.insertBlock()
             self.process = None
 
     def print_and_clear_queue(self):
