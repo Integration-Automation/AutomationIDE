@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING
 
 from je_auto_control.gui.main_widget import AutoControlGUIWidget
 from je_editor import EditorWidget, language_wrapper
+from je_editor.pyside_ui.main_ui.save_settings.user_color_setting_file import actually_color_dict
 
 from automation_ide.automation_editor_ui.menu.menu_utils import open_web_browser
 
@@ -12,7 +13,7 @@ if TYPE_CHECKING:
 import sys
 
 import je_auto_control
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QTextCharFormat
 
 from automation_ide.extend.process_executor.auto_control.auto_control_process import \
     call_auto_control, call_auto_control_with_send, call_auto_control_multi_file, \
@@ -155,7 +156,11 @@ def create_project() -> None:
 def stop_record(editor_instance: AutomationEditor):
     widget = editor_instance.tab_widget.currentWidget()
     if isinstance(widget, EditorWidget):
-        widget.code_edit.appendPlainText(str(je_auto_control.stop_record()))
+        text_cursor = widget.code_edit.textCursor()
+        text_format = QTextCharFormat()
+        text_format.setForeground(actually_color_dict.get("normal_output_color"))
+        text_cursor.insertText(str(je_auto_control.stop_record()), text_format)
+        text_cursor.insertBlock()
 
 
 def add_autocontrol_gui(ui_we_want_to_set: AutomationEditor) -> None:
