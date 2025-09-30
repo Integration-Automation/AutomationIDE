@@ -1,2 +1,2 @@
 automation_ide
-PySide6==6.9.2
+PySide6==6.9.3
