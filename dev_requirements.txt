@@ -1,5 +1,6 @@
 build
 twine
+PySide6
 je-api-testka
 je-load-density
 je-auto-control
@@ -8,6 +9,6 @@ je-mail-thunder
 automation_ide_dev
 sphinx
 sphinx-rtd-theme
-PySide6==6.10.0
+PySide6
 auto-py-to-exe
 test_pioneer
