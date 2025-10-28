@@ -9,5 +9,6 @@ je-mail-thunder
 automation_ide_dev
 sphinx
 sphinx-rtd-theme
+PySide6
 auto-py-to-exe
 test_pioneer
