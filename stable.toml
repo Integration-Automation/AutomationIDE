@@ -1,12 +1,12 @@
-# Rename to dev version
-# This is dev version
+# Rename to build stable version
+# This is stable version
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "automation_ide_dev"
-version = "0.0.55"
+name = "automation_ide"
+version = "0.0.49"
 authors = [
     { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
@@ -34,7 +34,6 @@ Code = "https://github.com/Intergration-Automation-Testing/AutomationEditor"
 [project.readme]
 file = "README.md"
 content-type = "text/markdown"
-
 
 [tool.setuptools.packages]
 find = { namespaces = false }
