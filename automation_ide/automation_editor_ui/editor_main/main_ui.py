@@ -1,9 +1,9 @@
 import os
 import sys
+from os import environ
 from pathlib import Path
 from typing import List, Dict, Type
 
-from os import environ
 environ["LOCUST_SKIP_MONKEY_PATCH"] = "1"
 
 from PySide6.QtCore import QTimer, QCoreApplication
@@ -21,12 +21,12 @@ from je_api_testka.gui.main_widget import APITestkaWidget
 from je_load_density.gui.main_widget import LoadDensityWidget
 from je_auto_control.gui.main_widget import AutoControlGUIWidget
 
-
 EDITOR_EXTEND_TAB: Dict[str, Type[QWidget]] = {
     "LoadDensity GUI": LoadDensityWidget,
     "APITestka GUI": APITestkaWidget,
     "AutoControl GUI": AutoControlGUIWidget,
 }
+
 
 class AutomationEditor(EditorMain):
 
