@@ -130,7 +130,8 @@ def create_project() -> None:
     except ImportError as error:
         print(repr(error), file=sys.stderr)
 
+
 def add_api_testka_gui(ui_we_want_to_set: AutomationEditor) -> None:
     ui_we_want_to_set.tab_widget.addTab(
-    APITestkaWidget(), "APITestka GUI"
+        APITestkaWidget(), "APITestka GUI"
     )

@@ -160,7 +160,7 @@ class TaskProcessManager(object):
     def read_program_output_from_process(self):
         while self.still_run_program:
             self.process: subprocess.Popen
-            program_output_data = self.process.stdout.readline(self.program_buffer_size)\
+            program_output_data = self.process.stdout.readline(self.program_buffer_size) \
                 .decode("utf-8", "replace")
             if self.process:
                 self.process.stdout.flush()
@@ -169,7 +169,7 @@ class TaskProcessManager(object):
 
     def read_program_error_output_from_process(self):
         while self.still_run_program:
-            program_error_output_data = self.process.stderr.readline(self.program_buffer_size)\
+            program_error_output_data = self.process.stderr.readline(self.program_buffer_size) \
                 .decode("utf-8", "replace")
             if self.process:
                 self.process.stderr.flush()

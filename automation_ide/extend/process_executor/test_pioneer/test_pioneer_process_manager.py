@@ -135,7 +135,7 @@ class TestPioneerProcess(object):
     def read_program_output_from_process(self):
         while self._still_run_program:
             self.process: subprocess.Popen
-            program_output_data = self._process.stdout.readline(self._program_buffer_size)\
+            program_output_data = self._process.stdout.readline(self._program_buffer_size) \
                 .decode("utf-8", "replace")
             if self._process:
                 self._process.stdout.flush()
@@ -144,7 +144,7 @@ class TestPioneerProcess(object):
 
     def read_program_error_output_from_process(self):
         while self._still_run_program:
-            program_error_output_data = self._process.stderr.readline(self._program_buffer_size)\
+            program_error_output_data = self._process.stderr.readline(self._program_buffer_size) \
                 .decode("utf-8", "replace")
             if self._process:
                 self._process.stderr.flush()
@@ -176,8 +176,6 @@ class TestPioneerProcess(object):
 
 
 def init_and_start_test_pioneer_process(ui_we_want_to_set: AutomationEditor, file_path: str):
-        test_pioneer_process_manager = TestPioneerProcess(
-            main_window=ui_we_want_to_set, executable_path=file_path)
-        test_pioneer_process_manager.start_test_pioneer_process()
-
-
+    test_pioneer_process_manager = TestPioneerProcess(
+        main_window=ui_we_want_to_set, executable_path=file_path)
+    test_pioneer_process_manager.start_test_pioneer_process()

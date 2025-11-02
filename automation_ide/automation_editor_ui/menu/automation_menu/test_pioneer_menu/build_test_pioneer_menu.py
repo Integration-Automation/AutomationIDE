@@ -5,14 +5,15 @@ from typing import TYPE_CHECKING
 
 from PySide6.QtWidgets import QFileDialog, QMessageBox
 
-from automation_ide.extend.process_executor.test_pioneer.test_pioneer_process_manager import init_and_start_test_pioneer_process
+from automation_ide.extend.process_executor.test_pioneer.test_pioneer_process_manager import \
+    init_and_start_test_pioneer_process
 
 if TYPE_CHECKING:
     from automation_ide.automation_editor_ui.editor_main.main_ui import AutomationEditor
 
 from PySide6.QtGui import QAction
 from je_editor import language_wrapper
-from test_pioneer import create_template_dir, execute_yaml
+from test_pioneer import create_template_dir
 
 
 def set_test_pioneer_menu(ui_we_want_to_set: AutomationEditor):

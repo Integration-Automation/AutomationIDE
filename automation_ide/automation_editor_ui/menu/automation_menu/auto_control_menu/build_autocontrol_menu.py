@@ -27,7 +27,7 @@ def set_autocontrol_menu(ui_we_want_to_set: AutomationEditor):
     :return: None
     """
     ui_we_want_to_set.autocontrol_menu = ui_we_want_to_set.automation_menu.addMenu(
-         language_wrapper.language_word_dict.get("autocontrol_menu_label"))
+        language_wrapper.language_word_dict.get("autocontrol_menu_label"))
     ui_we_want_to_set.autocontrol_run_menu = ui_we_want_to_set.autocontrol_menu.addMenu(
         language_wrapper.language_word_dict.get("run_label"))
     # Run AutoControl Script
