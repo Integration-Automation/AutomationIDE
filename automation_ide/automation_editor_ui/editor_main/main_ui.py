@@ -17,14 +17,8 @@ from automation_ide.automation_editor_ui.menu.build_menubar import add_menu_to_m
 from automation_ide.automation_editor_ui.syntax.syntax_extend import \
     syntax_extend_package
 
-from je_api_testka.gui.main_widget import APITestkaWidget
-from je_load_density.gui.main_widget import LoadDensityWidget
-from je_auto_control.gui.main_widget import AutoControlGUIWidget
 
 EDITOR_EXTEND_TAB: Dict[str, Type[QWidget]] = {
-    "LoadDensity GUI": LoadDensityWidget,
-    "APITestka GUI": APITestkaWidget,
-    "AutoControl GUI": AutoControlGUIWidget,
 }
 
 
