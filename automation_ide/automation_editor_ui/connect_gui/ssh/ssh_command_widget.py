@@ -194,8 +194,8 @@ class SSHCommandWidget(QWidget):
                              f" {error}\n")
 
     def _on_closed(self, msg: str):
-        self.append_text(f"\n{
-        self.word_dict.get('ssh_command_widget_log_message_channel_closed')} {msg}\n")
+        self.append_text(f"\n{self.word_dict.get('ssh_command_widget_log_message_channel_closed')}"
+                         f" {msg}\n")
         self.login_widget.status_label.setText(self.word_dict.get(
             'ssh_command_widget_status_label_disconnected'
         ))
