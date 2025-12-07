@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "automation_ide"
-version = "0.0.50"
+version = "0.0.54"
 authors = [
     { name = "JE-Chen", email = "jechenmailman@gmail.com" },
 ]
@@ -16,7 +16,7 @@ license-files = ["LICENSE"]
 dependencies = [
     "je-editor", "je_auto_control", "je_web_runner",
     "je_load_density", "je_api_testka", "je-mail-thunder",
-    "automation-file", "PySide6==6.10.0", "test_pioneer"
+    "automation-file", "PySide6==6.10.0", "test_pioneer", "paramiko"
 ]
 classifiers = [
     "Programming Language :: Python :: 3.10",

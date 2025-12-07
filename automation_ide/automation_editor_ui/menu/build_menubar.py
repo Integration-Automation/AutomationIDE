@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from automation_ide.automation_editor_ui.menu.tools.tools_menu import build_tools_menu, extend_dock_menu
+
 if TYPE_CHECKING:
     from automation_ide.automation_editor_ui.editor_main.main_ui import AutomationEditor
 
@@ -41,3 +43,5 @@ def add_menu_to_menubar(ui_we_want_to_set: AutomationEditor):
     set_test_pioneer_menu(ui_we_want_to_set)
     build_automation_install_menu(ui_we_want_to_set)
     build_tool_install_menu(ui_we_want_to_set)
+    build_tools_menu(ui_we_want_to_set)
+    extend_dock_menu(ui_we_want_to_set)
