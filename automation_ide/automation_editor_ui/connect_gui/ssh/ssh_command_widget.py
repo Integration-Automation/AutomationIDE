@@ -190,8 +190,7 @@ class SSHCommandWidget(QWidget):
             clean_text = ANSI_ESCAPE_PATTERN.sub('', text)
             self.append_text(clean_text)
         except Exception as error:
-            self.append_text(f"{self.word_dict.get(
-                'ssh_command_widget_error_message_decode_failed'
+            self.append_text(f"{self.word_dict.get('ssh_command_widget_error_message_decode_failed'
             )} {error}\n")
 
     def _on_closed(self, msg: str):
