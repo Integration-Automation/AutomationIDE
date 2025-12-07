@@ -167,7 +167,7 @@ class AICodeReviewClient(QWidget):
                 f.write(f"Accepted: {self.accept_count}\n")
                 f.write(f"Rejected: {self.reject_count}\n")
         except Exception as e:
-            self.response_panel.append(f"\n[{self.word_dict.get("ai_code_review_gui_status_save_failed")}: {e}]")
+            self.response_panel.append(f"\n[{self.word_dict.get('ai_code_review_gui_status_save_failed')}: {e}]")
 
 
 if __name__ == "__main__":
