@@ -20,6 +20,7 @@ class SFTPClientWrapper:
     """
 
     def __init__(self):
+        self.word_dict = language_wrapper.language_word_dict
         self._ssh: Optional[paramiko.SSHClient] = None
         self._sftp: Optional[paramiko.SFTPClient] = None
         self.root_path: str = "/"
@@ -66,7 +67,7 @@ class SFTPClientWrapper:
         """
         if not self.connected:
             raise RuntimeError(
-                language_wrapper.language_word_dict.get("ssh_command_widget_dialog_title_not_connected")
+                self.word_dict.get("ssh_command_widget_dialog_title_not_connected")
             )
         return self._sftp.listdir_attr(path)
 
@@ -76,7 +77,7 @@ class SFTPClientWrapper:
         判斷路徑是否為目錄。
         """
         if not self.connected:
-            raise RuntimeError(language_wrapper.language_word_dict.get(
+            raise RuntimeError(self.word_dict.get(
                 "ssh_command_widget_dialog_title_not_connected"
             ))
         try:
@@ -138,8 +139,9 @@ class SSHFileTreeManager(QWidget):
 
     def __init__(self, external_login_widget: LoginWidget = None, add_login_widget: bool = True):
         super().__init__()
+        self.word_dict = language_wrapper.language_word_dict
         self.setWindowTitle(
-            language_wrapper.language_word_dict.get("ssh_file_viewer_window_title_file_tree_manager")
+            self.word_dict.get("ssh_file_viewer_window_title_file_tree_manager")
         )
         self.add_login_widget = add_login_widget
 
@@ -188,8 +190,8 @@ class SSHFileTreeManager(QWidget):
         if not host or not user or not pwd:
             QMessageBox.warning(
                 self,
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_missing_input"),
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_message_missing_input"))
+                self.word_dict.get("ssh_file_viewer_dialog_title_missing_input"),
+                self.word_dict.get("ssh_file_viewer_dialog_message_missing_input"))
             return
         try:
             self.client.connect(host, port, user, pwd)
@@ -197,9 +199,8 @@ class SSHFileTreeManager(QWidget):
         except Exception as e:
             QMessageBox.critical(
                 self,
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_connection_failed"),
-                f"{language_wrapper.language_word_dict.get(
-                    'ssh_file_viewer_dialog_message_connection_failed')}: {e}")
+                self.word_dict.get("ssh_file_viewer_dialog_title_connection_failed"),
+                f"{self.word_dict.get('ssh_file_viewer_dialog_message_connection_failed')}: {e}")
 
     def _disconnect(self):
         """
@@ -302,9 +303,8 @@ class SSHFileTreeManager(QWidget):
         except Exception as ex:
             QMessageBox.critical(
                 self,
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_list_error"),
-                f"{language_wrapper.language_word_dict.get(
-                    'ssh_file_viewer_dialog_message_list_failed')} '{path}': {ex}")
+                self.word_dict.get("ssh_file_viewer_dialog_title_list_error"),
+                f"{self.word_dict.get('ssh_file_viewer_dialog_message_list_failed')} '{path}': {ex}")
 
     def on_context_menu(self, pos):
         """
@@ -341,9 +341,8 @@ class SSHFileTreeManager(QWidget):
         except Exception as e:
             QMessageBox.critical(
                 self,
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_operation_failed"),
-                f"{language_wrapper.language_word_dict.get(
-                    'ssh_file_viewer_dialog_message_operation_failed')}: {e}")
+                self.word_dict.get("ssh_file_viewer_dialog_title_operation_failed"),
+                f"{self.word_dict.get('ssh_file_viewer_dialog_message_operation_failed')}: {e}")
 
     def action_refresh(self, item: Optional[QTreeWidgetItem]):
         """
@@ -367,15 +366,15 @@ class SSHFileTreeManager(QWidget):
         if item is None:
             QMessageBox.information(
                 self,
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_no_selection"),
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_message_select_folder_to_create"))
+                self.word_dict.get("ssh_file_viewer_dialog_title_no_selection"),
+                self.word_dict.get("ssh_file_viewer_dialog_message_select_folder_to_create"))
             return
         base_path = item.text(3)
         if item.text(1) != "dir":
             base_path = os.path.dirname(base_path)
         name, ok = self.get_text(
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_create_folder"),
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_label_folder_name"))
+            self.word_dict.get("ssh_file_viewer_dialog_title_create_folder"),
+            self.word_dict.get("ssh_file_viewer_dialog_label_folder_name"))
         if not ok or not name.strip():
             return
         new_path = os.path.join(base_path if base_path != "/" else "", name.strip())
@@ -392,9 +391,8 @@ class SSHFileTreeManager(QWidget):
             return
         old_path = item.text(3)
         new_name, ok = self.get_text(
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_rename"),
-            f"{language_wrapper.language_word_dict.get(
-                'ssh_file_viewer_dialog_label_new_name_for_item')}: {item.text(0)}")
+            self.word_dict.get("ssh_file_viewer_dialog_title_rename"),
+            f"{self.word_dict.get('ssh_file_viewer_dialog_label_new_name_for_item')}: {item.text(0)}")
         if not ok or not new_name.strip():
             return
         base = os.path.dirname(old_path) or "/"
@@ -415,9 +413,8 @@ class SSHFileTreeManager(QWidget):
         path = item.text(3)
         reply = QMessageBox.question(
             self,
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_confirm_delete"),
-            f"{language_wrapper.language_word_dict.get(
-                'ssh_file_viewer_dialog_message_confirm_delete')} '{path}'?",
+            self.word_dict.get("ssh_file_viewer_dialog_title_confirm_delete"),
+            f"{self.word_dict.get('ssh_file_viewer_dialog_message_confirm_delete')} '{path}'?",
             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No
         )
         if reply != QMessageBox.StandardButton.Yes:
@@ -441,23 +438,22 @@ class SSHFileTreeManager(QWidget):
         if item is None or item.text(1) != "file":
             QMessageBox.information(
                 self,
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_invalid_selection"),
-                language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_message_select_file_to_download"))
+                self.word_dict.get("ssh_file_viewer_dialog_title_invalid_selection"),
+                self.word_dict.get("ssh_file_viewer_dialog_message_select_file_to_download"))
             return
         remote_path = item.text(3)
         suggested = Path(remote_path).name
         local_path, _ = QFileDialog.getSaveFileName(
             self,
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_save_as"),
+            self.word_dict.get("ssh_file_viewer_dialog_title_save_as"),
             suggested)
         if not local_path:
             return
         self.client.download(remote_path, local_path)
         QMessageBox.information(
             self,
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_downloaded"),
-            f"{language_wrapper.language_word_dict.get(
-                'ssh_file_viewer_dialog_message_saved_to')}: {local_path}")
+            self.word_dict.get("ssh_file_viewer_dialog_title_downloaded"),
+            f"{self.word_dict.get('ssh_file_viewer_dialog_message_saved_to')}: {local_path}")
 
     def action_upload(self, item: Optional[QTreeWidgetItem]):
         """
@@ -468,7 +464,7 @@ class SSHFileTreeManager(QWidget):
             return
         target_dir = item.text(3) if item.text(1) == "dir" else os.path.dirname(item.text(3))
         local_path, _ = QFileDialog.getOpenFileName(
-            self, language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_select_local_file"), "")
+            self, self.word_dict.get("ssh_file_viewer_dialog_title_select_local_file"), "")
         if not local_path:
             return
         filename = os.path.basename(local_path)
@@ -477,9 +473,8 @@ class SSHFileTreeManager(QWidget):
         self.client.upload(local_path, remote_path)
         QMessageBox.information(
             self,
-            language_wrapper.language_word_dict.get("ssh_file_viewer_dialog_title_uploaded"),
-            f"{language_wrapper.language_word_dict.get(
-                'ssh_file_viewer_dialog_message_uploaded_to')}: {remote_path}")
+            self.word_dict.get("ssh_file_viewer_dialog_title_uploaded"),
+            f"{self.word_dict.get('ssh_file_viewer_dialog_message_uploaded_to')}: {remote_path}")
         # Refresh folder contents
         self.action_refresh(item)
 
@@ -500,8 +495,7 @@ class SSHFileTreeManager(QWidget):
             if event.key() in (Qt.Key.Key_Return, Qt.Key.Key_Enter):
                 w = obj.window()
                 for b in w.findChildren(QPushButton):
-                    if b.text().lower() in (language_wrapper.language_word_dict.get(
-                            "ssh_file_viewer_dialog_button_ok"),):
+                    if b.text().lower() in (self.word_dict.get("ssh_file_viewer_dialog_button_ok"),):
                         b.click()
                         return True
         return super().eventFilter(obj, event)

@@ -176,14 +176,12 @@ class SSHCommandWidget(QWidget):
             self.reader_thread.start()
             self.login_widget.status_label.setText(
                 self.word_dict.get("ssh_command_widget_dialog_title_not_connected"))
-            self.append_text(f"{
-            self.word_dict.get('ssh_command_widget_log_message_connected')}"
+            self.append_text(f"{self.word_dict.get('ssh_command_widget_log_message_connected')}"
                              f" {host}:{port} as {user}\n")
         except Exception as e:
             self.login_widget.status_label.setText(
                 self.word_dict.get('ssh_command_widget_status_label_disconnected'))
-            self.append_text(f"{
-            self.word_dict.get('ssh_command_widget_log_message_error')} {e}\n")
+            self.append_text(f"{self.word_dict.get('ssh_command_widget_log_message_error')} {e}\n")
             self._cleanup()
 
     def _on_data(self, data: bytes):

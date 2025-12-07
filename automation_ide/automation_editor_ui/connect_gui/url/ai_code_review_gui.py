@@ -11,7 +11,8 @@ from je_editor import language_wrapper
 class AICodeReviewClient(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle(language_wrapper.language_word_dict.get(
+        self.word_dict = language_wrapper.language_word_dict
+        self.setWindowTitle(self.word_dict.get(
             "ai_code_review_gui_window_title"
         ))
 
@@ -31,14 +32,14 @@ class AICodeReviewClient(QWidget):
 
         # URL
         url_layout = QHBoxLayout()
-        url_layout.addWidget(QLabel(language_wrapper.language_word_dict.get("ai_code_review_gui_label_url")))
+        url_layout.addWidget(QLabel(self.word_dict.get("ai_code_review_gui_label_url")))
         self.url_input = QLineEdit()
         url_layout.addWidget(self.url_input)
         top_layout.addLayout(url_layout)
 
         # Method
         method_layout = QHBoxLayout()
-        method_layout.addWidget(QLabel(language_wrapper.language_word_dict.get("ai_code_review_gui_label_method")))
+        method_layout.addWidget(QLabel(self.word_dict.get("ai_code_review_gui_label_method")))
         self.method_box = QComboBox()
         self.method_box.addItems(["GET", "POST", "PUT", "DELETE"])
         method_layout.addWidget(self.method_box)
@@ -54,14 +55,14 @@ class AICodeReviewClient(QWidget):
         # 左邊：程式碼輸入
         left_layout = QVBoxLayout()
         left_layout.addWidget(QLabel(
-            language_wrapper.language_word_dict.get("ai_code_review_gui_label_code_to_send")))
+            self.word_dict.get("ai_code_review_gui_label_code_to_send")))
         self.code_input = QTextEdit()
         self.code_input.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         left_layout.addWidget(self.code_input)
 
         # 右邊：回傳顯示
         right_layout = QVBoxLayout()
-        right_layout.addWidget(QLabel(language_wrapper.language_word_dict.get("ai_code_review_gui_label_response")))
+        right_layout.addWidget(QLabel(self.word_dict.get("ai_code_review_gui_label_response")))
         self.response_panel = QTextEdit()
         self.response_panel.setReadOnly(True)
         self.response_panel.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
@@ -77,7 +78,7 @@ class AICodeReviewClient(QWidget):
         # 最下面：發送按鈕
         # -------------------------------
         self.send_button = QPushButton(
-            language_wrapper.language_word_dict.get("ai_code_review_gui_button_send_request"))
+            self.word_dict.get("ai_code_review_gui_button_send_request"))
         self.send_button.clicked.connect(self.send_request)
         main_layout.addWidget(self.send_button)
 
@@ -86,9 +87,9 @@ class AICodeReviewClient(QWidget):
         # -------------------------------
         bottom_layout = QHBoxLayout()
         self.accept_button = QPushButton(
-            language_wrapper.language_word_dict.get("ai_code_review_gui_button_accept_response"))
+            self.word_dict.get("ai_code_review_gui_button_accept_response"))
         self.reject_button = QPushButton(
-            language_wrapper.language_word_dict.get("ai_code_review_gui_button_reject_response"))
+            self.word_dict.get("ai_code_review_gui_button_reject_response"))
 
         # 綁定事件
         self.accept_button.clicked.connect(self.accept_response)
@@ -109,7 +110,7 @@ class AICodeReviewClient(QWidget):
 
         if not url:
             self.response_panel.setPlainText(
-                language_wrapper.language_word_dict.get("ai_code_review_gui_message_enter_valid_url"))
+                self.word_dict.get("ai_code_review_gui_message_enter_valid_url"))
             return
 
         # 檢查 URL 是否已紀錄
@@ -121,12 +122,12 @@ class AICodeReviewClient(QWidget):
 
         if url in urls:
             self.response_panel.setPlainText(
-                language_wrapper.language_word_dict.get("ai_code_review_gui_message_url_already_recorded"))
+                self.word_dict.get("ai_code_review_gui_message_url_already_recorded"))
         else:
             with open(self.url_file, "a", encoding="utf-8") as f:
                 f.write(url + "\n")
             self.response_panel.setPlainText(
-                language_wrapper.language_word_dict.get("ai_code_review_gui_message_new_url_recorded"))
+                self.word_dict.get("ai_code_review_gui_message_new_url_recorded"))
 
         try:
             if method == "GET":
@@ -139,27 +140,27 @@ class AICodeReviewClient(QWidget):
                 response = requests.delete(url)
             else:
                 self.response_panel.setPlainText(
-                    language_wrapper.language_word_dict.get("ai_code_review_gui_message_unsupported_http_method"))
+                    self.word_dict.get("ai_code_review_gui_message_unsupported_http_method"))
                 return
 
             self.response_panel.append(response.text)
 
         except Exception as e:
             self.response_panel.setPlainText(f"{
-            language_wrapper.language_word_dict.get('ai_code_review_gui_message_error')}: {e}")
+            self.word_dict.get('ai_code_review_gui_message_error')}: {e}")
 
     def accept_response(self):
         """Accept response code and save"""
         self.accept_count += 1
         self.response_panel.append(f"\n{
-        language_wrapper.language_word_dict.get('ai_code_review_gui_status_accepted')}")
+        self.word_dict.get('ai_code_review_gui_status_accepted')}")
         self.save_stats()
 
     def reject_response(self):
         """Reject response code and save"""
         self.reject_count += 1
         self.response_panel.append(f"\n{
-        language_wrapper.language_word_dict.get('ai_code_review_gui_status_rejected')}")
+        self.word_dict.get('ai_code_review_gui_status_rejected')}")
         self.save_stats()
 
     def save_stats(self):
@@ -169,8 +170,7 @@ class AICodeReviewClient(QWidget):
                 f.write(f"Accepted: {self.accept_count}\n")
                 f.write(f"Rejected: {self.reject_count}\n")
         except Exception as e:
-            self.response_panel.append(f"\n[{
-            language_wrapper.language_word_dict.get("ai_code_review_gui_status_save_failed")}: {e}]")
+            self.response_panel.append(f"\n[{self.word_dict.get("ai_code_review_gui_status_save_failed")}: {e}]")
 
 
 if __name__ == "__main__":
