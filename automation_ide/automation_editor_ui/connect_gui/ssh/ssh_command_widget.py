@@ -23,6 +23,7 @@ class SSHReaderThread(QThread):
         super().__init__(parent)
         self.chan = chan
         self._running = True
+        self.word_dict = language_wrapper.language_word_dict
 
     def run(self):
         try:
@@ -43,10 +44,10 @@ class SSHReaderThread(QThread):
                 self.msleep(10)
         except Exception as e:
             self.closed.emit(
-                f"{language_wrapper.language_word_dict.get('ssh_command_widget_error_message_reader_failed')} {e}")
+                f"{self.word_dict.get('ssh_command_widget_error_message_reader_failed')} {e}")
         finally:
             self.closed.emit(
-                language_wrapper.language_word_dict.get("ssh_command_widget_log_message_reader_closed"))
+                self.word_dict.get("ssh_command_widget_log_message_reader_closed"))
 
     def stop(self):
         self._running = False
@@ -55,8 +56,9 @@ class SSHReaderThread(QThread):
 class SSHCommandWidget(QWidget):
     def __init__(self, external_login_widget: LoginWidget = None, add_login_widget: bool = True):
         super().__init__()
+        self.word_dict = language_wrapper.language_word_dict
         self.setWindowTitle(
-            language_wrapper.language_word_dict.get("ssh_command_widget_window_title_ssh_command_widget"))
+            self.word_dict.get("ssh_command_widget_window_title_ssh_command_widget"))
 
         self.add_login_widget = add_login_widget
 
@@ -78,7 +80,7 @@ class SSHCommandWidget(QWidget):
         self.terminal.setReadOnly(True)
         self.command_input_edit = QLineEdit()
         self.command_send_button = QPushButton(
-            language_wrapper.language_word_dict.get("ssh_command_widget_button_label_send_command"))
+            self.word_dict.get("ssh_command_widget_button_label_send_command"))
 
         self._setup_ui()
         self._bind_events()
@@ -87,7 +89,7 @@ class SSHCommandWidget(QWidget):
         self.terminal.setReadOnly(True)
         self.terminal.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)
         self.command_input_edit.setPlaceholderText(
-            language_wrapper.language_word_dict.get("ssh_command_widget_input_placeholder_command_line")
+            self.word_dict.get("ssh_command_widget_input_placeholder_command_line")
         )
 
         terminal_panel = QVBoxLayout()
@@ -127,8 +129,8 @@ class SSHCommandWidget(QWidget):
         if not host or not user:
             QMessageBox.warning(
                 self,
-                language_wrapper.language_word_dict.get("ssh_command_widget_dialog_title_input_error"),
-                language_wrapper.language_word_dict.get(
+                self.word_dict.get("ssh_command_widget_dialog_title_input_error"),
+                self.word_dict.get(
                     "ssh_command_widget_dialog_message_input_error_host_user_required"))
             return
 
@@ -140,8 +142,8 @@ class SSHCommandWidget(QWidget):
                 if not os.path.exists(key_path):
                     QMessageBox.warning(
                         self,
-                        language_wrapper.language_word_dict.get("ssh_command_widget_dialog_title_key_error"),
-                        language_wrapper.language_word_dict.get("ssh_command_widget_dialog_message_key_file_not_exist"))
+                        self.word_dict.get("ssh_command_widget_dialog_title_key_error"),
+                        self.word_dict.get("ssh_command_widget_dialog_message_key_file_not_exist"))
                     return
                 try:
                     pkey = None
@@ -154,13 +156,13 @@ class SSHCommandWidget(QWidget):
                             continue
                     if pkey is None:
                         raise ValueError(
-                            language_wrapper.language_word_dict.get(
+                            self.word_dict.get(
                                 "ssh_command_widget_error_message_unsupported_private_key"
                             ))
                     self.ssh_client.connect(hostname=host, port=port, username=user, pkey=pkey, timeout=10)
                 except Exception as e:
-                    raise RuntimeError(f"{language_wrapper.language_word_dict.get(
-                        'ssh_command_widget_error_message_key_auth_failed')} {e}")
+                    raise RuntimeError(
+                        f"{self.word_dict.get('ssh_command_widget_error_message_key_auth_failed')} {e}")
             else:
                 self.ssh_client.connect(
                     hostname=host, port=port, username=user, password=password, timeout=10
@@ -173,15 +175,15 @@ class SSHCommandWidget(QWidget):
             self.reader_thread.closed.connect(self._on_closed)
             self.reader_thread.start()
             self.login_widget.status_label.setText(
-                language_wrapper.language_word_dict.get("ssh_command_widget_dialog_title_not_connected"))
+                self.word_dict.get("ssh_command_widget_dialog_title_not_connected"))
             self.append_text(f"{
-            language_wrapper.language_word_dict.get('ssh_command_widget_log_message_connected')}"
+            self.word_dict.get('ssh_command_widget_log_message_connected')}"
                              f" {host}:{port} as {user}\n")
         except Exception as e:
             self.login_widget.status_label.setText(
-                language_wrapper.language_word_dict.get('ssh_command_widget_status_label_disconnected'))
+                self.word_dict.get('ssh_command_widget_status_label_disconnected'))
             self.append_text(f"{
-            language_wrapper.language_word_dict.get('ssh_command_widget_log_message_error')} {e}\n")
+            self.word_dict.get('ssh_command_widget_log_message_error')} {e}\n")
             self._cleanup()
 
     def _on_data(self, data: bytes):
@@ -190,14 +192,14 @@ class SSHCommandWidget(QWidget):
             clean_text = ANSI_ESCAPE_PATTERN.sub('', text)
             self.append_text(clean_text)
         except Exception as error:
-            self.append_text(f"{language_wrapper.language_word_dict.get(
+            self.append_text(f"{self.word_dict.get(
                 'ssh_command_widget_error_message_decode_failed'
             )} {error}\n")
 
     def _on_closed(self, msg: str):
         self.append_text(f"\n{
-        language_wrapper.language_word_dict.get('ssh_command_widget_log_message_channel_closed')} {msg}\n")
-        self.login_widget.status_label.setText(language_wrapper.language_word_dict.get(
+        self.word_dict.get('ssh_command_widget_log_message_channel_closed')} {msg}\n")
+        self.login_widget.status_label.setText(self.word_dict.get(
             'ssh_command_widget_status_label_disconnected'
         ))
 
@@ -210,21 +212,21 @@ class SSHCommandWidget(QWidget):
                 self.shell_channel.send(cmd + "\n")
                 self.command_input_edit.clear()
             except Exception as e:
-                self.append_text(f"{language_wrapper.language_word_dict.get(
+                self.append_text(f"{self.word_dict.get(
                     'ssh_command_widget_error_message_send_failed'
                 )} {e}\n")
         else:
             QMessageBox.information(
                 self,
-                language_wrapper.language_word_dict.get('ssh_command_widget_dialog_title_not_connected'),
-                language_wrapper.language_word_dict.get('ssh_command_widget_dialog_message_not_connected_shell'))
+                self.word_dict.get('ssh_command_widget_dialog_title_not_connected'),
+                self.word_dict.get('ssh_command_widget_dialog_message_not_connected_shell'))
 
     def disconnect_ssh(self):
         self.append_text(f"{
-        language_wrapper.language_word_dict.get('ssh_command_widget_log_message_disconnect_in_progress')} \n")
+        self.word_dict.get('ssh_command_widget_log_message_disconnect_in_progress')} \n")
         self._cleanup()
         self.login_widget.status_label.setText(
-            language_wrapper.language_word_dict.get('ssh_command_widget_status_label_disconnected'))
+            self.word_dict.get('ssh_command_widget_status_label_disconnected'))
 
     def _cleanup(self):
         try:
