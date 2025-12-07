@@ -146,21 +146,18 @@ class AICodeReviewClient(QWidget):
             self.response_panel.append(response.text)
 
         except Exception as e:
-            self.response_panel.setPlainText(f"{
-            self.word_dict.get('ai_code_review_gui_message_error')}: {e}")
+            self.response_panel.setPlainText(f"{self.word_dict.get('ai_code_review_gui_message_error')}: {e}")
 
     def accept_response(self):
         """Accept response code and save"""
         self.accept_count += 1
-        self.response_panel.append(f"\n{
-        self.word_dict.get('ai_code_review_gui_status_accepted')}")
+        self.response_panel.append(f"\n{self.word_dict.get('ai_code_review_gui_status_accepted')}")
         self.save_stats()
 
     def reject_response(self):
         """Reject response code and save"""
         self.reject_count += 1
-        self.response_panel.append(f"\n{
-        self.word_dict.get('ai_code_review_gui_status_rejected')}")
+        self.response_panel.append(f"\n{self.word_dict.get('ai_code_review_gui_status_rejected')}")
         self.save_stats()
 
     def save_stats(self):

@@ -209,9 +209,7 @@ class SSHCommandWidget(QWidget):
                 self.shell_channel.send(cmd + "\n")
                 self.command_input_edit.clear()
             except Exception as e:
-                self.append_text(f"{self.word_dict.get(
-                    'ssh_command_widget_error_message_send_failed'
-                )} {e}\n")
+                self.append_text(f"{self.word_dict.get('ssh_command_widget_error_message_send_failed')} {e}\n")
         else:
             QMessageBox.information(
                 self,
@@ -219,8 +217,7 @@ class SSHCommandWidget(QWidget):
                 self.word_dict.get('ssh_command_widget_dialog_message_not_connected_shell'))
 
     def disconnect_ssh(self):
-        self.append_text(f"{
-        self.word_dict.get('ssh_command_widget_log_message_disconnect_in_progress')} \n")
+        self.append_text(f"{self.word_dict.get('ssh_command_widget_log_message_disconnect_in_progress')} \n")
         self._cleanup()
         self.login_widget.status_label.setText(
             self.word_dict.get('ssh_command_widget_status_label_disconnected'))
