@@ -45,7 +45,7 @@ class AutomationEditor(EditorMain):
         for widget_name, widget in EDITOR_EXTEND_TAB.items():
             self.tab_widget.addTab(widget(), widget_name)
         # Icon
-        self.icon_path = Path(os.getcwd() + "/je_driver_icon.ico")
+        self.icon_path = Path(os.getcwd() + "/AutomationIDE_Icon.ico")
         self.icon = QIcon(str(self.icon_path))
         self.system_tray = QSystemTrayIcon()
         self.system_tray.setIcon(self.icon)
