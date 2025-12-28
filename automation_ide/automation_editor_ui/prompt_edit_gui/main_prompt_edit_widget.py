@@ -1,11 +1,11 @@
 import os
-import sys
 
 from PySide6.QtCore import QFileSystemWatcher
 from PySide6.QtWidgets import (
-    QApplication, QWidget, QVBoxLayout, QHBoxLayout,
-    QComboBox, QTextEdit, QLineEdit, QPushButton, QLabel, QGroupBox, QMessageBox
+    QWidget, QVBoxLayout, QHBoxLayout,
+    QComboBox, QTextEdit, QPushButton, QGroupBox, QMessageBox
 )
+from je_editor import language_wrapper
 
 from automation_ide.automation_editor_ui.prompt_edit_gui.prompt_templates.first_code_review import FIRST_CODE_REVIEW
 from automation_ide.automation_editor_ui.prompt_edit_gui.prompt_templates.first_summary_prompt import \
@@ -35,7 +35,9 @@ class PromptEditor(QWidget):
             "total_summary.md": TOTAL_SUMMARY_TEMPLATE,
         }
 
-        self.setWindowTitle("Prompt Editor")  # 視窗標題：Prompt 編輯器
+        self.setWindowTitle(language_wrapper.language_word_dict.get(
+            "prompt_editor_window_title"
+        ))  # 視窗標題：Prompt 編輯器
 
         # --- Layouts (版面配置) ---
         main_layout = QVBoxLayout(self)
@@ -43,45 +45,36 @@ class PromptEditor(QWidget):
         editor_layout = QHBoxLayout()
         bottom_layout = QHBoxLayout()
 
-        # --- AI URL input box (AI URL 輸入框) ---
-        self.url_label = QLabel("AI URL:")
-        self.url_input = QLineEdit()
-        top_layout.addWidget(self.url_label)
-        top_layout.addWidget(self.url_input)
-
         # --- ComboBox for selecting files (下拉選單選擇檔案) ---
         self.file_selector = QComboBox()
         self.file_selector.addItems(self.prompt_files)
         self.file_selector.currentIndexChanged.connect(self.load_file_content)
 
         # --- Left Editable panel (左邊編輯區塊) ---
-        self.left_editor = QTextEdit()
-        left_group = QGroupBox("Edit File Content")  # 左邊編輯檔案內容
-        left_layout = QVBoxLayout()
-        left_layout.addWidget(self.left_editor)
-        left_group.setLayout(left_layout)
+        self.middle_editor = QTextEdit()
+        prompt_group = QGroupBox(language_wrapper.language_word_dict.get(
+            "prompt_editor_groupbox_edit_file_content"
+        ))  # 左邊編輯檔案內容
+        middle_layout = QVBoxLayout()
+        middle_layout.addWidget(self.middle_editor)
+        prompt_group.setLayout(middle_layout)
 
-        # --- Right Editable panel (右邊可編輯區塊) ---
-        self.editable_panel = QTextEdit()
-        editable_group = QGroupBox("Edit Prompt (Editable)")  # 編輯 Prompt (可編輯)
-        editable_layout = QVBoxLayout()
-        editable_layout.addWidget(self.editable_panel)
-        editable_group.setLayout(editable_layout)
-
-        editor_layout.addWidget(left_group, 1)
-        editor_layout.addWidget(editable_group, 1)
+        editor_layout.addWidget(prompt_group, 1)
 
         # --- Buttons ---
-        self.send_button = QPushButton("Send")
-        self.send_button.clicked.connect(self.send_prompt)
-
-        self.create_button = QPushButton("Create File")
+        self.create_button = QPushButton(language_wrapper.language_word_dict.get(
+            "prompt_editor_button_create_file"
+        ))
         self.create_button.clicked.connect(self.create_file)
 
-        self.save_button = QPushButton("Save")
+        self.save_button = QPushButton(language_wrapper.language_word_dict.get(
+            "prompt_editor_button_save_file"
+        ))
         self.save_button.clicked.connect(self.save_file)
 
-        self.reload_button = QPushButton("Reload")
+        self.reload_button = QPushButton(language_wrapper.language_word_dict.get(
+            "prompt_editor_button_reload_file"
+        ))
         self.reload_button.clicked.connect(lambda: self.load_file_content(self.file_selector.currentIndex()))
 
         bottom_layout.addWidget(self.file_selector)
@@ -89,7 +82,6 @@ class PromptEditor(QWidget):
         bottom_layout.addWidget(self.reload_button)
         bottom_layout.addWidget(self.save_button)
         bottom_layout.addWidget(self.create_button)
-        bottom_layout.addWidget(self.send_button)
 
         # --- Combine layouts (組合版面配置) ---
         main_layout.addLayout(top_layout)
@@ -110,22 +102,30 @@ class PromptEditor(QWidget):
         if os.path.exists(filename):
             with open(filename, "r", encoding="utf-8") as f:
                 content = f.read()
-            self.left_editor.setPlainText(content)
+            self.middle_editor.setPlainText(content)
         else:
-            self.left_editor.setPlainText(f"(File {filename} does not exist)")
+            self.middle_editor.setPlainText(language_wrapper.language_word_dict.get(
+                "prompt_editor_file_not_exist"
+            ).format(filename=filename))
 
     def create_file(self):
         """建立目前選擇的檔案，若不存在則用模板內容建立"""
         filename = self.current_file
         if os.path.exists(filename):
-            QMessageBox.information(self, "Info", f"File {filename} already exists, no need to create")
+            QMessageBox.information(
+                self,
+                language_wrapper.language_word_dict.get("prompt_editor_msgbox_info_title"),
+                language_wrapper.language_word_dict.get("prompt_editor_msgbox_file_exists").format(filename=filename))
             return
 
         template_content = self.templates.get(filename, "")
         with open(filename, "w", encoding="utf-8") as f:
             f.write(template_content)
 
-        QMessageBox.information(self, "Success", f"File {filename} has been created")
+        QMessageBox.information(
+            self,
+            language_wrapper.language_word_dict.get("prompt_editor_msgbox_success_title"),
+            language_wrapper.language_word_dict.get("prompt_editor_msgbox_file_created").format(filename=filename))
         self.load_file_content(self.file_selector.currentIndex())
 
     def on_file_changed(self, path):
@@ -136,32 +136,17 @@ class PromptEditor(QWidget):
     def save_file(self):
         """將左邊編輯區內容儲存到目前檔案"""
         if not hasattr(self, "current_file"):
-            QMessageBox.warning(self, "Error", "No file selected")
+            QMessageBox.warning(
+                self,
+                language_wrapper.language_word_dict.get("prompt_editor_msgbox_error_title"),
+                language_wrapper.language_word_dict.get("prompt_editor_msgbox_no_file_selected"))
             return
 
-        content = self.left_editor.toPlainText()
+        content = self.middle_editor.toPlainText()
         with open(self.current_file, "w", encoding="utf-8") as f:
             f.write(content)
-        QMessageBox.information(self, "Success", f"File {self.current_file} saved")
-
-    def send_prompt(self):
-        """模擬發送 prompt 到 AI URL"""
-        ai_url = self.url_input.text().strip()
-        prompt_text = self.editable_panel.toPlainText().strip()
-
-        if not ai_url:
-            QMessageBox.warning(self, "Warning", "Please enter AI URL")
-            return
-        if not prompt_text:
-            QMessageBox.warning(self, "Warning", "Please enter the prompt to send")
-            return
-
-        # 成功提示
-        QMessageBox.information(self, "Sending Prompt",
-                                f"Sending prompt to {ai_url}:\n\n{prompt_text}")
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    editor = PromptEditor()
-    editor.showMaximized()
-    sys.exit(app.exec())
+        QMessageBox.information(
+            self,
+            language_wrapper.language_word_dict.get("prompt_editor_msgbox_success_title"),
+            language_wrapper.language_word_dict.get("prompt_editor_msgbox_file_saved").format(
+                filename=self.current_file))

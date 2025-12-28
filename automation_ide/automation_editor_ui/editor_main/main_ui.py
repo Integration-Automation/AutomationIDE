@@ -4,6 +4,8 @@ from os import environ
 from pathlib import Path
 from typing import List, Dict, Type
 
+from automation_ide.utils.logging.logger import automation_ide_logger
+
 environ["LOCUST_SKIP_MONKEY_PATCH"] = "1"
 
 from PySide6.QtCore import QTimer, QCoreApplication
@@ -24,33 +26,46 @@ EDITOR_EXTEND_TAB: Dict[str, Type[QWidget]] = {
 
 class AutomationEditor(EditorMain):
 
-    def __init__(self, debug_mode: bool = False, show_system_tray_ray: bool = False):
-        super().__init__(debug_mode, show_system_tray_ray)
+    def __init__(self, debug_mode: bool = False, show_system_tray_ray: bool = False, extend: bool = False) -> None:
+        super().__init__(debug_mode, show_system_tray_ray, extend=True)
+
         self.current_run_code_window: List[QWidget] = list()
         # Project compiler if user not choose this will use which to find
         self.python_compiler = None
         # Delete JEditor help
         if self.help_menu:
             self.help_menu.deleteLater()
-        # System tray change
-        if self.show_system_tray_ray:
-            self.system_tray.main_window = self
-            self.system_tray.setToolTip(language_wrapper.language_word_dict.get("automation_editor_application_name"))
+
         # Update language_dict
         update_language_dict()
+
+        # Title
+        self.setWindowTitle(language_wrapper.language_word_dict.get("automation_editor_application_name"))
+        self.setToolTip(language_wrapper.language_word_dict.get("automation_editor_application_name"))
+
+        # Windows 系統專用：設定應用程式 ID
+        # Windows only: set application ID
+        if not extend:
+            self.id = language_wrapper.language_word_dict.get("automation_editor_application_name")
+            if sys.platform in ["win32", "cygwin", "msys"]:
+                from ctypes import windll
+                windll.shell32.SetCurrentProcessExplicitAppUserModelID(self.id)
+
+        # Icon
+        if not extend:
+            self.icon_path = Path(os.getcwd() + "/automation_ide.ico")
+            self.icon = QIcon(str(self.icon_path))
+            if not self.icon.isNull():
+                self.setWindowIcon(self.icon)
+
         # Menu
         add_menu_to_menubar(self)
         syntax_extend_package(self)
+
         # Tab
         for widget_name, widget in EDITOR_EXTEND_TAB.items():
             self.tab_widget.addTab(widget(), widget_name)
-        # Icon
-        self.icon_path = Path(os.getcwd() + "/je_driver_icon.ico")
-        self.icon = QIcon(str(self.icon_path))
-        self.system_tray = QSystemTrayIcon()
-        self.system_tray.setIcon(self.icon)
-        # Title
-        self.setWindowTitle(language_wrapper.language_word_dict.get("automation_editor_application_name"))
+
         if debug_mode:
             close_timer = QTimer(self)
             close_timer.setInterval(10000)
@@ -76,14 +91,14 @@ def start_editor(debug_mode: bool = False, **kwargs) -> None:
     Start editor instance
     :return: None
     """
-    new_editor = QCoreApplication.instance()
-    if new_editor is None:
-        new_editor = QApplication(sys.argv)
+    new_ide = QCoreApplication.instance()
+    if new_ide is None:
+        new_ide = QApplication(sys.argv)
     window = AutomationEditor(debug_mode=debug_mode, **kwargs)
-    apply_stylesheet(new_editor, theme="dark_amber.xml")
+    apply_stylesheet(new_ide, theme="dark_amber.xml")
     window.showMaximized()
     try:
         window.startup_setting()
     except Exception as error:
         print(repr(error))
-    sys.exit(new_editor.exec())
+    sys.exit(new_ide.exec())

@@ -15,11 +15,11 @@
   },
   {
    "optionDest": "console",
-   "value": false
+   "value": true
   },
   {
    "optionDest": "icon_file",
-   "value": "C:/CodeWorkspace/Python/AutomationIDE/exe/je_driver_icon.ico"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/exe/automation_ide.ico"
   },
   {
    "optionDest": "name",
@@ -59,11 +59,7 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/Python/AutomationIDE/exe/je_driver_icon.ico;."
-  },
-  {
-   "optionDest": "datas",
-   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipython-8.32.0.dist-info;.ipython-8.32.0.dist-info/"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipython-9.8.0.dist-info;ipython-9.8.0.dist-info/"
   },
   {
    "optionDest": "datas",
@@ -71,7 +67,7 @@
   },
   {
    "optionDest": "datas",
-   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipykernel-6.29.5.dist-info;ipykernel-6.29.5.dist-info/"
+   "value": "C:/CodeWorkspace/Python/AutomationIDE/.venv/Lib/site-packages/ipykernel-7.1.0.dist-info;ipykernel-7.1.0.dist-info/"
   },
   {
    "optionDest": "datas",
