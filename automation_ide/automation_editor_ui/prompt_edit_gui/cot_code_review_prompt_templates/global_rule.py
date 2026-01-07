@@ -24,8 +24,17 @@ Please conduct a code review according to the following global rules:
 6. Documentation & Testing
    - Ensure necessary comments and documentation are present.
    - Verify sufficient unit and integration tests are included.
-   
-7. When scoring, balance conciseness with comprehensiveness; avoid penalizing completeness for being less concise.”
 
+7. Scoring & Feedback Style
+   - Balance conciseness with comprehensiveness.
+   - Do not penalize completeness for being less concise.
+
+8. RAG Rules (Retrieval-Augmented Guidance)
+   - Apply RAG-provided rules when available.
+   - If a rule conflicts or duplicates existing global rules, prioritize the RAG rule.
+   - Ensure integration of RAG rules maintains consistency with overall review standards.
+   {rag_rules}
+
+Final Instruction:
 Provide review feedback in a structured bullet-point format, keeping it professional, concise, and with actionable improvement suggestions.
 """
