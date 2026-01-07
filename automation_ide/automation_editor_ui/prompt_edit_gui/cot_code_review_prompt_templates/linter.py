@@ -1,4 +1,4 @@
-LINTER_PROMPT_TEMPLATE = """
+LINTER_TEMPLATE = """
 You are a strict code linter. 
 Your task is to analyze the given source code and produce structured linter_messages. 
 Follow these rules:

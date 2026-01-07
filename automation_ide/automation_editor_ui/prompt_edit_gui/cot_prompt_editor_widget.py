@@ -16,6 +16,10 @@ from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_
 from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.judge import JUDGE_TEMPLATE
 from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.total_summary import \
     TOTAL_SUMMARY_TEMPLATE
+from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.code_smell_detector import \
+    CODE_SMELL_DETECTOR_TEMPLATE
+from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.linter import \
+    LINTER_TEMPLATE
 class CoTPromptEditor(QWidget):
     def __init__(self, prompt_files=None, parent=None):
         super().__init__(parent)
@@ -24,7 +28,9 @@ class CoTPromptEditor(QWidget):
             "first_summary_prompt.md",
             "first_code_review.md",
             "judge.md",
-            "total_summary.md"
+            "total_summary.md",
+            "linter.md",
+            "code_smell_detector.md",
         ]
 
         # 對應檔案名稱與模板內容
@@ -34,6 +40,8 @@ class CoTPromptEditor(QWidget):
             "first_code_review.md": FIRST_CODE_REVIEW_TEMPLATE,
             "judge.md": JUDGE_TEMPLATE,
             "total_summary.md": TOTAL_SUMMARY_TEMPLATE,
+            "linter.md": LINTER_TEMPLATE,
+            "code_smell_detector.md": CODE_SMELL_DETECTOR_TEMPLATE,
         }
 
         self.setWindowTitle(language_wrapper.language_word_dict.get(
