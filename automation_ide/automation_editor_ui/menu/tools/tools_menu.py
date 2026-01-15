@@ -9,8 +9,8 @@ from je_editor.utils.logging.loggin_instance import jeditor_logger
 
 from automation_ide.automation_editor_ui.connect_gui.ssh.ssh_main_widget import SSHMainWidget
 from automation_ide.automation_editor_ui.connect_gui.url.ai_code_review_gui import AICodeReviewClient
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_prompt_editor_widget import CoTPromptEditor
-from automation_ide.automation_editor_ui.prompt_edit_gui.skills_prompt_editor_widget import SkillPromptEditor
+from automation_ide.automation_editor_ui.extend_ai_gui.prompt_edit_gui.cot_prompt_editor_widget import CoTPromptEditor
+from automation_ide.automation_editor_ui.extend_ai_gui.prompt_edit_gui.skills_prompt_editor_widget import SkillPromptEditor
 
 if TYPE_CHECKING:
     from automation_ide.automation_editor_ui.editor_main.main_ui import AutomationEditor

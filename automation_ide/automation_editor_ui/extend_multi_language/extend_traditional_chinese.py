@@ -241,5 +241,16 @@ def update_traditional_chinese_word_dict():
             "extend_tools_menu_ai_code_review_dock_title": "AI 程式碼審查",
             "extend_tools_menu_cot_prompt_editor_dock_title": "CoT 提示詞編輯器",
             "extend_tools_menu_skill_prompt_editor_dock_title": "Skill 提示詞編輯器",
+            # CoT code-review GUI
+            "cot_gui_window_title": "Prompt Sender UI",
+            "cot_gui_label_api_url": "API URL:",
+            "cot_gui_placeholder_api_url": "請輸入要傳送的 API URL，例如 http://127.0.0.1:5000/api",
+            "cot_gui_placeholder_prompt_view": "這裡會顯示要傳送的 Prompt 內容",
+            "cot_gui_label_prompt_area": "傳送資料區域",
+            "cot_gui_label_response_area": "回傳區域",
+            "cot_gui_button_send": "開始傳送",
+            "cot_gui_error_read_file": "無法讀取檔案:",
+            "cot_gui_error_no_url": "請先輸入 API URL！",
+            "cot_gui_error_sending": "Error sending:",
         }
     )

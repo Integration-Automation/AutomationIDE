@@ -7,42 +7,17 @@ from PySide6.QtWidgets import (
 )
 from je_editor import language_wrapper
 
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.first_code_review import \
-    FIRST_CODE_REVIEW_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.first_summary_prompt import \
-    FIRST_SUMMARY_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.global_rule import \
-    GLOBAL_RULE_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.judge import JUDGE_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.total_summary import \
-    TOTAL_SUMMARY_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.code_smell_detector import \
-    CODE_SMELL_DETECTOR_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.cot_code_review_prompt_templates.linter import \
-    LINTER_TEMPLATE
+from automation_ide.automation_editor_ui.extend_ai_gui.ai_gui_global_variable import COT_TEMPLATE_FILES, \
+    COT_TEMPLATE_RELATION
+
+
 class CoTPromptEditor(QWidget):
     def __init__(self, prompt_files=None, parent=None):
         super().__init__(parent)
-        self.prompt_files = prompt_files or [
-            "global_rule.md",
-            "first_summary_prompt.md",
-            "first_code_review.md",
-            "judge.md",
-            "total_summary.md",
-            "linter.md",
-            "code_smell_detector.md",
-        ]
+        self.prompt_files = prompt_files or COT_TEMPLATE_FILES
 
         # 對應檔案名稱與模板內容
-        self.templates = {
-            "global_rule.md": GLOBAL_RULE_TEMPLATE,
-            "first_summary_prompt.md": FIRST_SUMMARY_TEMPLATE,
-            "first_code_review.md": FIRST_CODE_REVIEW_TEMPLATE,
-            "judge.md": JUDGE_TEMPLATE,
-            "total_summary.md": TOTAL_SUMMARY_TEMPLATE,
-            "linter.md": LINTER_TEMPLATE,
-            "code_smell_detector.md": CODE_SMELL_DETECTOR_TEMPLATE,
-        }
+        self.templates = COT_TEMPLATE_RELATION
 
         self.setWindowTitle(language_wrapper.language_word_dict.get(
             "cot_cot_prompt_editor_window_title"

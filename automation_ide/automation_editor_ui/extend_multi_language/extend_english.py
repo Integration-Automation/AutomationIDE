@@ -241,5 +241,16 @@ def update_english_word_dict():
             "extend_tools_menu_ai_code_review_dock_title": "AI Code-Review",
             "extend_tools_menu_cot_prompt_editor_dock_title": "CoT PromptEditor",
             "extend_tools_menu_skill_prompt_editor_dock_title": "Skill PromptEditor",
+            # CoT code-review GUI
+            "cot_gui_window_title": "Prompt Sender UI",
+            "cot_gui_label_api_url": "API URL:",
+            "cot_gui_placeholder_api_url": "Please enter the API URL to send, e.g. http://127.0.0.1:5000/api",
+            "cot_gui_placeholder_prompt_view": "This area will display the prompt content to be sent",
+            "cot_gui_label_prompt_area": "Prompt Area",
+            "cot_gui_label_response_area": "Response Area",
+            "cot_gui_button_send": "Start Sending",
+            "cot_gui_error_read_file": "Unable to read file:",
+            "cot_gui_error_no_url": "Please enter the API URL first!",
+            "cot_gui_error_sending": "Error sending:"
         }
     )

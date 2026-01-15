@@ -7,25 +7,17 @@ from PySide6.QtWidgets import (
 )
 from je_editor import language_wrapper
 
-from automation_ide.automation_editor_ui.prompt_edit_gui.skills_prompt_templates.code_explainer import \
-    CODE_EXPLAINER_TEMPLATE
-from automation_ide.automation_editor_ui.prompt_edit_gui.skills_prompt_templates.code_review import \
-    CODE_REVIEW_SKILL_TEMPLATE
+from automation_ide.automation_editor_ui.extend_ai_gui.ai_gui_global_variable import SKILLS_TEMPLATE_FILES, \
+    SKILLS_TEMPLATE_RELATION
 
 
 class SkillPromptEditor(QWidget):
     def __init__(self, skill_files=None, parent=None):
         super().__init__(parent)
-        self.skill_files = skill_files or [
-            "code_review_skill.md",
-            "code_explainer_skill.md",
-        ]
+        self.skill_files = skill_files or SKILLS_TEMPLATE_FILES
 
         # 對應檔案名稱與模板內容
-        self.templates = {
-            "code_review_skill.md": CODE_REVIEW_SKILL_TEMPLATE,
-            "code_explainer_skill.md": CODE_EXPLAINER_TEMPLATE
-        }
+        self.templates = SKILLS_TEMPLATE_RELATION
 
         self.setWindowTitle(language_wrapper.language_word_dict.get(
             "skill_prompt_editor_window_title"
