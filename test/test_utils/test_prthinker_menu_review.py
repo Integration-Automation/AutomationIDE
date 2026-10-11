@@ -146,7 +146,8 @@ class TestTheMenu:
         window.prthinker_github_action.trigger()
 
         labels = [action.text() for action in window.prthinker_menu.actions()]
-        assert labels == ["Review the current file", "Review a Pull Request", "Settings", "Help"]
+        assert labels == ["Review the current file", "Review in Problems", "Cancel review",
+                          "Review a Pull Request", "Settings", "Help"]
         assert opened == ["settings", menu.DOCUMENT_URL, menu.GITHUB_URL]
         window.automation_menu.deleteLater()
 

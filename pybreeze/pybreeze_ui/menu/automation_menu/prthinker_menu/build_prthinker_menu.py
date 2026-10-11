@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QObject, Slot
 from PySide6.QtGui import QAction
 from PySide6.QtWidgets import QInputDialog, QMessageBox
 from je_editor import EditorWidget, language_wrapper
@@ -19,6 +19,7 @@ from je_editor import EditorWidget, language_wrapper
 from pybreeze.extend.process_executor.prthinker.prthinker_process import (
     review_current_file, review_pull_request
 )
+from pybreeze.extend.process_executor.prthinker.structured_review import review_with_diagnostics, cancel_diagnostic_review
 from pybreeze.pybreeze_ui.dialog.prthinker_setting_dialog import PRThinkerSettingDialog
 from pybreeze.pybreeze_ui.menu.menu_utils import open_web_browser
 from pybreeze.pybreeze_ui.menu.plugin_menu.build_run_with_menu import save_current_file_for_run
@@ -32,6 +33,22 @@ LAST_PULL_REQUEST_NUMBER = 1000000
 
 DOCUMENT_URL = "https://code-review-framework.readthedocs.io/en/latest/"
 GITHUB_URL = "https://github.com/JE-Chen/Code-Review-Framework-Combining-Large-Language-Models-and-Chain-of-Thought-Reasoning"
+
+
+class DiagnosticReviewActions(QObject):
+    """Bound slots for review actions / 審查動作使用綁定槽。"""
+
+    def __init__(self, window):
+        super().__init__(window)
+        self.window = window
+
+    @Slot()
+    def review(self):
+        review_with_diagnostics(self.window)
+
+    @Slot()
+    def cancel(self):
+        cancel_diagnostic_review(self.window)
 
 
 def set_prthinker_menu(ui_we_want_to_set: PyBreezeMainWindow) -> None:
@@ -51,6 +68,14 @@ def set_prthinker_menu(ui_we_want_to_set: PyBreezeMainWindow) -> None:
         lambda: _review_current_file(ui_we_want_to_set))
     ui_we_want_to_set.prthinker_menu.addAction(
         ui_we_want_to_set.prthinker_review_file_action)
+    controller = DiagnosticReviewActions(ui_we_want_to_set)
+    ui_we_want_to_set.prthinker_diagnostic_actions = controller
+    structured_action = QAction(lang.get("prthinker_review_problems_label"), ui_we_want_to_set.prthinker_menu)
+    structured_action.triggered.connect(controller.review)
+    ui_we_want_to_set.prthinker_menu.addAction(structured_action)
+    cancel_action = QAction(lang.get("prthinker_cancel_review_label"), ui_we_want_to_set.prthinker_menu)
+    cancel_action.triggered.connect(controller.cancel)
+    ui_we_want_to_set.prthinker_menu.addAction(cancel_action)
 
     ui_we_want_to_set.prthinker_review_pr_action = QAction(
         lang.get("prthinker_review_pull_request_label"))

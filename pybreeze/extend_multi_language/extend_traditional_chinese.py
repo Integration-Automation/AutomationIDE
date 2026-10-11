@@ -896,4 +896,6 @@ pybreeze_traditional_chinese_word_dict = {
 # The words of the features that reach outside the IDE, and the reasons a tool
 # refuses its input: each kept in a file of its own
 pybreeze_traditional_chinese_word_dict.update(TRADITIONAL_CHINESE_INTEGRATION_WORDS)
+pybreeze_traditional_chinese_word_dict.update({"prthinker_review_problems_label": "在 Problems 審查",
+                                              "prthinker_cancel_review_label": "取消審查"})
 pybreeze_traditional_chinese_word_dict.update(TRADITIONAL_CHINESE_ERROR_TEXT)

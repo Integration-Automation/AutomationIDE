@@ -20,6 +20,10 @@ import pytest
 
 # (module, name, where PyBreeze uses it)
 INTERNAL = [
+    ("je_editor.pyside_ui.review.prthinker_actions", "review_current_file",
+     "extend/process_executor/prthinker/structured_review.py"),
+    ("je_editor.pyside_ui.review.prthinker_actions", "cancel_review",
+     "extend/process_executor/prthinker/structured_review.py"),
     ("je_editor.pyside_ui.main_ui.plugin_browser.plugin_browser_widget", "PluginBrowserWidget",
      "menu/plugin_menu/build_plugin_menu.py"),
     ("je_editor.pyside_ui.main_ui.dock.destroy_dock", "DestroyDock",

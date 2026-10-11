@@ -240,7 +240,7 @@ python -m pybreeze.extend.language_server [--interpreter /path/to/python] [--lan
 
 ![prthinker 设置](../images/prthinker_setting.png)
 
-一张设置表就包含推理后端（`remote`、`local`、OpenAI 兼容、Anthropic、Gemini、Cohere、Mistral、`claude-cli`、`codex-cli`）、代码托管平台（GitHub / GitLab / Gitea）与仓库。**密钥与令牌以环境变量交给审查，绝不放在命令行上**——那是进程列表看得到的地方——并且在日志中会被遮蔽。模型名称会交给所选的后端。Gemini、Cohere、Mistral 没有密钥栏位：选中它们时，设置表会说明 prthinker 从哪个环境变量读取密钥（`PRTHINKER_GEMINI_API_KEY`、`PRTHINKER_COHERE_API_KEY`、`PRTHINKER_MISTRAL_API_KEY`），需在启动 PyBreeze 之前设置。规则检索（RAG）默认为 `off`，除非设为 `remote`，此时会向 prthinker 服务器的 `/rag` 查询：prthinker 的本地规则索引随它的仓库提供，而不在从仓库安装的包里。审查以 `Python Env` 中选择的解释器运行，因此 PyBreeze 本身可以停留在比 prthinker 所需的 3.12 更旧的 Python 上。
+一张设置表就包含推理后端（`remote`、`local`、OpenAI 兼容、Anthropic、Gemini、Cohere、Mistral、`claude-cli`、`codex-cli`）、代码托管平台（GitHub / GitLab / Gitea）与仓库。**密钥与令牌以环境变量交给审查，绝不放在命令行上**——那是进程列表看得到的地方——并且在日志中会被遮蔽。模型名称会交给所选的后端。Gemini、Cohere、Mistral 没有密钥栏位：选中它们时，设置表会说明 prthinker 从哪个环境变量读取密钥（`PRTHINKER_GEMINI_API_KEY`、`PRTHINKER_COHERE_API_KEY`、`PRTHINKER_MISTRAL_API_KEY`），需在启动 PyBreeze 之前设置。规则检索（RAG）默认为 `off`，除非设为 `remote`，此时会向 prthinker 服务器的 `/rag` 查询：prthinker 的本地规则索引随它的仓库提供，而不在从仓库安装的包里。审查以 `Python Env` 中选择的解释器运行，因此 PyBreeze 本身可以停留在比 prthinker 所需的 3.10 更旧的 Python 上。
 
 ### CoT 提示词编辑器
 
@@ -278,7 +278,7 @@ PyBreeze 继承了 JEditor 的插件架构，会从工作目录下的 `jeditor_p
 - **English**（默认）
 - **繁體中文**（Traditional Chinese）
 
-菜单、对话框、工具拒绝输入时给出的原因，以及运行窗口自身的提示（`[Error] …`、`[Run] …`）都会跟随所选语言。两份词典包含同样的 995 个键，并有测试确保两者一致，因此新字符串绝不会只出现在一种语言中。English 与繁體中文是 PyBreeze 自己维护的语言。语言菜单还列出 JEditor 的日文（日本語）与简体中文，PyBreeze 只是原样提供、没有翻译：选择后 JEditor 自己的菜单会随之改变，PyBreeze 的字符串则保持英文。其他语言可以通过翻译插件添加。
+菜单、对话框、工具拒绝输入时给出的原因，以及运行窗口自身的提示（`[Error] …`、`[Run] …`）都会跟随所选语言。两份词典包含同样的 997 个键，并有测试确保两者一致，因此新字符串绝不会只出现在一种语言中。English 与繁體中文是 PyBreeze 自己维护的语言。语言菜单还列出 JEditor 的日文（日本語）与简体中文，PyBreeze 只是原样提供、没有翻译：选择后 JEditor 自己的菜单会随之改变，PyBreeze 的字符串则保持英文。其他语言可以通过翻译插件添加。
 
 ---
 
@@ -430,7 +430,7 @@ PyBreeze 的日志写在 `~/.pybreeze/logs/PyBreeze.log`：UTF-8，每次运行�
 | **MailThunder** | SMTP 发送、HTML 报告投递、附件、环境变量配置 |
 | **TestPioneer** | YAML 测试定义、模板生成、结构化执行；`Install ▸ Automation ▸ Install TestPioneer` 可安装或升级（0.1.34 起无论系统区域设置，都以 UTF-8 读取 YAML 文件） |
 | **File Automation** | 自动化文件与目录操作、批量处理 |
-| **prthinker** | 对文件或 Pull Request 进行思维链代码审查；设置保存在 `~/.pybreeze/prthinker_setting.json`；通过 `Install ▸ Automation ▸ Install prthinker` 从它自己的源码文件夹安装（需要 Python 3.12+） |
+| **prthinker** | 对文件或 Pull Request 进行思维链代码审查；设置保存在 `~/.pybreeze/prthinker_setting.json`；通过 `Install ▸ Automation ▸ Install prthinker` 从它自己的源码文件夹安装（需要 Python 3.10+） |
 
 ---
 
@@ -534,3 +534,7 @@ MIT — 详见 [LICENSE](../LICENSE)。Copyright (c) 2022 JE-Chen
 ---
 
 <sub>截图均取自 Windows 11 上实际的 PyBreeze 组件，使用默认的 `dark_amber` 主题；各工具中的示例数据都是经真实代码路径处理的真实输入。</sub>
+
+## 结构化审查
+
+在所选 Python 解释器安装当前 prthinker 包和对应 JEditor 适配器。使用 prthinker 菜单审查已保存文件，结果显示于 Problems，也可以取消正在进行的审查。问题提供 Quick Fix 建议，状态栏显示进度和终止状态。审查使用持续运行的隔离 JSONL 子进程，Git 差异在后台准备。配置和凭证通过环境变量传递；保存或发布前请测试并批准建议。

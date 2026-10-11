@@ -4,6 +4,7 @@ PyBreeze UI 使用指南
 .. toctree::
    :maxdepth: 4
 
+   structured_review
    getting_started.rst
    tutorials/index.rst
    ui_overview.rst

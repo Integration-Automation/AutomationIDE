@@ -240,7 +240,7 @@ Run the [prthinker](https://github.com/JE-Chen/Code-Review-Framework-Combining-L
 
 ![prthinker settings](images/prthinker_setting.png)
 
-One settings form holds the inference backend (`remote`, `local`, OpenAI-compatible, Anthropic, Gemini, Cohere, Mistral, `claude-cli`, `codex-cli`), the code host (GitHub / GitLab / Gitea) and the repository. **Keys and tokens are handed to the review as environment variables, never on a command line** where a process list would show them — and they are masked in logs. The model name goes to whichever backend is chosen. Gemini, Cohere and Mistral have no key field: chosen, the form names the variable prthinker reads their key from (`PRTHINKER_GEMINI_API_KEY`, `PRTHINKER_COHERE_API_KEY`, `PRTHINKER_MISTRAL_API_KEY`), which is set before PyBreeze starts. Rule retrieval (RAG) is `off` unless set to `remote`, which asks the prthinker server's `/rag`: prthinker's local rule index ships with its repository, not with the package installed from it. The review runs with the interpreter chosen in `Python Env`, so PyBreeze itself can stay on an older Python than the 3.12 prthinker needs.
+One settings form holds the inference backend (`remote`, `local`, OpenAI-compatible, Anthropic, Gemini, Cohere, Mistral, `claude-cli`, `codex-cli`), the code host (GitHub / GitLab / Gitea) and the repository. **Keys and tokens are handed to the review as environment variables, never on a command line** where a process list would show them — and they are masked in logs. The model name goes to whichever backend is chosen. Gemini, Cohere and Mistral have no key field: chosen, the form names the variable prthinker reads their key from (`PRTHINKER_GEMINI_API_KEY`, `PRTHINKER_COHERE_API_KEY`, `PRTHINKER_MISTRAL_API_KEY`), which is set before PyBreeze starts. Rule retrieval (RAG) is `off` unless set to `remote`, which asks the prthinker server's `/rag`: prthinker's local rule index ships with its repository, not with the package installed from it. The review runs with the interpreter chosen in `Python Env`, so PyBreeze itself can stay on an older Python than the 3.10 prthinker needs.
 
 ### CoT Prompt Editor
 
@@ -278,7 +278,7 @@ Loaded plugins appear under their own **Plugins** menu with an About entry and o
 - **English** (default)
 - **Traditional Chinese** (繁體中文)
 
-Menus, dialogs, the reasons a tool refuses its input and the run window's own notices (`[Error] …`, `[Run] …`) all follow the chosen language. Both dictionaries carry the same 995 keys, and a test enforces that parity so a new string can never land in one language only. English and Traditional Chinese are the languages PyBreeze maintains. The Language menu also lists JEditor's Japanese (日本語) and Simplified Chinese (简体中文), which PyBreeze passes on without translating: picked, JEditor's own menus change and PyBreeze's strings stay in English. Further languages can be added via translation plugins.
+Menus, dialogs, the reasons a tool refuses its input and the run window's own notices (`[Error] …`, `[Run] …`) all follow the chosen language. Both dictionaries carry the same 997 keys, and a test enforces that parity so a new string can never land in one language only. English and Traditional Chinese are the languages PyBreeze maintains. The Language menu also lists JEditor's Japanese (日本語) and Simplified Chinese (简体中文), which PyBreeze passes on without translating: picked, JEditor's own menus change and PyBreeze's strings stay in English. Further languages can be added via translation plugins.
 
 ---
 
@@ -431,7 +431,7 @@ PyBreeze writes its log to `~/.pybreeze/logs/PyBreeze.log`: UTF-8, appended to b
 | **MailThunder** | SMTP sending, HTML report delivery, attachments, environment-variable configuration |
 | **TestPioneer** | YAML test definitions, template generation, structured execution; `Install ▸ Automation ▸ Install TestPioneer` installs or upgrades it (0.1.34 and later read a YAML file as UTF-8 whatever the system locale) |
 | **File Automation** | Automated file and directory operations, batch processing |
-| **prthinker** | Chain-of-thought code review of a file or a Pull Request; settings in `~/.pybreeze/prthinker_setting.json`; installed from its own source folder via `Install ▸ Automation ▸ Install prthinker` (needs Python 3.12+) |
+| **prthinker** | Chain-of-thought code review of a file or a Pull Request; settings in `~/.pybreeze/prthinker_setting.json`; installed from its own source folder via `Install ▸ Automation ▸ Install prthinker` (needs Python 3.10+) |
 
 ---
 
@@ -535,3 +535,7 @@ MIT — see [LICENSE](LICENSE). Copyright (c) 2022 JE-Chen
 ---
 
 <sub>Screenshots are rendered from the actual PyBreeze widgets on Windows 11 with the default `dark_amber` theme; the sample data in each tool is real input processed by the real code path.</sub>
+
+## Structured review
+
+Install the current prthinker package in the selected Python interpreter and the matching JEditor adapter. Use the prthinker menu to review a saved file in Problems or cancel the active review. Findings provide proposed Quick Fixes; progress and terminal state appear in the status bar. Review uses a persistent isolated JSONL subprocess, and preparing the Git diff runs in the background. Settings and credentials are passed through environment variables. Test and approve proposed changes before saving or publishing them.

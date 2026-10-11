@@ -866,6 +866,8 @@ pybreeze_english_word_dict = {
 }
 # The words of the features that reach outside the IDE, kept in a file of their own
 pybreeze_english_word_dict.update(ENGLISH_INTEGRATION_WORDS)
+pybreeze_english_word_dict.update({"prthinker_review_problems_label": "Review in Problems",
+                                  "prthinker_cancel_review_label": "Cancel review"})
 
 # Why a tool refused its input (pybreeze_ui/error_text.py): in English, the
 # constants the tools raise

@@ -1,7 +1,7 @@
 # PyBreeze Architecture
 
 > Short overview for people and agents. Per-module detail lives in [`architecture_explore.md`](architecture_explore.md).
-> Last verified: 2026-09-23 against `dcd35c6` on `dev`.
+> Last verified: 2026-10-11; structured review integration checked on `feat/prthinker-protocol`.
 
 ## 1. Purpose
 
@@ -243,6 +243,7 @@ MCP Client → Calls → Open in Report Viewer → ReportViewerGUI.show_report(M
 
   | Name | JEditor module | Used in |
   | --- | --- | --- |
+  | `review_current_file`, `cancel_review` | `pyside_ui.review.prthinker_actions` | `extend/process_executor/prthinker/structured_review.py` |
   | `PluginBrowserWidget` | `pyside_ui.main_ui.plugin_browser.plugin_browser_widget` | `menu/plugin_menu/build_plugin_menu.py` |
   | `DestroyDock` | `pyside_ui.main_ui.dock.destroy_dock` | `closing.py` (`AskingDock`, which the Dock menu builds), `editor_main/main_ui.py` |
   | `init_new_auto_save_thread`, `auto_save_manager_dict`, `file_is_open_manager_dict` | `pyside_ui.code.auto_save.auto_save_manager` | `editor_main/file_tree_context_menu.py` (a rename restarts the tab's auto-save on the new path) |
@@ -318,7 +319,7 @@ MCP Client → Calls → Open in Report Viewer → ReportViewerGUI.show_report(M
 - **prthinker**: runs as `python -m prthinker review-file <path>` or
   `review-pr --pr-number <n>` via `TaskProcessManager.start_module_process`
   (`extend/process_executor/prthinker/`), with the interpreter chosen in the IDE, which needs Python
-  3.12+ (PyBreeze's own may be older). Settings travel as environment variables, never argv
+  3.10+ (PyBreeze's own may be older). Settings travel as environment variables, never argv
   (`prthinker_setting.environment_for`): `PRTHINKER_BACKEND`, the chosen backend's model variable
   (`MODEL_ENVIRONMENT`: `PRTHINKER_MODEL_NAME` for `remote`/`local`, otherwise
   `PRTHINKER_<BACKEND>_MODEL`), `PRTHINKER_REMOTE_URL`, `PRTHINKER_REMOTE_API_KEY`,
@@ -392,3 +393,7 @@ Update it in the same change when any of these changes:
 
 Per-module changes go to `architecture_explore.md`. Refresh the "Last verified" line when you
 re-check this file.
+
+## Review protocol contract · 2026-10-11
+
+The editors consume prthinker JSONL protocol version 1 through an isolated persistent subprocess. JEditor owns `je_editor.pyside_ui.review.prthinker_actions.review_current_file` and `cancel_review`, asynchronous QProcess I/O and diagnostic conversion; PyBreeze calls these names after saving and passing existing settings through environment variables. Git diff preparation runs outside the GUI thread. Findings become Problems entries with explicit Quick Fixes; cancellation, progress and terminal state are retained. Install the matching JEditor adapter and prthinker in the selected interpreter together.

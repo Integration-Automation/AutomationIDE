@@ -1,6 +1,6 @@
 """PyBreeze's side of the prthinker command line, checked against the real prthinker.
 
-prthinker is not on PyPI and needs Python 3.12 or newer, so these run only where
+prthinker is not on PyPI and needs Python 3.10 or newer, so these run only where
 an interpreter with prthinker installed is at hand: the one running the tests
 (CI's 3.12 leg installs it), or one named by ``PYBREEZE_PRTHINKER_PYTHON``.
 
