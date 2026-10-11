@@ -74,6 +74,8 @@ PyBreeze 开箱即用，涵盖自动化测试的完整范围：
 
 - **自动化关键字集** — 在 JEditor 的语言支持之上，为 `.json` 注册了 `AT_*` / GUI / Web / Load 关键字集，为 `.yml` 和 `.yaml` 注册了 TestPioneer 的结构定义。JEditor 目前还不会为它们着色：它用自己针对这些扩展名的规则高亮，不会用到注册的关键字
 - **代码编辑器** — 基于 [JEditor](https://github.com/Integration-Automation/JEDITOR) 构建：标签页、项目树、格式检查、调试器、终端以及 git 客户端面板
+- **导航面板** — 左侧的停靠窗格把菜单里的功能列成一棵树（自动化、工具、设置）：在搜索框输入名称即可找到工具或命令，按 Enter 或双击即可打开。Dock 菜单里的 **Navigation** 可以显示或隐藏它，特意关掉的面板下次启动时仍然是关着的
+- **小屏幕也放得下** — 工具标签页需要的宽度不会超过 60 个字高：一行按钮放不下时会换到下一行，而不是把窗口撑得比屏幕还宽
 - **脚本执行** — 单个或批量运行，每次运行都有自己的窗口和 Stop 按钮（Run ▸ Stop All Program 会全部停止），运行中关闭窗口时会先询问是否停止；动作文件以路径传入，而前台标签页中的脚本若超出 Windows 命令行的长度上限（约 32 KB），会改经临时文件传递
 - **报告生成** — 运行后生成 HTML / JSON / XML 报告，可选以邮件发送
 - **集成 JupyterLab** — 以标签页方式启动，使用与运行脚本相同的解释器；那里没有 JupyterLab 时会自动安装，JupyterLab 或它的服务器是存在已知漏洞的版本时（JupyterLab 4.5.10 之前或 4.6.0–4.6.1、jupyter_server 2.20.0 之前）会先升级；标签页只停留在 lab 上，指向其他地方的链接会用你的浏览器打开
@@ -93,7 +95,7 @@ PyBreeze 开箱即用，涵盖自动化测试的完整范围：
 |---|---|
 | ![cURL 导入为 pytest](../images/tool_curl_import.png) | ![cURL 导入为 APITestka 动作](../images/tool_curl_import_action.png) |
 
-目标格式：Python `requests`、可直接运行的 **pytest** 测试、**APITestka**（Python，或可由 `execute_files` 直接运行的 `[["AT_test_api_method", {...}]]` 动作列表），以及 **LoadDensity** 的 Locust 负载测试。可以复制输出、直接在编辑器标签页中打开，或以正确的扩展名保存。只需一次点击，还能把解析出的 URL 交给 URL 解析器／构建器，或把请求头交给请求头分析器。
+目标格式：Python `requests`、可直接运行的 **pytest** 测试、**APITestka**（Python，或可由 `execute_files` 直接运行的 `[["AT_test_api_method", {...}]]` 动作列表）、**LoadDensity** 的 Locust 负载测试，以及在浏览器里访问该地址的 **WebRunner** 动作列表。目标无法发送请求里的全部内容时，输出下方会说明少了什么（"Not sent by this target: headers · the body"）：LoadDensity 只按方法与 URL 发送，浏览器访问只保留 URL、cookie 与时间限制。可以复制输出、直接在编辑器标签页中打开，或以正确的扩展名保存。只需一次点击，还能把解析出的 URL 交给 URL 解析器／构建器，或把请求头交给请求头分析器。
 
 ### HAR 导入——整个会话变成测试套件
 
@@ -115,11 +117,72 @@ PyBreeze 开箱即用，涵盖自动化测试的完整范围：
 
 会报告：重复发送的名称、缺少 `Secure` / `HttpOnly` / `SameSite` 的 `Set-Cookie`，以及浏览器会直接丢弃的 cookie（不符合 `__Secure-` / `__Host-` 名称规则的、`SameSite=None` 却没有 `Secure` 的）、通配符 CORS（以及浏览器会直接拒绝的"通配符加凭据"组合）、短到撑不过一次重启的 HSTS `max-age`、CSP 的 `unsafe-inline` / `unsafe-eval`、产品标识、现行浏览器已忽略的请求头（值不是 `0` 的 `X-XSS-Protection`、`Expect-CT`、`Public-Key-Pins`、`P3P`、旧的 CSP 前缀名称），以及——针对响应——缺少的安全请求头；CSP 有 `frame-ancestors` 指令时视同有 `X-Frame-Options`，与 OWASP HTTP Headers Cheat Sheet 的建议一致。携带凭据的请求头**只报告名称**；它们的值绝不会进入报告。
 
+**Export findings as SARIF** 会把分析结果保存为 SARIF 2.1.0 文件，GitHub Code Scanning 与其他安全工具都能读取：每一项发现附带规则、级别、行号、处理方式与参考链接。同一个导出功能不需要 IDE 也能运行，可用于 CI：
+
+```bash
+python -m pybreeze.utils.header_tools.header_sarif response-headers.txt -o headers.sarif
+```
+
+`-` 表示从标准输入读取请求头，不给 `-o` 就写到标准输出，`--fail-on-warning` 在有警告级别的发现时以 1 退出。报告只写规则与行号，不引用任何请求头的值。
+
 ### 文本比较
 
 ![文本比较](../images/tool_diff.png)
 
 比较两份数据——例如预期与实际的 API 响应——得到 unified diff（新增与删除的行以主题的颜色标示），以及一行新增／删除的摘要。
+
+### 报告查看器
+
+**Tools → Report Viewer Tab** 把一次运行产生的结果打开到同一个视图，不论是谁运行的。
+
+- **读取**各自动化包自己的报告（APITestka、AutoControl、WebRunner、LoadDensity：`<name>_success.json`／`<name>_failure.json` 这一对，或 `.xml` 那一对；打开其中一个，另一个会一起读进来）、**JUnit XML**（pytest 的 `--junitxml`，以及大多数其他运行器），以及从 PyBreeze 导出的报告。文件是什么，由它的内容判断。
+- **显示**每次运行的树状结构，以及每个结果如何结束、花了多久；选中的结果会显示详细信息与错误、它的输出、它留下的东西，以及包自己对它的记录（原样保留）。
+- **筛选**同时应用到所有打开的运行：按结果（通过、失败、错误、跳过）、按花费时间、按包，以及按名称或错误里的文字。树状结构下方的一行会统计当前显示的内容。
+- **导出**一次运行为执行报告（JSON）、给 CI 服务测试摘要用的 **JUnit XML**，或给人看的单文件 **HTML 页面**（之后可以再从这里打开）。
+- **MCP 客户端**的调用记录页可以用**在报告查看器中打开**把这次会话打开到这里。
+
+报告是从别处来的文件：它只被当成数据读取（声明了文档类型的 XML 会被拒绝），里面的一切都以文本显示，它提到的路径只会列出来，不会被打开。
+
+### MCP 客户端
+
+**Tools → MCP Client Tab** 可以连接到 [Model Context Protocol](https://modelcontextprotocol.io) 服务器，并显示它提供的东西：可以调用的**工具**、可以读取的**资源**、可以填写的**提示**。
+
+- **服务器**设置一次就会为你保存（`~/.pybreeze/mcp_servers.json`，只有你自己能读）：名称、启动服务器的命令（每行一个参数，不经过 shell）、它的环境变量，以及每个请求最多等多久。文件使用其他客户端也采用的 `mcpServers` 格式，所以在别处建立的列表可以直接放进来。
+- **调用前会先询问**：显示工具、服务器与实际要发送的参数，默认是“否”。勾选“不再询问”可以信任某个服务器的某个工具。服务器对自己工具的说法（“不会更改任何东西”）只会显示出来，不会被当成依据。
+- **随项目而来的服务器**（项目文件夹里的 `.mcp.json`）会列出来，但不会自己启动：连接时会显示它的命令并询问。
+- **取消**可以放弃进行中的调用；服务器没有在时限内响应就放弃；服务器结束时会告知，并附上它自己日志的最后一行。再按一次**连接**就能重新开始。
+- **调用记录**列出这次会话：时间、工具、结果、花了多久。**导出这次会话...** 会把它保存成执行报告（JSON）。
+
+密钥与 token 请放在服务器的环境变量里，不要放在命令里：它们的值以圆点显示，而且不论出现在哪里，都会从日志文件、错误消息与导出的会话中去除。服务器以本机程序的方式启动（协议的标准输入输出传输）。
+
+### 动作脚本的关键字
+
+WebRunner、AutoControl 或 LoadDensity 的脚本是一个 JSON 动作列表，每个动作是 `["关键字"]` 或 `["关键字", 参数]`。在编辑器中打开这样的文件（`.json`），就会按照该框架**实际安装的版本**的关键字来补全和检查：
+
+- **补全** — 在动作名称的位置提供该框架的关键字，在参数名称的位置提供该关键字的参数。
+- **诊断** — 那个版本没有的关键字（并建议最接近的一个）、关键字不接受的参数、漏掉的必填参数、长度不对的值列表、形状不对的动作，以及不是 JSON 的文本。消息使用 IDE 的语言。
+- **悬停说明**与**跳转到定义** — 关键字的签名与说明文档，以及包中定义它的那一行。
+
+PyBreeze 不保存任何关键字数据。每个框架都由运行你脚本的那个解释器（在 IDE 中选择的、项目里的 `.venv`，否则是 IDE 自己的）在独立的进程里询问，所以升级框架后提供的内容就会随之改变。某个框架没有安装或导入失败，只会少掉它自己的关键字，不影响其他功能。
+
+**Tools → Automation Keywords Tab** 显示同一份关键字：每个框架的版本、编辑器能为它提供什么、每个关键字的参数与说明、筛选，以及**复制为动作**。某个框架没有关键字时，会说明原因。
+
+编辑器是通过一个语言服务器获得这些功能，任何支持 Language Server Protocol 的编辑器也都能启动它：
+
+```bash
+python -m pybreeze.extend.language_server [--interpreter /path/to/python] [--language Traditional_Chinese]
+```
+
+### JSON 编辑器
+
+把一个 JSON 文件当成**树状**或**文本**来编辑（**Tools → JSON Editor Tab**）。两者是同一份文档的两个视图，不会互相矛盾。
+
+- **树状** — 新增、删除、上移、下移，在原处改名；直接在值上输入，或换成另一种类型（对象、数组、字符串、数字、布尔值、null）。数字按写下的样子保留：`1.0` 仍是 `1.0`。
+- **文本** — JSON 本身，随时都在。输入时就会检查，视图下方的一行会指出它从哪里开始不是 JSON；树状视图会等它重新成为 JSON，输入的内容不会被丢掉。
+- **撤销／重做**一步步走过这份文档，不论是哪个视图改的；有未保存更改的标签页在关闭或打开另一个文件前会先询问。
+- 文件按原来的样子写回去：它的缩进（空格或 tab）、原本是一行就保持一行、结尾的换行。手动对齐的排版与空行，在树状视图编辑后不会保留。
+
+它是 JSON 编辑器，不是第二个代码编辑器：文件要从它的**打开...**按钮打开进来。
 
 ### 日常小工具
 
@@ -215,7 +278,7 @@ PyBreeze 继承了 JEditor 的插件架构，会从工作目录下的 `jeditor_p
 - **English**（默认）
 - **繁體中文**（Traditional Chinese）
 
-菜单、对话框、工具拒绝输入时给出的原因，以及运行窗口自身的提示（`[Error] …`、`[Run] …`）都会跟随所选语言。两份词典包含同样的 768 个键，并有测试确保两者一致，因此新字符串绝不会只出现在一种语言中。语言菜单还列出 JEditor 的日文与简体中文：选择后 JEditor 自己的菜单会随之改变，PyBreeze 的字符串则保持英文。其他语言可以通过翻译插件添加。
+菜单、对话框、工具拒绝输入时给出的原因，以及运行窗口自身的提示（`[Error] …`、`[Run] …`）都会跟随所选语言。两份词典包含同样的 995 个键，并有测试确保两者一致，因此新字符串绝不会只出现在一种语言中。English 与繁體中文是 PyBreeze 自己维护的语言。语言菜单还列出 JEditor 的日文（日本語）与简体中文，PyBreeze 只是原样提供、没有翻译：选择后 JEditor 自己的菜单会随之改变，PyBreeze 的字符串则保持英文。其他语言可以通过翻译插件添加。
 
 ---
 
@@ -343,6 +406,8 @@ start_editor(theme="dark_teal.xml")         # 任意 qt_material 主题；它会
 4. **生成** — 生成 HTML / JSON / XML 报告
 5. **发送** — 通过 MailThunder 集成以电子邮件发送报告
 
+第一次使用？[教程](https://pybreeze.readthedocs.io/en/latest/Zh/tutorials/index.html)（繁体中文）共十三篇，每一篇都很短，各有一个可以直接运行的示例与预期结果：第一次启动，第一个 API、浏览器、桌面与压力测试，从 cURL 与 HAR 生成测试，把 header 的发现变成 CI 里的 SARIF，JSON 编辑器，动作脚本的关键字，MCP 客户端，CI 里的报告，插件，以及疑难排解。它们测试的是你自己电脑上的一个小网站，所以都不需要任何账号。
+
 ### 日志文件
 
 PyBreeze 的日志写在 `~/.pybreeze/logs/PyBreeze.log`：UTF-8，每次运行都追加在后面，每行带有进程号。只有警告和错误也会出现在编辑器的 Code Result 面板。两个环境变量可以改变这些：
@@ -448,7 +513,7 @@ python -m pytest test/test_utils/ -v --tb=short
 
 - **单元测试** — `test/test_utils/`，覆盖纯逻辑层（curl 与 HAR 解析、请求头分析、SSRF 验证、JWT、哈希、时间戳、差异比较），加上通过 `QT_QPA_PLATFORM=offscreen` 进行的无界面 Qt 组件测试，以及针对解析器的 Hypothesis 属性测试。SSH 终端与 SFTP 文件树还会实际登录测试在本机回环地址启动的 SSH 服务器，它通过 SFTP 提供一个临时文件夹
 - **启动测试** — `test/unit_test/start_automation/` 以调试模式启动 IDE，验证它能正常启动并干净地退出
-- **CI** — GitHub Actions 在 Windows 上跑 Python 3.10 – 3.14，每次 push 与 PR 都会运行，另有每晚一次的运行；推送到 `dev` 通过测试、并且包内容有变化时，还会发布 `pybreeze_dev`
+- **CI** — 由 GitHub Actions 运行：在 Windows 上用 Python 3.10 – 3.14 跑完整测试，在 Linux 与 macOS 上跑一小组平台冒烟测试；每次 push 与 PR 都会运行，另有每晚一次的运行；推送到 `dev` 通过完整测试、并且包内容有变化时，还会发布 `pybreeze_dev`
 - **静态分析** — SonarCloud、Codacy 与 Bandit
 
 ---

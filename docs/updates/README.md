@@ -58,6 +58,26 @@ In the same commit: delete the item from `progress.md`, add a `#done` entry here
 
 | ID | Date | Title | Tags | Batch |
 |---|---|---|---|---|
+| U-20261008-20 | 2026-10-08 | Linux and macOS platform smoke checks pass | #done #ci #platforms | [2026-10](2026-10.md) |
+| U-20261008-19 | 2026-10-08 | Keep FileAutomation backends installed after its extras split | #done #dependencies | [2026-10](2026-10.md) |
+| U-20261008-18 | 2026-10-08 | Name independent deterministic results and normalize hosts with HTTPS | #done #tests #security | [2026-10](2026-10.md) |
+| U-20261008-17 | 2026-10-08 | Let framework executors choose the built-ins they register | #done #tests #compatibility | [2026-10](2026-10.md) |
+| U-20261008-16 | 2026-10-08 | Give Linux platform tests an X11 display and review XML scan findings | #ci #security | [2026-10](2026-10.md) |
+| U-20261008-15 | 2026-10-08 | Thirteen tutorials in two languages, each with an example that is run and checked | #docs #tutorials #roadmap | [2026-10](2026-10.md) |
+| U-20261008-14 | 2026-10-08 | A report viewer for every run: the packages' own reports, JUnit XML and MCP sessions in one view | #feature #reports #roadmap | [2026-10](2026-10.md) |
+| U-20261008-13 | 2026-10-08 | An MCP client tab: servers kept per user, every call asked about, sessions kept as reports | #feature #mcp #security #roadmap | [2026-10](2026-10.md) |
+| U-20261008-12 | 2026-10-08 | Action scripts are completed and checked from the installed frameworks' keywords | #feature #lsp #editor #roadmap | [2026-10](2026-10.md) |
+| U-20261008-11 | 2026-10-08 | A JSON editor: one document as a tree and as text, with one history | #feature #tools #json #roadmap | [2026-10](2026-10.md) |
+| U-20261008-10 | 2026-10-08 | The languages PyBreeze supports are listed, and the list is checked | #feature #i18n #roadmap | [2026-10](2026-10.md) |
+| U-20261008-09 | 2026-10-08 | Header findings have rules and are exported as SARIF 2.1.0 | #feature #security #sarif #roadmap | [2026-10](2026-10.md) |
+| U-20261008-08 | 2026-10-08 | A WebRunner import target, and a line that says what a target leaves out | #feature #import #roadmap | [2026-10](2026-10.md) |
+| U-20261008-07 | 2026-10-08 | A navigation panel, one table of tools and sizes in ems | #feature #ui #roadmap | [2026-10](2026-10.md) |
+| U-20261008-06 | 2026-10-08 | Platform smoke tests, and a CI job that runs them on Linux and macOS | #ci #test #roadmap | [2026-10](2026-10.md) |
+| U-20261008-05 | 2026-10-08 | Decision records for the four shared contracts | #decision #docs #roadmap | [2026-10](2026-10.md) |
+| U-20261008-04 | 2026-10-08 | One way to ask a framework for completion and diagnostics | #feature #language-service #roadmap | [2026-10](2026-10.md) |
+| U-20261008-03 | 2026-10-08 | One JSON document for a text editor and a visual editor | #feature #json #roadmap | [2026-10](2026-10.md) |
+| U-20261008-02 | 2026-10-08 | One schema for what a run produced, whatever framework ran it | #feature #reports #roadmap | [2026-10](2026-10.md) |
+| U-20261008-01 | 2026-10-08 | Import targets described once, in one registry | #refactor #import #roadmap | [2026-10](2026-10.md) |
 | U-20261007-01 | 2026-10-07 | Read HTTP dates and bracketed time-zone suffixes in timestamps | #done #timestamp | [2026-10](2026-10.md) |
 | U-20261001-06 | 2026-10-01 | architecture_explore.md §18 describes the locked build backend | #docs #X-13 | [2026-10](2026-10.md) |
 | U-20261001-05 | 2026-10-01 | Publish jobs build with the locked setuptools, not a downloaded one | #done #ci #X-13 | [2026-10](2026-10.md) |
@@ -702,4 +722,4 @@ In the same commit: delete the item from `progress.md`, add a `#done` entry here
 | [2026-09-c.md](2026-09-c.md) | 2026-09 | 115 |
 | [2026-09-d.md](2026-09-d.md) | 2026-09 | 91 |
 | [2026-09-e.md](2026-09-e.md) | 2026-09 | 83 |
-| [2026-10.md](2026-10.md) | 2026-10 | 6 |
+| [2026-10.md](2026-10.md) | 2026-10 | 22 |

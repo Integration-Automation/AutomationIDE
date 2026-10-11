@@ -74,6 +74,8 @@ Each module gets the same menu shape: **Run** (single script, batch directory, w
 
 - **Automation keyword sets** — the `AT_*` / GUI / Web / Load keyword sets are registered for `.json`, and TestPioneer's schema for `.yml` and `.yaml`, on top of JEditor's language support. JEditor does not colour them yet: it highlights those files with its own rules for the suffix, which leave registered keywords out
 - **Code editor** — built on [JEditor](https://github.com/Integration-Automation/JEDITOR): tabs, project tree, format checker, debugger, terminal and a git client pane
+- **Navigation panel** — a dock at the left lists what the menus hold as one tree (Automation, Tools, Settings): type in its box to find a tool or a command by name, then press Enter or double-click to open it. **Dock ▸ Navigation** shows and hides it, and a panel closed on purpose stays closed at the next start
+- **Fits a small screen** — a tool tab never asks for more than 60 font heights of width: a row of buttons too long for the tab wraps onto the next line instead of pushing the window wider than the display
 - **Script execution** — single or batch, each run in a window of its own with a Stop button (Run ▸ Stop All Program stops them all), which asks whether to stop the run when it is closed while the run goes on; action files are passed by path, and a script from the tab in front that is too long for a Windows command line (~32 KB) goes through a temporary file
 - **Report generation** — HTML / JSON / XML after a run, with optional email delivery
 - **Integrated JupyterLab** — launches as a tab, in the same interpreter a run would use, installing JupyterLab there if it is missing, and upgrading it and its server first when either is a release with a known vulnerability (JupyterLab before 4.5.10 or 4.6.0–4.6.1, jupyter_server before 2.20.0); the tab stays on the lab, and a link to anywhere else opens in your browser
@@ -93,7 +95,7 @@ Paste a `curl` command from your browser's dev tools and pick a target. The pars
 |---|---|
 | ![cURL import to pytest](images/tool_curl_import.png) | ![cURL import to APITestka action](images/tool_curl_import_action.png) |
 
-Targets: Python `requests`, a ready-to-run **pytest** test, **APITestka** (Python or a `[["AT_test_api_method", {...}]]` action list that `execute_files` runs directly), and a **LoadDensity** Locust load test. Copy the output, open it straight into an editor tab, or save it with the right extension. One click also hands the parsed URL to the URL parser/builder or the headers to the header analyzer.
+Targets: Python `requests`, a ready-to-run **pytest** test, **APITestka** (Python or a `[["AT_test_api_method", {...}]]` action list that `execute_files` runs directly), a **LoadDensity** Locust load test, and a **WebRunner** action list that visits the address in a browser. A target that cannot send everything a request holds says so under the output ("Not sent by this target: headers · the body"): a LoadDensity run drives a method and a URL, and a browser visit keeps the URL, the cookies and a time limit. Copy the output, open it straight into an editor tab, or save it with the right extension. One click also hands the parsed URL to the URL parser/builder or the headers to the header analyzer.
 
 ### HAR Import — a whole session becomes a test suite
 
@@ -115,11 +117,72 @@ The status code is looked up in the HTTP reference, headers are parsed, a JSON b
 
 Reports names sent more than once, `Set-Cookie` entries missing `Secure` / `HttpOnly` / `SameSite` and those a browser drops outright (a `__Secure-` / `__Host-` name whose rules are broken, `SameSite=None` without `Secure`), wildcard CORS (and the wildcard-plus-credentials combination browsers reject outright), an HSTS `max-age` too short to survive a restart, CSP `unsafe-inline` / `unsafe-eval`, product banners, headers current browsers ignore (`X-XSS-Protection` other than `0`, `Expect-CT`, `Public-Key-Pins`, `P3P`, the old prefixed CSP names), and — for responses — the security headers that are absent, counting a CSP `frame-ancestors` directive as `X-Frame-Options`, as the OWASP HTTP Headers Cheat Sheet does. Headers carrying credentials are reported **by name only**; their values never enter the report.
 
+**Export findings as SARIF** saves the analysis as a SARIF 2.1.0 file that GitHub Code Scanning and other security tooling read: each finding with its rule, level, line, what to do about it and a link. The same export runs without the IDE, for CI:
+
+```bash
+python -m pybreeze.utils.header_tools.header_sarif response-headers.txt -o headers.sarif
+```
+
+`-` reads the headers from standard input, leaving out `-o` writes to standard output, and `--fail-on-warning` exits with 1 when a finding is a warning. The report names rules and lines and quotes no header value.
+
 ### Text Diff
 
 ![Text Diff](images/tool_diff.png)
 
 Compare two payloads — an expected vs. actual API response, say — and get a unified diff, its added and removed lines in the theme's colours, plus a one-line added/removed summary.
+
+### Report Viewer
+
+**Tools → Report Viewer Tab** opens what a run produced, whatever ran it, into one view.
+
+- **Reads** the automation packages' own reports (APITestka, AutoControl, WebRunner, LoadDensity: the `<name>_success.json` / `<name>_failure.json` pair or the `.xml` pair; open either and the other is read with it), **JUnit XML** (pytest's `--junitxml`, and most other runners), and reports exported from PyBreeze. What a file is, is told from what it holds.
+- **Shows** each run as a tree with how every result ended and how long it took; the selected result's details and error, its output, what it left behind, and the package's own record of it, untouched.
+- **Filters** all open runs together: by ending (passed, failed, error, skipped), by time taken, by package, and by text in a name or an error. A line under the tree counts what is shown.
+- **Exports** a run as an execution report (JSON), as **JUnit XML** for a CI service's test summary, or as one self-contained **HTML page** for people, which can be opened here again.
+- The **MCP Client**'s Calls page opens its session here with **Open in Report Viewer**.
+
+A report is a file from somewhere: it is read as data (XML that declares a document type is refused), everything in it is shown as text, and the paths it names are listed, not opened.
+
+### MCP Client
+
+**Tools → MCP Client Tab** connects to [Model Context Protocol](https://modelcontextprotocol.io) servers and shows what each offers: **tools** to call, **resources** to read, **prompts** to fill in.
+
+- **Servers** are set up once and kept for you (`~/.pybreeze/mcp_servers.json`, readable by you alone): a name, the command that starts the server (one argument a line, never a shell line), its environment variables, and how long a request may take. The file uses the `mcpServers` layout other clients write, so a list made elsewhere can be dropped in.
+- **A call is asked about first**: the tool, the server and the arguments as they will be sent, with No as the default. Tick *Do not ask again* to trust one tool of one server. What a server says of its own tool ("changes nothing") is shown, not relied on.
+- **A server that comes with a project** (`.mcp.json` in the project folder) is listed, never started by itself: connecting to it shows its command and asks.
+- **Cancel** gives up a call on its way; a server that does not answer within its time limit is given up on; one that goes away is said so, with the last line of its own log. **Connect** again to start over.
+- **Calls** lists the session: when, which tool, how it ended, how long it took. **Export Session...** saves it as an execution report (JSON).
+
+Put keys and tokens in the server's environment variables, not in its command: their values are shown as dots, and are taken out of the log, of error messages and of exported sessions wherever they turn up. Servers are started as local programs (the protocol's standard-input-and-output transport).
+
+### Keywords for action scripts
+
+A WebRunner, AutoControl or LoadDensity script is a JSON list of actions, `["keyword"]` or `["keyword", arguments]`. Open one (`.json`) in the editor and it is completed and checked against the keywords of the framework **as it is installed**:
+
+- **Completion** — the framework's keywords where an action's name goes, a keyword's parameters where an argument's name goes.
+- **Diagnostics** — a keyword that version does not have (with the nearest one suggested), a parameter the keyword does not take, a required one left out, a list of values of the wrong length, an action of the wrong shape, and text that is not JSON. In the IDE's language.
+- **Hover** and **go to definition** — a keyword's signature and documentation, and the line of the package that defines it.
+
+Nothing about a keyword is kept in PyBreeze. Each framework is asked, in a process of its own, by the interpreter that runs your scripts (the one chosen in the IDE, a `.venv` in the project, else the IDE's own), so upgrading a framework changes what is offered. A framework that is missing or fails to import costs its own keywords and nothing else.
+
+**Tools → Automation Keywords Tab** shows the same keywords: each framework's version, what the editor offers for it, every keyword with its parameters and documentation, a filter, and **Copy as Action**. When a framework gives none, it says why.
+
+The editor gets all this from a language server, which any editor that speaks the Language Server Protocol can start too:
+
+```bash
+python -m pybreeze.extend.language_server [--interpreter /path/to/python] [--language Traditional_Chinese]
+```
+
+### JSON Editor
+
+Edit a JSON file as a **Tree** or as **Text** (**Tools → JSON Editor Tab**). Both are views of one document, so they cannot disagree.
+
+- **Tree** — add, delete, move up or down, and rename in place; type over a value, or give it another type (object, array, string, number, boolean, null). A number is kept as it is written: `1.0` stays `1.0`.
+- **Text** — the JSON itself, always there. It is checked as you type and a line under the views says where it stops being JSON; the tree waits until it is JSON again, and nothing typed is thrown away.
+- **Undo / Redo** step through the document whichever view changed it, and a tab with unsaved changes asks before it closes or opens another file.
+- A file is written back the way it was found: its indent (spaces or tabs), on one line if it was, with its final line break. Alignment by hand and blank lines are not kept by an edit in the tree.
+
+It is a JSON editor, not a second code editor: a file is opened into it from its **Open...** button.
 
 ### The everyday utilities
 
@@ -215,7 +278,7 @@ Loaded plugins appear under their own **Plugins** menu with an About entry and o
 - **English** (default)
 - **Traditional Chinese** (繁體中文)
 
-Menus, dialogs, the reasons a tool refuses its input and the run window's own notices (`[Error] …`, `[Run] …`) all follow the chosen language. Both dictionaries carry the same 768 keys, and a test enforces that parity so a new string can never land in one language only. The Language menu also lists JEditor's Japanese and Simplified Chinese: picked, JEditor's own menus change and PyBreeze's strings stay in English. Further languages can be added via translation plugins.
+Menus, dialogs, the reasons a tool refuses its input and the run window's own notices (`[Error] …`, `[Run] …`) all follow the chosen language. Both dictionaries carry the same 995 keys, and a test enforces that parity so a new string can never land in one language only. English and Traditional Chinese are the languages PyBreeze maintains. The Language menu also lists JEditor's Japanese (日本語) and Simplified Chinese (简体中文), which PyBreeze passes on without translating: picked, JEditor's own menus change and PyBreeze's strings stay in English. Further languages can be added via translation plugins.
 
 ---
 
@@ -344,6 +407,8 @@ Once launched:
 4. **Generate** an HTML / JSON / XML report
 5. **Send** it by email through the MailThunder integration
 
+New here? The [tutorials](https://pybreeze.readthedocs.io/en/latest/Eng/tutorials/index.html) are thirteen short pages, each with an example that runs and what to expect from it: the first launch, a first API, browser, desktop and load run, tests from cURL and HAR, header findings as SARIF in CI, the JSON editor, keywords for action scripts, the MCP client, reports in CI, plugins, and troubleshooting. They test a small site on your own machine, so none of them needs an account.
+
 ### Log file
 
 PyBreeze writes its log to `~/.pybreeze/logs/PyBreeze.log`: UTF-8, appended to by every run, each line carrying the process ID. Only warnings and errors also appear in the editor's Code Result panel. Two environment variables change this:
@@ -449,7 +514,7 @@ python -m pytest test/test_utils/ -v --tb=short
 
 - **Unit tests** — `test/test_utils/`, covering the pure-logic layer (curl and HAR parsing, header analysis, SSRF validation, JWT, hashing, timestamps, diffing) plus headless Qt widget tests via `QT_QPA_PLATFORM=offscreen`, with Hypothesis property tests over the parsers. The SSH terminal and the SFTP file tree also log in to an SSH server the tests start on the loopback address, which serves a temporary folder over SFTP
 - **Startup tests** — `test/unit_test/start_automation/` launches the IDE in debug mode and verifies it comes up and exits cleanly
-- **CI** — GitHub Actions on Windows across Python 3.10 – 3.14, on every push and PR plus a nightly run; a push to `dev` that passes also publishes `pybreeze_dev` when the package changed
+- **CI** — GitHub Actions: the whole suite on Windows across Python 3.10 – 3.14, and a short set of platform smoke tests on Linux and macOS, on every push and PR plus a nightly run; a push to `dev` that passes the suite also publishes `pybreeze_dev` when the package changed
 - **Static analysis** — SonarCloud, Codacy and Bandit
 
 ---
