@@ -142,7 +142,7 @@ jobs:
     - name: SonarQube Cloud scan
       # This is the public action commit pin, not an API key.
       # nosemgrep: generic.secrets.security.detected-sonarqube-docs-api-key.detected-sonarqube-docs-api-key
-      uses: SonarSource/sonarqube-scan-action@ba9859eae8dd6bd29e412f25ddbbef3d032000f4  # v8.2.2
+      uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9  # v8.3.0
       with:
         args: -Dsonar.projectVersion=${{ steps.version.outputs.value }}
       env:
