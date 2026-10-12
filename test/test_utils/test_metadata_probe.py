@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import ast
 import importlib.util
+import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -18,6 +20,35 @@ from pybreeze.utils.exception.exceptions import LanguageServiceException
 from pybreeze.utils.language_service.framework_profiles import PROFILES, FrameworkProfile
 from pybreeze.utils.language_service.keyword_metadata import ParameterKind
 from pybreeze.utils.language_service.metadata_probe import PROBE_SCRIPT, probe_command, read_metadata
+from pybreeze.utils.subprocess_util import utf8_subprocess_env
+
+
+_EXECUTOR_MARKER = "pybreeze-executor-contract:"
+_EXECUTOR_SCRIPT = r'''
+import contextlib
+import importlib
+import json
+import sys
+
+calls = []
+
+
+def record(value):
+    calls.append(value)
+    return value
+
+
+error = None
+with contextlib.redirect_stdout(sys.stderr):
+    try:
+        module = importlib.import_module(sys.argv[1])
+        module.executor.event_dict = {"pybreeze_contract_probe": record}
+        module.execute_files([sys.argv[2]])
+    except Exception as exc:
+        error = type(exc).__name__
+        print(repr(exc), file=sys.stderr)
+print(sys.argv[3] + json.dumps({"calls": calls, "error": error}))
+'''
 
 FAKE = FrameworkProfile(
     framework="fake_runner", label="FakeRunner", document_key="fake_runner", executor_module="fake_runner.executor",
@@ -240,15 +271,31 @@ def test_each_framework_lists_its_keywords_under_its_prefix(profile):
 
 
 @pytest.mark.parametrize("profile", PROFILES, ids=lambda profile: profile.framework)
-def test_each_frameworks_executor_reads_its_actions_from_the_key_the_profile_names(profile):
-    # Found without importing the package: je_auto_control changes the process as it is imported
-    package = importlib.util.find_spec(profile.framework)
-    if package is None:
+@pytest.mark.parametrize("document_form", ["wrapped", "list", "wrong-key"])
+def test_each_frameworks_executor_reads_its_actions_from_the_key_the_profile_names(
+        profile, document_form, tmp_path):
+    # Import and execute in a child: AutoControl changes the process on import.
+    if importlib.util.find_spec(profile.framework) is None:
         pytest.skip(f"{profile.framework} is not installed here")
-    module_path = Path(package.submodule_search_locations[0]).joinpath(
-        *profile.executor_module.split(".")[1:]).with_suffix(".py")
-
-    source = module_path.read_text(encoding="utf-8")
-
-    assert f'.get("{profile.document_key}"' in source
-    assert "event_dict" in source and "executor = Executor()" in source
+    actions = [["pybreeze_contract_probe", ["expected"]]]
+    document = {"pybreeze_unrelated_actions": [["pybreeze_contract_probe", ["wrong"]]]}
+    if document_form == "wrapped":
+        document[profile.document_key] = actions
+    elif document_form == "list":
+        document = actions
+    action_file = tmp_path / "actions.json"
+    action_file.write_text(json.dumps(document), encoding="utf-8")
+    result = subprocess.run(
+        [sys.executable, "-c", _EXECUTOR_SCRIPT, profile.executor_module,
+         str(action_file), _EXECUTOR_MARKER],
+        cwd=Path(sys.executable).parent, env=utf8_subprocess_env(),
+        capture_output=True, text=True, encoding="utf-8", timeout=60, shell=False,
+        check=False)
+    assert result.returncode == 0, result.stderr
+    answer = json.loads(result.stdout.removeprefix(_EXECUTOR_MARKER))
+    if document_form == "wrong-key":
+        assert answer["error"] is not None, result.stderr
+        assert answer["calls"] == [], result.stderr
+    else:
+        assert answer["error"] is None, result.stderr
+        assert answer["calls"] == ["expected"], result.stderr
