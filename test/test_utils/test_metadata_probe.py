@@ -153,7 +153,8 @@ def test_a_method_is_described_without_its_self(installed):
 def test_pythons_built_ins_are_marked_and_what_is_not_callable_is_left_out(installed):
     metadata = read_metadata(FAKE)
 
-    assert metadata.keyword("print").builtin and metadata.keyword("len").builtin
+    assert metadata.keyword("print").builtin
+    assert metadata.keyword("len").builtin
     assert not metadata.keyword("FR_open").builtin
     assert metadata.keyword("FR_table") is None
 
