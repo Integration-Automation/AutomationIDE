@@ -416,6 +416,8 @@ first_summary → first_code_review → judge_single_review ┐（評分前一�
 
 **動作腳本的語言服務** `language_service/`（`docs/adr/0010`）：WebRunner、AutoControl、LoadDensity 的腳本形狀相同（JSON 的動作清單，`["關鍵字"]` 或 `["關鍵字", 引數]`；整份是清單，或放在框架自己的 key 底下），所以一個 adapter 服務三個框架。
 
+`test_metadata_probe.py` 在獨立子程序驗證這三個框架的文件契約：把執行器的指令表換成只記錄引數的測試函式，透過公開的 `execute_files()` 讀取 JSON，檢查 profile 指定的 key、直接使用清單，以及拒絕錯誤 key。物件同時帶有無關 key，驗證執行器確實選取正確清單；不依賴執行器原始碼使用 `.get()` 或共用解析器，也不在測試主程序匯入框架。
+
 | 模組 | 內容 |
 |---|---|
 | `service_adapter.py`(271) | Phase 0 的契約（`docs/adr/0004`）：LSP 形狀的型別、`LanguageServiceAdapter`、只問 adapter 說自己會的事並把它的例外留在裡面的 `LanguageService`、`LanguageServiceRegistry` |

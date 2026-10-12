@@ -293,7 +293,8 @@ MCP Client → Calls → Open in Report Viewer → ReportViewerGUI.show_report(M
   `event_dict` maps every keyword to a callable, on `execute_action()` reading an object-shaped script's
   actions from the key `webdriver_wrapper`, `auto_control` or `load_density`, and on their own keywords
   starting `WR_`, `AC_` or `LD_` (`framework_profiles.py`). `test_metadata_probe.py` asks the installed
-  packages and reads their executors' source for the key.
+  packages and exercises their public `execute_files()` APIs in isolated child processes to verify
+  the profile's document key, bare action lists, and rejection of unrelated keys.
 - **The automation packages' reports**: the report viewer reads what `je_api_testka`, `je_auto_control`,
   `je_web_runner` and `je_load_density` write (`execution_report/record_reports.py`) and relies on the pair of
   files `<name>_success.json` / `<name>_failure.json` (or `.xml`, under an `<xml_data>` root), on their
