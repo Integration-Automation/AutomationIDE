@@ -58,6 +58,7 @@ In the same commit: delete the item from `progress.md`, add a `#done` entry here
 
 | ID | Date | Title | Tags | Batch |
 |---|---|---|---|---|
+| U-20261022-01 | 2026-10-22 | Align pending Qt upgrade metadata | #bugfix #deps #ci | [2026-10](2026-10.md) |
 | U-20261012-01 | 2026-10-12 | Verify framework document keys through their public executors | #incident #tests #compatibility | [2026-10](2026-10.md) |
 | U-20261008-20 | 2026-10-08 | Linux and macOS platform smoke checks pass | #done #ci #platforms | [2026-10](2026-10.md) |
 | U-20261008-19 | 2026-10-08 | Keep FileAutomation backends installed after its extras split | #done #dependencies | [2026-10](2026-10.md) |
