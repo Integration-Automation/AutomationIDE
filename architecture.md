@@ -337,7 +337,7 @@ MCP Client → Calls → Open in Report Viewer → ReportViewerGUI.show_report(M
   `FileRunnerProcess`. PyBreeze reads one key JEditor's plugin guide does not define: `"encoding"`, the
   encoding the program's output is in (`"locale"` for the machine's own), documented in `PLUGIN_GUIDE.md`.
 - **PySide6 pin**: it must match JEditor and FrontEngine. PyBreeze pins it in `pyproject.toml`,
-  `dev.toml` and `requirements.txt`. All three pin 6.11.2, the exact pin of the published je_editor
+  `dev.toml` and `requirements.txt`. All three pin 6.12.0, the exact pin of the published je_editor
   1.0.26 and frontengine 1.0.78 (both `==`, so PyBreeze cannot move ahead of them without becoming
   uninstallable). PyBreeze moves when the published je_editor does (workspace X-1).
 
